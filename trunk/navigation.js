@@ -1,6 +1,7 @@
 // JavaScript Document
 
 {
+	//TEST TEST TEST
 	var menu = document.getElementById("nav").getElementsByTagName("a");
 	//creates an array out of each "a" element
 	for(var i=0; i<menu.length; i++) {
