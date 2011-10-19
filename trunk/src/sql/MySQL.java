@@ -27,7 +27,7 @@ public class MySQL extends HttpServlet {
 
         
         
-        Connection conn;
+        Connection conn = null;
         try {
             conn =
                DriverManager.getConnection("jdbc:mysql:localhost:3306/EXAMPLE?user=root&" +
