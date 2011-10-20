@@ -38,12 +38,20 @@ body {
 		float:left;
 		
 	}
-	
-	#header ul {
+
+	#header #user ul  {
 		float:right;
-		margin:48px 0 0 0;
+		margin:0 0 0 0;
 		padding:0;
 	}
+
+	#header #pages ul  {
+		float:right;
+		margin:38px 0 0 0;
+		padding:0;
+	}
+	
+	
 	
 		#header ul li {
 			float:left;
