@@ -25,7 +25,7 @@ body {
 	margin:0 auto 0 auto;
 }
 
-	#header h1 {
+	#header h1 a {
 		background:url(images/logo.png);
 		width:359px;
 		height:46px;
@@ -35,8 +35,7 @@ body {
 		font-size:0px;
 		overflow:hidden;
 		text-indent:-999999em;
-		float:left;
-		text-align:center;
+		float:right;
 		
 	}
 
