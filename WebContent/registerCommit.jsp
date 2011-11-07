@@ -9,14 +9,7 @@
 <body>
 	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
 	<%
-	
-	String firstName = request.getParameter("first_name");
-	String lastName = request.getParameter("last_name");
-	String username = request.getParameter("username");
-   	String password = request.getParameter("password");
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
+
     try {
     	/*
     	Class.forName("org.gjt.mm.mysql.Driver");
@@ -24,33 +17,50 @@
            DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
                                        "user=root&password=pothead");
        */
+       
+	   	Connection conn = null;
+	   	PreparedStatement pstmt = null;
         
-        Context context = new InitialContext();
+	   	Context context = new InitialContext();      
         DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
         conn=ds.getConnection();
-    
-        out.println("" + firstName + lastName + username + password);
+        
+        int updateQuery = 0;
+        
+        pstmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+        pstmt.setString(1, request.getParameter("username"));
+        pstmt.setString(2, request.getParameter("password"));       
+        updateQuery += pstmt.executeUpdate();
+        
+        pstmt = conn.prepareStatement("INSERT INTO user_roles (username, role) VALUES (?, ?)");
+        pstmt.setString(1, request.getParameter("username"));
+        pstmt.setString(2, "Member");
+        updateQuery += pstmt.executeUpdate();
+        
+        pstmt = conn.prepareStatement("INSERT INTO user_info (username, first_name, last_name) VALUES (?, ?, ?)");
+        pstmt.setString(1, request.getParameter("username"));
+        pstmt.setString(2, session.getAttribute("first_name").toString());
+        pstmt.setString(3, session.getAttribute("last_name").toString());
+        updateQuery += pstmt.executeUpdate();
 
-        pstmt = conn.prepareStatement("INSERT INTO users (first_name, last_name, username, password, rights) VALUES (?, ?, ?, ?, ?)");
-        
-        pstmt.setString(1, firstName);
-        pstmt.setString(2, lastName);
-        pstmt.setString(3, username);
-        pstmt.setString(4, password);
-        pstmt.setString(5, "user");
-        
-        int updateQuery = pstmt.executeUpdate();
         conn.commit();
-        if (updateQuery != 0) { 
+        
+        if (updateQuery != 0) 
          	out.println("Success");
-		}
         else
          	out.println("Not success");
 
         pstmt.close();
         conn.close();
+        
+ 
+	}catch (Exception e){
+    	e.printStackTrace();
+    }  
+     
 
-
+     
+     
         /*
      // Query the student PIDs
         Statement stmt = conn.createStatement();
@@ -75,17 +85,11 @@
     } 
     */
     
+    %>
     
-    }catch (Exception e){
-    	e.printStackTrace();
-    }
+    	< /br> 
+    	Return: <a href="index.jsp">Home</a>
     
-    finally {
-        // close all the connections.
-    }
-
-    
-    
-     %>
-</body>
+    </body>
 </html>
+    

@@ -39,29 +39,29 @@ body {
 		
 	}
 
-	#header #user ul  {
+	#header #user  {
 		float:right;
 		margin:0 0 0 0;
 		padding:0;
 	}
 	
-	#header #user ul #username  {
+	#header #user #username  {
 		float:right;
 		clear:both
 	}
 	
-		#header #user ul #password  {
+		#header #user #password  {
 		float:right;
 		clear:both
 	}
 	
-	#header #user ul a  {
+	#header #user a  {
 		margin:5px 0 0 0;
 		float:left;
 		clear:both
 	}
 	
-	#header #user ul input  {
+	#header #user input  {
 		float:right;
 		clear:both
 	}

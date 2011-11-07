@@ -29,19 +29,17 @@
 		<!--  <h1> The surfer</h1>-->
 
 		<div id="user">
-			<ul>
-			<form method=post action="authentication.jsp">					
+			<form method="POST" action="j_security_check">
 				<div id="username">
-					Username: <input type="text" name="username" size=20 /><br />
+					Username:<input size="20" name="j_username" type="text"/><br/>
 				</div>
 				<div id="password">
-					Password: <input type="password" name="password" size=20 /><br />
+					Password: <input size="20" name="j_password" type="password"/><br/>
 				</div>
 				
-				<a href="register.jsp">Register new user</a>
-				<input type="submit" value="Submit">	<br />
+				<a href="registerName.jsp">Register new user</a>
+				<input type="submit" value="Login"/>
 			</form> 
-			</ul>
 		</div>
 		<div id="pages">
 			<ul>

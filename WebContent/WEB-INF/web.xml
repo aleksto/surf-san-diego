@@ -11,6 +11,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!--Login configuration uses form-based authentication -->
+<login-config>
+	<auth-method>
+		FORM
+	</auth-method>
+	<realm-name>
+		Admissions Form-Based Authentication Area
+	</realm-name>
+	<form-login-config>
+		<form-login-page>
+			/login.jsp
+		</form-login-page>
+		<form-error-page>
+			/login-error.jsp
+		</form-error-page>
+	</form-login-config>
+</login-config>
+  
   <!--  Force SSL on all application pages -->
   <security-constraint>
   	<web-resource-collection>
