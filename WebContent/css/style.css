@@ -21,7 +21,7 @@ body {
 
 #header {
 	width:762px;
-	height:70px;
+	height:90px;
 	margin:0 auto 0 auto;
 }
 
@@ -35,7 +35,7 @@ body {
 		font-size:0px;
 		overflow:hidden;
 		text-indent:-999999em;
-		float:right;
+		float:left
 		
 	}
 
@@ -44,15 +44,35 @@ body {
 		margin:0 0 0 0;
 		padding:0;
 	}
-
-	#header #pages ul  {
+	
+	#header #user ul #username  {
 		float:right;
-		margin:38px 0 0 0;
-		padding:0;
+		clear:both
 	}
 	
+		#header #user ul #password  {
+		float:right;
+		clear:both
+	}
 	
+	#header #user ul a  {
+		margin:5px 0 0 0;
+		float:left;
+		clear:both
+	}
 	
+	#header #user ul input  {
+		float:right;
+		clear:both
+	}
+
+	#header #pages ul  {
+		margin:70px 0px 0 0;
+		padding:0;
+		position:absolute;
+		
+		
+	}
 		#header ul li {
 			float:left;
 			list-style:none;

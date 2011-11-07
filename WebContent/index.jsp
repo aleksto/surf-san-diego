@@ -1,4 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -8,15 +11,36 @@
 </head>
 
 <body>
+<%
+	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
+		String name = session.getAttribute("theName").toString();
+		out.println("Name: " + name);
+		String password = session.getAttribute("thePassword").toString();
+		out.println("<br /> Password: " + password);
+	} 
+	
+%>
+
 <div id="wrapper">
 	<div id="header">
+		
+	
 		<h1><a href=""> NettsideFirmaNavn - Vi er gode til slagord! </a></h1>
 		<!--  <h1> The surfer</h1>-->
 
 		<div id="user">
 			<ul>
-				<li><a href="register.jsp">Login</a></li>
-				<li><a href="#">Register</a></li>
+			<form method=post action="authentication.jsp">					
+				<div id="username">
+					Username: <input type="text" name="username" size=20 /><br />
+				</div>
+				<div id="password">
+					Password: <input type="password" name="password" size=20 /><br />
+				</div>
+				
+				<a href="register.jsp">Register new user</a>
+				<input type="submit" value="Submit">	<br />
+			</form> 
 			</ul>
 		</div>
 		<div id="pages">

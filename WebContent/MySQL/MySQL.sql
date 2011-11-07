@@ -1,12 +1,12 @@
+DROP TABLE users;
 
-
-CREATE TABLE students (
+CREATE TABLE users (
 	ID SERIAL PRIMARY KEY,
-	pid INTEGER,
 	first_name TEXT,
-	middle_name TEXT,
-	last_name TEXT
+	last_name TEXT,
+	username TEXT,
+	password TEXT,
+	rights TEXT
 );
 
-INSERT INTO students (pid, first_name, middle_name, last_name) VALUES (77777777, 'Mary', '', 'Doe');
-INSERT INTO students (pid, first_name, middle_name, last_name) values (88888888, 'John', 'T', 'Smith');
+INSERT INTO users (first_name, last_name, username, password, rights) VALUES ('Aleks', 'Zaegers', 'antone', 'az', 'user');
