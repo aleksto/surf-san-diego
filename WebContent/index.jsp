@@ -26,7 +26,7 @@
 		
 	
 		<h1><a href=""> NettsideFirmaNavn - Vi er gode til slagord! </a></h1>
-		<!--  <h1> The surfer</h1>-->
+		
 
 		<div id="user">
 			<form method="POST" action="j_security_check">
