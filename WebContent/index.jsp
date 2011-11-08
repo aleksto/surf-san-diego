@@ -23,9 +23,13 @@
 
 <div id="wrapper">
 	<div id="header">
-		
 	
-		<h1><a href=""> NettsideFirmaNavn - Vi er gode til slagord! </a></h1>
+		
+		<div id= "head">
+			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			</h1>
+		</div>
+			
 		
 
 		<div id="user">
@@ -43,7 +47,7 @@
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="#">Home</a></li>
+				<li><a href="">Home</a></li>
 				<li><a href="#">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
@@ -56,11 +60,11 @@
 		<div id="content-area">
 			<div id="top-photo">
 				<div id="photo-caption">
-				<p>&raquo; Dette er et salgsargument til bildet nedenfor...
+				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
 			<h2>Velkommen til v�r hjemmeside...</h2>
-			 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales lectus nec neque euismod euismod. Nunc dapibus mauris laoreet est vestibulum sit amet iaculis purus consequat. Aenean vel lorem erat, eget luctus velit. Nam ante mi, mattis nec placerat at, rhoncus a sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+			 <p> ctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
 
 <p>
 Nulla molestie facilisis tincidunt. Fusce vel lectus ante. Fusce suscipit condimentum purus porttitor porta. Morbi rhoncus nisi in quam imperdiet consectetur. Vestibulum in felis ac risus venenatis convallis. Aenean non mollis est. Vestibulum metus risus, tempus sed ultricies quis, pulvinar et neque.
@@ -73,7 +77,7 @@ Donec dignissim aliquet enim, sed auctor ipsum luctus a. Donec suscipit lobortis
 		</div>
 		<div id="sidebar">
 			<h3>Om oss... </h3>
-			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales lectus nec neque euismod euismod. Nunc dapibus mauris laoreet est vesti-
+			<p> 
 			</p>
 			<p><a href="#" class="readmore">Fortsett � les...</a></p>
 			
