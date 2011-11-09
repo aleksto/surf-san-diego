@@ -27,17 +27,17 @@
         
         int updateQuery = 0;
         
-        pstmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+        pstmt = conn.prepareStatement("INSERT INTO users (user_name, password) VALUES (?, ?)");
         pstmt.setString(1, request.getParameter("username"));
         pstmt.setString(2, request.getParameter("password"));       
         updateQuery += pstmt.executeUpdate();
         
-        pstmt = conn.prepareStatement("INSERT INTO user_roles (username, role) VALUES (?, ?)");
+        pstmt = conn.prepareStatement("INSERT INTO user_roles (user_name, role) VALUES (?, ?)");
         pstmt.setString(1, request.getParameter("username"));
         pstmt.setString(2, "Member");
         updateQuery += pstmt.executeUpdate();
         
-        pstmt = conn.prepareStatement("INSERT INTO user_info (username, first_name, last_name) VALUES (?, ?, ?)");
+        pstmt = conn.prepareStatement("INSERT INTO user_info (user_name, first_name, last_name) VALUES (?, ?, ?)");
         pstmt.setString(1, request.getParameter("username"));
         pstmt.setString(2, session.getAttribute("first_name").toString());
         pstmt.setString(3, session.getAttribute("last_name").toString());
@@ -88,7 +88,7 @@
     %>
     
     	< /br> 
-    	Return: <a href="index.jsp">Home</a>
+    	Return: <a href="user/home.jsp">Home</a>
     
     </body>
 </html>

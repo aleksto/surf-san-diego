@@ -52,14 +52,14 @@
   <security-constraint>
   	<web-resource-collection>
   		<web-resource-name>
-  			Member area
+  			User area
   		</web-resource-name>
   		<url-pattern>
-  			/member/*
+  			/user/*
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>member</role-name>
+  		<role-name>Member</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>

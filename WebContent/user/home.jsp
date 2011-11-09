@@ -10,6 +10,18 @@
 
 <body>
 
+<%
+	try{
+		out.println("Hello " + request.getUserPrincipal().getName());
+	 	out.println("Roles: ");
+		if (request.isUserInRole("admin")) 
+		 	out.println("admin");
+		if (request.isUserInRole("student"))  	 	
+			out.println("student");
+	}catch(NullPointerException e){
+	}
+%>
+
 <div id="wrapper">
 	<div id="header">
 	
@@ -19,16 +31,7 @@
 		</div>
 
 		<div id="user">
-			<form method="POST" action="j_security_check">
-				<div id="username">
-					Username:<input size="20" name="j_username" type="text"/><br/>
-				</div>
-				<div id="password">
-					Password: <input size="20" name="j_password" type="password"/><br/>
-				</div>
-				<a href="./../registerName.jsp">Register new user</a>
-				<input type="submit" value="Login"/>
-			</form> 
+			<a href="admin/index.jsp">Login</a>
 		</div>
 		<div id="pages">
 			<ul>
