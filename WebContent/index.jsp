@@ -4,8 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>NettsideFirmaNavn - Vi er gode til slagord!</title>
+	<title>The surfer</title>
 	
 	<link href="./css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -17,25 +18,13 @@
 		out.println("Name: " + name);
 		String password = session.getAttribute("thePassword").toString();
 		out.println("<br /> Password: " + password);
-	} 	
-%>
-
-<%
-	try{
-		out.println("Hello " + request.getUserPrincipal().getName());
-	 	out.println("Roles: ");
-		if (request.isUserInRole("admin")) 
-		 	out.println("admin");
-		if (request.isUserInRole("student"))  	 	
-			out.println("student");
-	}catch(NullPointerException e){
-		
-	}
+	} 
 	
 %>
 
 <div id="wrapper">
 	<div id="header">
+	
 	
 		
 		<div id= "head">
@@ -43,10 +32,18 @@
 			</h1>
 		</div>
 			
-		
-
 		<div id="user">
-			<a href="login.jsp">Login</a>
+			<form method="POST" action="j_security_check">
+				<div id="username">
+					Username:<input size="20" name="j_username" type="text"/><br/>
+				</div>
+				<div id="password">
+					Password: <input size="20" name="j_password" type="password"/><br/>
+				</div>
+				
+				<a href="registerName.jsp">Register new user</a>
+				<input type="submit" value="Login"/>
+			</form> 
 		</div>
 		<div id="pages">
 			<ul>
