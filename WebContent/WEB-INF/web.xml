@@ -29,16 +29,57 @@
 	</form-login-config>
 </login-config>
   
+  
   <!--  Force SSL on all application pages -->
+  <!-- 
   <security-constraint>
   	<web-resource-collection>
   		<web-resource-name>
-  			Entire Application
+  			User area
   		</web-resource-name>
   		<url-pattern>
   			/*
   		</url-pattern>
   	</web-resource-collection>
+  	<user-data-constraint>
+  		<transport-guarantee>
+  			CONFIDENTIAL
+  		</transport-guarantee>
+  	</user-data-constraint>
+  </security-constraint>
+   -->
+   
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>
+  			Member area
+  		</web-resource-name>
+  		<url-pattern>
+  			/member/*
+  		</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>member</role-name>
+  	</auth-constraint>
+  	<user-data-constraint>
+  		<transport-guarantee>
+  			CONFIDENTIAL
+  		</transport-guarantee>
+  	</user-data-constraint>
+  </security-constraint>
+
+ <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>
+  			admin area
+  		</web-resource-name>
+  		<url-pattern>
+  			/admin/*
+  		</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
   			CONFIDENTIAL

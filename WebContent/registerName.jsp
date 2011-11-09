@@ -8,16 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script>
-	function validateForm()
-	{
-	    if(document.frm.first_name.value=="")
-	    {
+	function validateForm(){
+	    if(document.getElementById("first_name").value==""){
 	      alert("Please enter your first name");
 	      document.frm.first_name.focus();
 	      return false;
 	    }
-	    else if(document.frm.last_name.value=="")
-	    {
+	    else if(document.getElementById("last_name")==""){
 	      alert("Please enter your last name");
 	      document.frm.last_name.focus();
 	      return false;
@@ -28,8 +25,8 @@
 <body><table><tr>
 <td>
 	<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">					
-				First Name: <input type="text" name="first_name" size=20 /><br />
-				Last Name: <input type="text" name="last_name" size=20 /><br />
+				First Name: <input type="text" id="first_name" name="first_name" size=20 /><br />
+				Last Name: <input type="text" id="last_name"name="last_name" size=20 /><br />
 				
 				<input type="submit" value="Submit"><br />
 	</form> 

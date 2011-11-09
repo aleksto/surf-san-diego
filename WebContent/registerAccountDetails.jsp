@@ -8,7 +8,7 @@
 <script>
 
 	function validateForm(){
-		if(document.frm.username.value==""){
+	    if(document.getElementById("username").value==""){
 			alert("Please enter you username");
 			document.frm.username.focus();
 			return false;
@@ -18,12 +18,12 @@
 	 		document.frm.password.focus();
 	  		return false;
 		}
-		else if(document.frm.checkPassword.value==""){
+	    else if(document.getElementById("checkPassword")==""){
 			alert("Please re-enter your password");
 			document.frm.password.focus();
 			return false;
 		}
-		else if(document.frm.password.value != document.frm.checkPassword.value){
+	    else if(document.getElementById("password") != document.getElementById("checkPassword")){
 			alert("Your passwords did not match");
 	 		document.frm.password.focus();
 	  		return false;
@@ -44,9 +44,9 @@
 
 
 	<form name="frm" method="post" action="registerCommit.jsp" onSubmit="return validateForm()">					
-				Username: <input type="text" name="username" size=20 /><br />
-				Enter password: <input type="password" name="password" size=20 /><br />
-				Re-enter password: <input type="password" name="checkPassword" size=20 /><br />
+				Username: <input type="text" id="username" name="username" size=20 /><br />
+				Enter password: <input type="password" id=password" name="password" size=20 /><br />
+				Re-enter password: <input type="password" id="checkPassword" name="checkPassword" size=20 /><br />
 				<input type="submit" value="Submit"><br />
 	</form> 
 </body>
