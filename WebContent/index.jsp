@@ -7,7 +7,6 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
-	
 	<link href="./css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -18,8 +17,7 @@
 		out.println("Name: " + name);
 		String password = session.getAttribute("thePassword").toString();
 		out.println("<br /> Password: " + password);
-	} 
-	
+	}
 %>
 
 <div id="wrapper">
@@ -48,7 +46,7 @@
 				<li><a href="#">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
-				<li><a href= "#">Media</a></li>
+				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
 			
 			</ul>
@@ -64,7 +62,6 @@
 			</div>
 			<h2>News</h2>
 			 <p> News about surfing </p>
-
 			
 		</div>
 		<div id="sidebar">

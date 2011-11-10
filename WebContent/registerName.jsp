@@ -64,90 +64,88 @@
 		String password = session.getAttribute("thePassword").toString();
 		out.println("<br /> Password: " + password);
 	} 
-	
 %>
 
-<div id="wrapper">
-	<div id="header">
-		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
-			</h1>
-		</div>
-			
-		<div id="user">
-			<form method="POST" action="j_security_check">
-				<div id="username">
-					Username:<input size="20" name="j_username" type="text"/><br/>
-				</div>
-				<div id="password">
-					Password: <input size="20" name="j_password" type="password"/><br/>
-				</div>
+	<div id="wrapper">
+		<div id="header">
+			<div id= "head">
+				<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+				</h1>
+			</div>
 				
-				<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
-				<input type="submit" value="Login"/>
-			</form> 
-		</div>
-		<div id="pages">
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href= "#">Media</a></li>
-				<li><a href="#">Contact</a></li>
-			
-			</ul>
-		</div>
-		<div style="clear:both"></div>
-	</div>
-	<div id="main-content">
-		<div id="content-area">
-			
-			<h2>Fill in</h2>
-			 <p> <table><tr>
-<td>
-	<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">					
-		First Name: <input type="text" id="first_name" name="first_name" size=25 /><br />
-		Last Name: 	<input type="text" id="last_name"name="last_name" size=25 /><br /> 
-		E-mail: 	<input type="text" id="email"name="email" size=25 /><br /> 
-		Location: 	<select id="location">
-						<option>San Diego</option>
-  						<option>LA</option>
-  						<option>Santa Barbara</option>
-					</select>
-				<br />
-		
-		Skills: 		<select id=" skills">
-							<option>Beginner</option>
-							<option>Intermediate</option>
-							<option>Professional</option>
-					 	</select> 
-					<br />	
+			<div id="user">
+				<form method="POST" action="j_security_check">
+					<div id="username">
+						Username:<input size="20" name="j_username" type="text"/><br/>
+					</div>
+					<div id="password">
+						Password: <input size="20" name="j_password" type="password"/><br/>
+					</div>
+					
+					<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
+					<input type="submit" value="Login"/>
+				</form> 
+			</div>
+			<div id="pages">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Beaches</a></li>
+					<li><a href="#">Weather</a></li>
+					<li><a href="#">Events</a></li>
+					<li><a href= "#">Media</a></li>
+					<li><a href="#">Contact</a></li>
 				
-	
-		Date of birth: 	<select id="daydropdown"> </select> 
-						<select id="monthdropdown"> </select> 
-						<select id="yeardropdown"></select> <br />
-					<input type="submit" value="Submit"><br />
-	</form>
-		
-		<script type="text/javascript">
-	
-		window.onload=function(){
-		populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
-		}
-</script>
-
-
-</td>
-</tr></table>  </p>
-			
+				</ul>
+			</div>
+			<div style="clear:both"></div>
 		</div>
-		<div id="sidebar">
-			<h3>Something fun </h3>
+		<div id="main-content">
+			<div id="content-area">
+				<h2>Fill in</h2>
+				 <p> <table><tr> <td>
+					<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">
+						<div id = register">				
+						First Name: <input type="text" id="first_name" name="first_name" size=25 /><br />
+						Last Name: 	<input type="text" id="last_name"name="last_name" size=25 /><br /> 
+						E-mail: 	<input type="text" id="email"name="email" size=25 /><br /> 
+						Location: 	<select id="location">
+										<option>San Diego</option>
+				  						<option>LA</option>
+				  						<option>Santa Barbara</option>
+									</select>
+								<br />
+						
+						Skills: 	<select id=" skills">
+										<option value ="100"> Beginner</option>
+										<option value ="101">Intermediate</option>
+										<option value ="102">Professional</option>
+								 	</select> 
+								<br />	
+								
+					
+						Date of birth: <select id="daydropdown"> </select> 
+									<select id="monthdropdown"> </select> 
+									<select id="yeardropdown"></select> <br />
+									<input type="submit" value="Submit"><br />
+							</div>	
+					</form>
+						
+					<script type="text/javascript">
+					
+						window.onload=function(){
+						populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
+						}
+					</script>
+				
+				
+				</td> </tr></table>  </p>
 			
-		</div>
-		<div style="clear:both"></div>
+			</div>
+			<div id="sidebar">
+				<h3>Something fun </h3>
+			
+			</div>
+			<div style="clear:both"></div>
 	</div>
 	<div id="footer">
 		<p> Copyright Ali, Maria, Ingrid. All Rights Reserved </p>
