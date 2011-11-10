@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./css/style.css" rel="stylesheet" type="text/css" />
-	<link href="./css/style.css" rel="stylesheet" type="text/css" />
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Register Account</title>
-		
+	
 		<script>
 			function validateForm(){
 			    if(document.getElementById("username").value==""){
@@ -93,15 +88,16 @@
 			
 			out.println(firstName + " " + lastName + ", please enter you account details");
 			%>	
-		
+			</p>
 		
 			<form name="frm" method="post" action="registerCommit.jsp" onSubmit="return validateForm()">
-									
+				<p>					
 				Username: <input type="text" id="username" name="username" size=20 /><br />
 				Enter password: <input type="password" id=password" name="password" size=20 /><br />
 				Re-enter password: <input type="password" id="checkPassword" name="checkPassword" size=20 /><br />
 				<input type="submit" value="Submit"><br />
-			</form>  </p>
+				</p>
+			</form>  
 			
 		</div>
 		<div id="sidebar">

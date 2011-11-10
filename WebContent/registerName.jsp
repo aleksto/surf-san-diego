@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>The surfer</title>
-	
+	<title>Register</title>
 	<link href="./css/style.css" rel="stylesheet" type="text/css" />
 	
 	
@@ -64,7 +61,9 @@
 		String password = session.getAttribute("thePassword").toString();
 		out.println("<br /> Password: " + password);
 	} 
-%>
+%> 
+
+
 
 	<div id="wrapper">
 		<div id="header">
@@ -94,7 +93,6 @@
 					<li><a href="#">Events</a></li>
 					<li><a href= "#">Media</a></li>
 					<li><a href="#">Contact</a></li>
-				
 				</ul>
 			</div>
 			<div style="clear:both"></div>
@@ -102,9 +100,9 @@
 		<div id="main-content">
 			<div id="content-area">
 				<h2>Fill in</h2>
-				 <p> <table><tr> <td>
+				
 					<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">
-						<div id = register">				
+						<p>				
 						First Name: <input type="text" id="first_name" name="first_name" size=25 /><br />
 						Last Name: 	<input type="text" id="last_name"name="last_name" size=25 /><br /> 
 						E-mail: 	<input type="text" id="email"name="email" size=25 /><br /> 
@@ -114,32 +112,27 @@
 				  						<option>Santa Barbara</option>
 									</select>
 								<br />
-						
-						Skills: 	<select id=" skills">
+						Date of birth:<select id="daydropdown"> </select> 
+									<select id="monthdropdown"> </select> 
+									<select id="yeardropdown"></select>
+									<br/>
+	
+						Skills: 	<select id="skills">
 										<option value ="100"> Beginner</option>
 										<option value ="101">Intermediate</option>
 										<option value ="102">Professional</option>
-								 	</select> 
-								<br />	
-								
-					
-						Date of birth: <select id="daydropdown"> </select> 
-									<select id="monthdropdown"> </select> 
-									<select id="yeardropdown"></select> <br />
-									<input type="submit" value="Submit"><br />
-							</div>	
+								 	</select> <br /> 	
+						</p>
+						<p><input type="submit" value="Submit"> </p>
 					</form>
-						
+			
 					<script type="text/javascript">
 					
 						window.onload=function(){
 						populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
 						}
 					</script>
-				
-				
-				</td> </tr></table>  </p>
-			
+					
 			</div>
 			<div id="sidebar">
 				<h3>Something fun </h3>
@@ -147,9 +140,16 @@
 			</div>
 			<div style="clear:both"></div>
 	</div>
+	
+	
 	<div id="footer">
 		<p> Copyright Ali, Maria, Ingrid. All Rights Reserved </p>
 	</div>
 </div>
+
+<%// if(skills == "102") {
+	//	out.println("Hello world");
+	//}	
+%>
 </body>
 </html>
