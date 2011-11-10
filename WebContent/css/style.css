@@ -75,6 +75,7 @@ body {
 		position:absolute;
 		margin: 40;
 		
+		
 	}
 		#header ul li {
 			float:left;
@@ -96,7 +97,7 @@ body {
 			}
 			
 			#header ul li a:hover {
-				color:#ffcc00;
+				color:#0099CC;
 			}
 			
 			#header ul li a.active {
@@ -113,9 +114,10 @@ body {
 		}
 		
 		#content-area {
-			background:#ffffff;
+			background:gray;
 			float:left;
 			width:537px;
+			margin: 0;
 		}
 		
 			#content-area #top-photo { 
@@ -222,13 +224,13 @@ a,
 a:active,
 a:visited,
 a:link { 
-	color:#666699;
+	color:white;
 	text-decoration:none;
 }
  
 a:hover {
-	color:#666699;
-	text-decoration:underline;
+	color:#0099CC;
+	text-decoration:none;
 } 
 
 a.readmore {

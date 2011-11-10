@@ -38,17 +38,19 @@
 					Password: <input size="20" name="j_password" type="password"/><br/>
 				</div>
 				
-				<a href="registerName.jsp">Register new user</a>
+				<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
 				<input type="submit" value="Login"/>
 			</form> 
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="">Home</a></li>
+				<li><a href="#">Home</a></li>
 				<li><a href="#">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
+				<li><a href= "#">Media</a></li>
 				<li><a href="#">Contact</a></li>
+			
 			</ul>
 		</div>
 		<div style="clear:both"></div>
