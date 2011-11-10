@@ -7,8 +7,8 @@ body {
 	text-align:center;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:12px;
-	line-height:10px;
-	color:#505050;
+	line-height:20px;
+	color:white;
 }
 
 
@@ -25,8 +25,8 @@ body {
 	margin:0 auto 0 auto;
 }
 
-	#header h1 a {
-		background:url(images/logo.png);
+	#header #head{
+		
 		width:359px;
 		height:46px;
 		margin:0;
@@ -35,13 +35,15 @@ body {
 		font-size:0px;
 		overflow:hidden;
 		text-indent:-999999em;
-		float:left
+		float:center;
+		line-height:20px;
+		color: white;
 		
 	}
 
 	#header #user  {
 		float:right;
-		margin:0 0 0 0;
+		margin:-30 0 0 0;
 		padding:0;
 	}
 	
@@ -70,6 +72,7 @@ body {
 		margin:70px 0px 0 0;
 		padding:0;
 		position:absolute;
+		margin: 40;
 		
 		
 	}
@@ -104,6 +107,7 @@ body {
 		#main-content {
 			background:#ffffff url(images/content-bg.png) repeat-y;
 			width:762px;
+			margin: 20;
 		}
 		
 		#content-area {
@@ -172,6 +176,18 @@ body {
 			color:#cccccc;
 			
 		}
+		
+h1 {
+	
+	font-size:25px;
+	color:white;
+	font-weight:lighter;
+	line-height: 20px;
+	letter-spacing:2px;
+	margin:25px 0 20px 10px;
+	padding:0;
+	
+	}
 			
 		
 h2 {

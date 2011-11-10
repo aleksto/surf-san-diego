@@ -24,9 +24,6 @@
 
 <div id="wrapper">
 	<div id="header">
-	
-	
-		
 		<div id= "head">
 			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>

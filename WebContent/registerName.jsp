@@ -9,8 +9,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Register</title>
 	<link href="./css/style.css" rel="stylesheet" type="text/css" />
-
-
 	<script>
 		function validateForm(){
 		    if(document.getElementById("first_name").value==""){
@@ -29,7 +27,6 @@
 			      return false;
 			    }
 		}
-		
 	</script>
 	<script type="text/javascript">
 		var monthtext=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
@@ -52,7 +49,6 @@
 			}
 			yearfield.options[0]=new Option(today.getFullYear(), today.getFullYear(), true, true) 
 			}
-	
 	</script>
 
 </head>
