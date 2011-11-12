@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
 
 CREATE TABLE user_info (
-	id PRIMARY KEY,
+	id INT PRIMARY KEY,
 	firstname VARCHAR(50),
 	lastname VARCHAR(50),
 	email VARCHAR(50),
