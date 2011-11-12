@@ -36,7 +36,7 @@
 					Password: <input size="20" name="j_password" type="password"/><br/>
 				</div>
 				
-				<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
+				<a href="register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 				<input type="submit" value="Login"/>
 			</form> 
 		</div>

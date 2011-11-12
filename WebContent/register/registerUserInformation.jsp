@@ -5,7 +5,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Register</title>
-	<link href="./css/style.css" rel="stylesheet" type="text/css" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css" />
 	
 	
 	<script>
@@ -32,7 +32,7 @@
 		var monthtext=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
 		
 		function populatedropdown(dayfield, monthfield, yearfield){
-			var today=new Date()
+			var today=new Date();
 			var dayfield=document.getElementById(dayfield)
 			var monthfield=document.getElementById(monthfield)
 			var yearfield=document.getElementById(yearfield)
@@ -81,7 +81,7 @@
 						Password: <input size="20" name="j_password" type="password"/><br/>
 					</div>
 					
-					<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
+					<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 					<input type="submit" value="Login"/>
 				</form> 
 			</div>
@@ -91,7 +91,7 @@
 					<li><a href="#">Beaches</a></li>
 					<li><a href="#">Weather</a></li>
 					<li><a href="#">Events</a></li>
-					<li><a href= "#">Media</a></li>
+					<li><a href="#">Media</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
 			</div>
@@ -129,8 +129,8 @@
 					<script type="text/javascript">
 					
 						window.onload=function(){
-						populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
-						}
+							populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
+						};
 					</script>
 					
 			</div>

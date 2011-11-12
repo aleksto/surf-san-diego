@@ -1,8 +1,8 @@
-DROP TABLE user_info;
-DROP TABLE user_account;
-DROP TABLE role;
-DROP TABLE skill;
-DROP TABLE city;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS user_account;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS skill;
+DROP TABLE IF EXISTS city;
 
 CREATE TABLE user_info (
 	user_id INT PRIMARY KEY,
@@ -34,7 +34,6 @@ CREATE TABLE city (
 );
 
 INSERT INTO user_info VALUES (1, 'Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28');
-
 INSERT INTO user_account VALUES (1, 'maria', 'pass');
 
 INSERT INTO role VALUES (1, 'Admin');

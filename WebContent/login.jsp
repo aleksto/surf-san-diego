@@ -26,7 +26,7 @@
 				<div id="password">
 					Password: <input size="20" name="j_password" type="password"/><br/>
 				</div>
-				<a href="./../registerName.jsp">Register new user</a>
+				<a href="./../registerUserInformation.jsp">Register new user</a>
 				<input type="submit" value="Login"/>
 			</form> 
 		</div>

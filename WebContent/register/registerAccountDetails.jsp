@@ -5,7 +5,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
-	<link href="./css/style.css" rel="stylesheet" type="text/css" />
+	<link href=../css/style.css" rel="stylesheet" type="text/css" />
 	
 		<script>
 			function validateForm(){
@@ -59,7 +59,7 @@
 					Password: <input size="20" name="j_password" type="password"/><br/>
 				</div>
 				
-				<a href="registerName.jsp" style ="text-decoration:none">Register new user</a>
+				<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 				<input type="submit" value="Login"/>
 			</form> 
 		</div>
@@ -111,4 +111,5 @@
 	</div>
 </div>
 </body>
+
 </html>
