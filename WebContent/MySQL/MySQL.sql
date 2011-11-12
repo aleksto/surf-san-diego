@@ -107,9 +107,7 @@ CREATE TABLE news (
 UPDATE user_info;
 INSERT INTO user_account VALUES (1, 'maria', 'pass');
 
-INSERT INTO role VALUES (1, 'Admin');
-INSERT INTO role VALUES (2, 'Poster');
-INSERT INTO role VALUES (3, 'Registered user');
+
 
 INSERT INTO skill VALUES (1, 'Pro');
 INSERT INTO skill VALUES (2, 'Medium');
@@ -122,3 +120,14 @@ INSERT INTO city (id, city) VALUES (3, 'Los Angeles');
 INSERT INTO area (id, area, city_id) VALUES (1, 'South San Diego', 1);
 INSERT INTO area (id, area, city_id) VALUES (2, 'North San Diego', 1);
 */
+
+INSERT INTO user_account (id, username, password) VALUES (1, 'mariamollr', 'maria');
+INSERT INTO user_account (id, username, password) VALUES (2, 'ingridtaroy', 'ingrid');
+
+INSERT INTO user_role (user_account_id, role_id) VALUES (1, 3);
+INSERT INTO user_role (user_account_id, role_id) VALUES (2, 3);
+
+INSERT INTO role (id, role) VALUES (1, 'Admin');
+INSERT INTO role (id, role) VALUES (2, 'Poster');
+INSERT INTO role (id, role) VALUES (3, 'Registered user');
+
