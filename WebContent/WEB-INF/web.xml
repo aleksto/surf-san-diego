@@ -55,11 +55,11 @@
   			User area
   		</web-resource-name>
   		<url-pattern>
-  			/user/*
+  			/sites/home/user/*
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>Member</role-name>
+  		<role-name>3</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -74,11 +74,11 @@
   			admin area
   		</web-resource-name>
   		<url-pattern>
-  			/admin/*
+  			/sites/home/user/*
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>admin</role-name>
+  		<role-name>1</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>

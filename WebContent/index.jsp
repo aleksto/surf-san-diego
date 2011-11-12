@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<html>
+	<body>
+		<%
+		    String redirectURL = "sites/home/home.jsp";
+		    response.sendRedirect(redirectURL);
+		%>
 
+	</body>
+</html>
 
-
+<!--  
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -76,3 +84,6 @@
 </div>
 </body>
 </html>
+
+-->
+

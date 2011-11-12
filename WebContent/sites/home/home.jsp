@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
-	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+
 <%
 	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
 		String name = session.getAttribute("theName").toString();
@@ -29,17 +27,9 @@
 		</div>
 			
 		<div id="user">
-			<form method="POST" action="j_security_check">
-				<div id="username">
-					Username:<input size="20" name="j_username" type="text"/><br/>
-				</div>
-				<div id="password">
-					Password: <input size="20" name="j_password" type="password"/><br/>
-				</div>
-				
-				<a href="register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-				<input type="submit" value="Login"/>
-			</form> 
+			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+			
 		</div>
 		<div id="pages">
 			<ul>
@@ -61,8 +51,8 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>Login</h2>
-			 <p> Please login to continue </p>
+			<h2>News</h2>
+			 <p> News about surfing </p>
 			
 		</div>
 		<div id="sidebar">
