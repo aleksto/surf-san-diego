@@ -4,16 +4,17 @@ DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS skill;
 DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS area;
-DROP TABLE IF EXISTS weather_forecast;
+DROP TABLE IF EXISTS weather_forcast;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS user_event;
 DROP TABLE IF EXISTS user_traffic;
 DROP TABLE IF EXISTS beach;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
+DROP TABLE IF EXISTS user_role;
 
 CREATE TABLE user_info (
-	user_id INT PRIMARY KEY,
+	id PRIMARY KEY,
 	firstname VARCHAR(50),
 	lastname VARCHAR(50),
 	email VARCHAR(50),
@@ -21,9 +22,14 @@ CREATE TABLE user_info (
 );
 
 CREATE TABLE user_account (
-	user_id INT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	username VARCHAR(15),
 	password VARCHAR(10)
+);
+
+CREATE TABLE user_role (
+	user_account_id INT REFERENCES user_account(id),
+	role_id INT REFERENCES role(id)
 );
 
 CREATE TABLE role (
@@ -44,7 +50,7 @@ CREATE TABLE city (
 CREATE TABLE area (
 	id INT PRIMARY KEY,
 	area VARCHAR(30),
-	city_id INT
+	city_id INT REFERENCES city (id)
 );
 
 CREATE TABLE weather_forcast (
@@ -102,10 +108,17 @@ UPDATE user_info;
 INSERT INTO user_account VALUES (1, 'maria', 'pass');
 
 INSERT INTO role VALUES (1, 'Admin');
-INSERT INTO role VALUES (2, 'News poster');
-INSERT INTO role VALUES (3, 'Media poster');
-INSERT INTO role VALUES (4, 'Registered user');
+INSERT INTO role VALUES (2, 'Poster');
+INSERT INTO role VALUES (3, 'Registered user');
 
 INSERT INTO skill VALUES (1, 'Pro');
 INSERT INTO skill VALUES (2, 'Medium');
 INSERT INTO skill VALUES (3, 'Beginner');
+
+INSERT INTO city (id, city) VALUES (1, 'San Diego');
+INSERT INTO city (id, city) VALUES (2, 'Santa Barbara');
+INSERT INTO city (id, city) VALUES (3, 'Los Angeles');
+
+INSERT INTO area (id, area, city_id) VALUES (1, 'South San Diego', 1);
+INSERT INTO area (id, area, city_id) VALUES (2, 'North San Diego', 1);
+*/
