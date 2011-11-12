@@ -18,7 +18,14 @@ CREATE TABLE user_info (
 	firstname VARCHAR(50),
 	lastname VARCHAR(50),
 	email VARCHAR(50),
-	date_of_birth DATE
+	date_of_birth DATE,
+	city_id INT REFERENCES city (id),
+	skill_id INT REFERENCES skill (id)
+);
+
+CREATE TABLE skill (
+	id INT PRIMARY KEY,
+	skill VARCHAR(20)
 );
 
 CREATE TABLE user_account (
@@ -35,11 +42,6 @@ CREATE TABLE user_role (
 CREATE TABLE role (
 	id INT PRIMARY KEY,
 	role VARCHAR(20)
-);
-
-CREATE TABLE skill (
-	id INT PRIMARY KEY,
-	skill VARCHAR(20)
 );
 
 CREATE TABLE city (
@@ -103,11 +105,7 @@ CREATE TABLE news (
 	text VARCHAR(400)
 );
 
-/*INSERT INTO user_info VALUES (1, 'Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28');
-UPDATE user_info;
-INSERT INTO user_account VALUES (1, 'maria', 'pass');
-
-
+INSERT INTO user_info VALUES (1, 'Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
 
 INSERT INTO skill VALUES (1, 'Pro');
 INSERT INTO skill VALUES (2, 'Medium');
