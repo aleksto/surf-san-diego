@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<form>
+Have you participated in contests?:
+	<input type="radio" name="contest" value="yes" /> Yes<br />
+	<input type="radio" name="contest" value="no" /> No <br/>
+	
+	
+Comments: <input type="textfield" name="firstname" size="100"/><br />
+</form>
+

@@ -5,8 +5,32 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Register</title>
-	<link href="../css/style.css" rel="stylesheet" type="text/css" />
-	
+	<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function loadXMLDoc() {
+
+		var xmlHttp=new XMLHttpRequest();
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		
+		xmlhttp.onreadystatechange=function() {
+		  
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
+			    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","tester.xml",true);
+		xmlhttp.send();
+		
+		}
+	</script>
 	
 	<script>
 		function validateForm(){
@@ -51,6 +75,7 @@
 			}
 	
 	</script>
+	<script src="selectCustomerXML.js"></script>
 </head>
 
 <body>
@@ -123,7 +148,8 @@
 										<option value ="102">Professional</option>
 								 	</select> <br /> 	
 						</p>
-						<p><input type="submit" value="Submit"> </p>
+						<div id="myDiv"></div>
+						<p><button type="button" onclick="loadXMLDoc()">Submit</button> </p>
 					</form>
 			
 					<script type="text/javascript">
