@@ -91,12 +91,24 @@
 			</p>
 		
 			<form name="frm" method="post" action="registerCommit.jsp" onSubmit="return validateForm()">
-				<p>					
-				Username: <input type="text" id="username" name="username" size=20 /><br />
-				Enter password: <input type="password" id=password" name="password" size=20 /><br />
-				Re-enter password: <input type="password" id="checkPassword" name="checkPassword" size=20 /><br />
-				<input type="submit" value="Submit"><br />
-				</p>
+				<p>	
+				<table>
+					<tr>	
+						<td>Username:</td> 
+						<td><input type="text" id="username" name="username" size=20 /></td>
+					</tr>
+					<tr>
+						<td>Enter password:</td> 
+						<td><input type="password" id=password" name="password" size=20 /></td>
+					</tr>
+					<tr>
+						<td>Re-enter password: </td>
+						<td> <input type="password" id="checkPassword" name="checkPassword" size=20 /></td>
+					</tr>
+				</table>
+				
+				<p><input type="submit" value="Submit"></p>
+					
 			</form>  
 			
 		</div>
