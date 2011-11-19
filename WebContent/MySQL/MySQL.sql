@@ -23,21 +23,17 @@ CREATE TABLE user_info (
 	skill_id INT REFERENCES skill (id)
 );
 
-CREATE TABLE skill (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	skill VARCHAR(20)
-);
-
 CREATE TABLE user_account (
 	   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        username VARCHAR(15),
-       password VARCHAR(10)
+       password VARCHAR(10),
+       user_id INT REFERENCES user_info(id)
 );
 
 CREATE TABLE user_role (
 	   user_account_id INT REFERENCES user_account(id),
-       username VARCHAR(15),
-       role_id INT REFERENCES role(id)
+       role_id INT REFERENCES role(id),
+       username VARCHAR(15)
 );
 
 CREATE TABLE role (
@@ -54,6 +50,11 @@ CREATE TABLE area (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        area VARCHAR(30),
        city_id INT REFERENCES city (id)
+);
+
+CREATE TABLE skill (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	skill VARCHAR(20)
 );
 
 CREATE TABLE weather_forcast (
@@ -106,29 +107,25 @@ CREATE TABLE news (
        text VARCHAR(400)
 );
 
-
-INSERT INTO user_info VALUES (1, 'Maria', 'Moller',
-'mariamollr@gmail.com', '1988-2-28');
-UPDATE user_info;
-INSERT INTO user_account VALUES (1, 'maria', 'pass');
-
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30', 2, 1);
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24' 3, 3);
 
-INSERT INTO skill VALUES (1, 'Pro');
-INSERT INTO skill VALUES (2, 'Medium');
-INSERT INTO skill VALUES (3, 'Beginner');
+INSERT INTO skill (skill) VALUES ('Pro');
+INSERT INTO skill (skill) VALUES ('Medium');
+INSERT INTO skill (skill) VALUES ('Beginner');
 
-INSERT INTO city (id, city) VALUES (1, 'San Diego');
-INSERT INTO city (id, city) VALUES (2, 'Santa Barbara');
-INSERT INTO city (id, city) VALUES (3, 'Los Angeles');
+INSERT INTO city (city) VALUES ('San Diego');
+INSERT INTO city (city) VALUES ('Santa Barbara');
+INSERT INTO city (city) VALUES ('Los Angeles');
 
-INSERT INTO area (id, area, city_id) VALUES (1, 'South San Diego', 1);
-INSERT INTO area (id, area, city_id) VALUES (2, 'North San Diego', 1);
+INSERT INTO area (area, city_id) VALUES ('South San Diego', 1);
+INSERT INTO area (area, city_id) VALUES ('North San Diego', 1);
 
-INSERT INTO user_account (id, username, password) VALUES (1, 'far', '1414');
-INSERT INTO user_account (id, username, password) VALUES (2, 'mor', '1414');
-INSERT INTO user_account (id, username, password) VALUES (3, 'aleksto', '1414');
+INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm' 1);
+INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it' 2);
+INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at' 3);
 
-INSERT INTO user_role (user_account_id, username, role) VALUES (1, 'far', '3');
-INSERT INTO user_role (user_account_id, username, role) VALUES (2, 'mor', '2');
-INSERT INTO user_role (user_account_id, username, role) VALUES (3, 'aleksto', '1');
+INSERT INTO user_role (user_account_id, role_id, username) VALUES (1, 1, 'maria');
+INSERT INTO user_role (user_account_id, role_id, username) VALUES (2, 1, 'ingrid');
+INSERT INTO user_role (user_account_id, role_id, username) VALUES (3, 2, 'aleksto');
