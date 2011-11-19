@@ -51,8 +51,18 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>News</h2>
-			 <p> News about surfing </p>
+			<h2>Beaches</h2>
+            <tr>
+                <td>
+                    <form action="response.jsp">
+                        <strong>Select city:</strong>
+                        <select name="city_id">
+                            <option></option>
+                        </select>
+                        <input type="submit" value="submit" name="submit" />
+                    </form>
+                </td>
+            </tr>
 			
 		</div>
 		<div id="sidebar">
