@@ -21,7 +21,7 @@
 				<%
 			try{
 				out.println("Welcome " + request.getUserPrincipal().getName());
-				if (request.isUserInRole("poster")) 
+				if (request.isUserInRole("2")) 
 				 	out.println("(poster)");
 				else{
 					//REDIRECT TILBAKE TIL INDEX MED WARNING

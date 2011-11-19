@@ -59,7 +59,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>user</role-name>
+  		<role-name>3</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -78,7 +78,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>poster</role-name>
+  		<role-name>2</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -97,7 +97,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>admin</role-name>
+  		<role-name>1</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>

@@ -24,9 +24,9 @@
 		
 		<%
 			if(request != null){
-				if (request.isUserInRole("admin")) 
+				if (request.isUserInRole("1")) 
 					response.sendRedirect("./../admin/home.jsp");
-				else if (request.isUserInRole("poster")) 
+				else if (request.isUserInRole("2")) 
 					response.sendRedirect("./../poster/home.jsp");
 				else{
 					%>

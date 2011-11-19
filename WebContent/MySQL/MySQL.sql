@@ -37,7 +37,12 @@ CREATE TABLE user_account (
 CREATE TABLE user_role (
 	   user_account_id INT REFERENCES user_account(id),
        username VARCHAR(15),
-       role VARCHAR(20)
+       role_id INT REFERENCES role(id)
+);
+
+CREATE TABLE role (
+ Ê Ê Ê id INT PRIMARY KEY,
+ Ê Ê Ê role VARCHAR(20)
 );
 
 CREATE TABLE city (
@@ -125,6 +130,6 @@ INSERT INTO user_account (id, username, password) VALUES (1, 'far', '1414');
 INSERT INTO user_account (id, username, password) VALUES (2, 'mor', '1414');
 INSERT INTO user_account (id, username, password) VALUES (3, 'aleksto', '1414');
 
-INSERT INTO user_role (user_account_id, username, role) VALUES (1, 'far', 'user');
-INSERT INTO user_role (user_account_id, username, role) VALUES (2, 'mor', 'poster');
-INSERT INTO user_role (user_account_id, username, role) VALUES (3, 'aleksto', 'admin');
+INSERT INTO user_role (user_account_id, username, role) VALUES (1, 'far', '3');
+INSERT INTO user_role (user_account_id, username, role) VALUES (2, 'mor', '2');
+INSERT INTO user_role (user_account_id, username, role) VALUES (3, 'aleksto', '1');

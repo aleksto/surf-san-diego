@@ -21,7 +21,7 @@
 				<%
 			try{
 				out.println("Welcome " + request.getUserPrincipal().getName());
-				if (request.isUserInRole("admin")) 
+				if (request.isUserInRole("1")) 
 				 	out.println("(admin)");
 				else{
 					//REDIRECT TILBAKE TIL INDEX MED WARNING
