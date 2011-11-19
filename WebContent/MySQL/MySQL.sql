@@ -122,6 +122,7 @@ INSERT INTO area (area, city_id) VALUES ('South San Diego', 1);
 INSERT INTO area (area, city_id) VALUES ('North San Diego', 1);
 
 INSERT INTO news (headline, news_date, news_time, text) VALUES ('Shark Attack', '2011-11-17','10:15:54','A shark attacked danndandan');  
+INSERT INTO news (headline, news_date, news_time, text) VALUES ('Croc Attack', '2011-11-17','10:15:54','A croc attacked danndandan');  
 
 
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm' 1);
