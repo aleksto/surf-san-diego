@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
 
 CREATE TABLE user_info (
-	id INT PRIMARY KEY,
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	firstname VARCHAR(50),
 	lastname VARCHAR(50),
 	email VARCHAR(50),
@@ -24,12 +24,12 @@ CREATE TABLE user_info (
 );
 
 CREATE TABLE skill (
-	id INT PRIMARY KEY,
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	skill VARCHAR(20)
 );
 
 CREATE TABLE user_account (
-	   id INT PRIMARY KEY,
+	   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        username VARCHAR(15),
        password VARCHAR(10)
 );
@@ -41,17 +41,17 @@ CREATE TABLE user_role (
 );
 
 CREATE TABLE role (
- Ê Ê Ê id INT PRIMARY KEY,
+ Ê Ê Ê id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  Ê Ê Ê role VARCHAR(20)
 );
 
 CREATE TABLE city (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        city VARCHAR(20)
 );
 
 CREATE TABLE area (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        area VARCHAR(30),
        city_id INT REFERENCES city (id)
 );
@@ -63,7 +63,7 @@ CREATE TABLE weather_forcast (
 );
 
 CREATE TABLE event (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
        ev_date DATE,
        ev_time TIME,
@@ -78,12 +78,12 @@ CREATE TABLE user_event (
 );
 
 CREATE TABLE user_traffic (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        comments VARCHAR(200)
 );
 
 CREATE TABLE beach (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
        description VARCHAR(200),
        picture BLOB
@@ -98,7 +98,7 @@ CREATE TABLE surf_conditions (
        beach_id INT
 );
 CREATE TABLE news (
-       id INT PRIMARY KEY,
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        headline VARCHAR(30),
        news_date DATE,
        news_time TIME,
@@ -106,13 +106,13 @@ CREATE TABLE news (
        text VARCHAR(400)
 );
 
-/*
+
 INSERT INTO user_info VALUES (1, 'Maria', 'Moller',
 'mariamollr@gmail.com', '1988-2-28');
 UPDATE user_info;
 INSERT INTO user_account VALUES (1, 'maria', 'pass');
 
-INSERT INTO user_info VALUES (1, 'Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
 
 INSERT INTO skill VALUES (1, 'Pro');
 INSERT INTO skill VALUES (2, 'Medium');
@@ -124,7 +124,6 @@ INSERT INTO city (id, city) VALUES (3, 'Los Angeles');
 
 INSERT INTO area (id, area, city_id) VALUES (1, 'South San Diego', 1);
 INSERT INTO area (id, area, city_id) VALUES (2, 'North San Diego', 1);
-*/
 
 INSERT INTO user_account (id, username, password) VALUES (1, 'far', '1414');
 INSERT INTO user_account (id, username, password) VALUES (2, 'mor', '1414');
