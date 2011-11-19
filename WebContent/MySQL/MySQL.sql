@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS beach;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
+DROP TABLE IF EXISTS beach_comment;
 
 CREATE TABLE user_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -87,7 +88,8 @@ CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
        description VARCHAR(200),
-       picture BLOB
+       beach_id INT REFERENCES beach (id),
+       user_id INT REFERENCES user_account(id)
 );
 
 CREATE TABLE surf_conditions (
@@ -105,6 +107,16 @@ CREATE TABLE news (
        news_time TIME,
        text VARCHAR(400)
 );
+
+CREATE TABLE beach_comment(
+		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		comment VARCHAR(200),
+		beach_id INT
+);
+
+INSERT INTO beach (name, description) VALUES ('Mission beach', 'blablabla');
+INSERT INTO beach (name, description) VALUES ('Pacific beach', 'blablabla');
+INSERT INTO beach (name, description) VALUES ('Lajolla Cove', 'blablabla');
 
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30', 2, 1);
