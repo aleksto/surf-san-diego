@@ -10,18 +10,9 @@
 
 <body>
 
-<%
-	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
-		String name = session.getAttribute("theName").toString();
-		out.println("Name: " + name);
-		String password = session.getAttribute("thePassword").toString();
-		out.println("<br /> Password: " + password);
-	}
-%>
-
 <div id="wrapper">
 	<div id="header">
-		<div id= "head">
+		<div id="head">
 			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
@@ -29,7 +20,6 @@
 		<div id="user">
 			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-			
 		</div>
 		<div id="pages">
 			<ul>
@@ -53,6 +43,10 @@
 			</div>
 			<h2>News</h2>
 			 <p> News about surfing </p>
+			 <%
+			 	String newStory = "";
+			 	out.println(newStory);
+			 %>
 			
 		</div>
 		<div id="sidebar">

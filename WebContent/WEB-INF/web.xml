@@ -59,7 +59,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>3</role-name>
+  		<role-name>user</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -68,7 +68,26 @@
   	</user-data-constraint>
   </security-constraint>
 
- <security-constraint>
+	<security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>
+  			poster area
+  		</web-resource-name>
+  		<url-pattern>
+  			/sites/home/poster/*
+  		</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>poster</role-name>
+  	</auth-constraint>
+  	<user-data-constraint>
+  		<transport-guarantee>
+  			CONFIDENTIAL
+  		</transport-guarantee>
+  	</user-data-constraint>
+ </security-constraint>
+
+  <security-constraint>
   	<web-resource-collection>
   		<web-resource-name>
   			admin area
@@ -78,7 +97,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>1</role-name>
+  		<role-name>admin</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -86,5 +105,7 @@
   		</transport-guarantee>
   	</user-data-constraint>
   </security-constraint>
+  
+  
 </web-app>
 

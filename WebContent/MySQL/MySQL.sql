@@ -37,11 +37,6 @@ CREATE TABLE user_account (
 CREATE TABLE user_role (
 	   user_account_id INT REFERENCES user_account(id),
        username VARCHAR(15),
-       role_id INT REFERENCES role(id)
-);
-
-CREATE TABLE role (
-       id INT PRIMARY KEY,
        role VARCHAR(20)
 );
 
@@ -126,11 +121,10 @@ INSERT INTO area (id, area, city_id) VALUES (1, 'South San Diego', 1);
 INSERT INTO area (id, area, city_id) VALUES (2, 'North San Diego', 1);
 */
 
-INSERT INTO user_account (id, username, password) VALUES (
-1, 'mariamollr', 'maria');
+INSERT INTO user_account (id, username, password) VALUES (1, 'far', '1414');
+INSERT INTO user_account (id, username, password) VALUES (2, 'mor', '1414');
+INSERT INTO user_account (id, username, password) VALUES (3, 'aleksto', '1414');
 
-INSERT INTO user_role (user_account_id, username, role_id) VALUES (1, 'mariamollr', 3);
-
-INSERT INTO role (id, role) VALUES (1, 'Admin');
-INSERT INTO role (id, role) VALUES (2, 'Poster');
-INSERT INTO role (id, role) VALUES (3, 'Registered user');
+INSERT INTO user_role (user_account_id, username, role) VALUES (1, 'far', 'user');
+INSERT INTO user_role (user_account_id, username, role) VALUES (2, 'mor', 'poster');
+INSERT INTO user_role (user_account_id, username, role) VALUES (3, 'aleksto', 'admin');

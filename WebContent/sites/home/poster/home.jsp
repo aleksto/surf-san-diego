@@ -10,9 +10,6 @@
 
 <body>
 
-
-
-
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
@@ -21,36 +18,19 @@
 		</div>
 			
 		<div id="user">
-		
-		<%
-			if(request != null){
-				if (request.isUserInRole("admin")) 
-					response.sendRedirect("./../admin/home.jsp");
-				else if (request.isUserInRole("poster")) 
-					response.sendRedirect("./../poster/home.jsp");
+				<%
+			try{
+				out.println("Welcome " + request.getUserPrincipal().getName());
+				if (request.isUserInRole("poster")) 
+				 	out.println("(poster)");
 				else{
-					%>
-					<a href="user/home.jsp" style ="text-decoration:none">Login</a>
-					<a href="register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-					<%
+					//REDIRECT TILBAKE TIL INDEX MED WARNING
 				}
-			}
-		
-		try{
-			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("user")) 
-			 	out.println("(user)");
-			else{
-				//REDIRECT TILBAKE TIL INDEX MED WARNING
-			}
-		}catch(NullPointerException e){
-			//REDIRECT TILBAKE TIL INDEX MED WARNING
-		}	
-			
-		%>
-		<p><a href="./../../../invalidate.jsp">Logout</a></p>
-		
-			
+			}catch(NullPointerException e){
+					//REDIRECT TILBAKE TIL INDEX MED WARNING
+			}	
+			%>
+			<p><a href="./../../../invalidate.jsp">Logout</a></p>
 			
 		</div>
 		<div id="pages">
@@ -89,3 +69,4 @@
 </div>
 </body>
 </html>
+
