@@ -10,33 +10,23 @@
 
 <body>
 
+	
+
 <div id="wrapper">
 	<div id="header">
-		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+		<div id="head">
+			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-				<%
-			try{
-				out.println("Welcome " + request.getUserPrincipal().getName());
-				if (request.isUserInRole("2")) 
-				 	out.println("(poster)");
-				else{
-					//REDIRECT TILBAKE TIL INDEX MED WARNING
-				}
-			}catch(NullPointerException e){
-					//REDIRECT TILBAKE TIL INDEX MED WARNING
-			}	
-			%>
-			<p><a href="./../../../invalidate.jsp">Logout</a></p>
-			
+			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
 			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Beaches</a></li>
+				<li><a href="beaches/addBeach.jsp">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -54,7 +44,63 @@
 				</p></div>
 			</div>
 			<h2>News</h2>
-			 <p> News about surfing </p>
+			 <p>  </p>
+			 
+			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+	<%
+
+    try {
+    	/*
+    	Class.forName("org.gjt.mm.mysql.Driver");
+        conn =
+           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+                                       "user=root&password=pothead");
+       */
+       
+	   	Connection conn = null;
+	   	PreparedStatement pstmt = null;
+        
+	   	Context context = new InitialContext();      
+        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+        conn=ds.getConnection();
+        
+        ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT headline FROM news");      
+        updateQuery = pstmt.executeQuery();
+        while( updateQuery.next()){
+        	out.println(updateQuery.getString(1));
+        }
+        
+        
+        //Statement stmt = conn.createStatement();
+        //ResultSet rset =  stmt.executeQuery("SELECT id FROM news");
+        // Print out the PID (1st attribute)
+        //while (rset.next ())
+        //System.out.println (rset.getInt(1));
+        
+        /*
+        if (updateQuery != 0) 
+         	out.println("Success");
+        else
+         	out.println("Not success");
+		*/
+        pstmt.close();
+        conn.close();
+        //rset = close();
+        
+    }catch (Exception e){
+    	e.printStackTrace();
+    }  
+      %>
+		  <%
+			 	String newStory = "";
+			 	out.println(newStory);
+			 	
+			 %>
+			 
+			 <form name="frm" method="post" action="addNews.jsp" >
+			 	<p><button type="submit" value = "Submit">Add news</button> </p>
+			 </form>
 			
 		</div>
 		<div id="sidebar">
@@ -69,4 +115,3 @@
 </div>
 </body>
 </html>
-

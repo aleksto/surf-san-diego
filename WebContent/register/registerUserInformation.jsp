@@ -189,7 +189,7 @@
 							 </td>
 						</tr>	
 					</table>
-							<p><button type="submit" value = "Submit">Submit</button> </p>
+							<p><button type="submit" value = "Submit" action="a.jsp">Submit</button> </p>
 					</form>
 			
 					<script type="text/javascript">
@@ -213,7 +213,8 @@
 	</div>
 </div>
 
-<%// if(skills == "102") {
+<%
+// if(skills == "102") {
 	//	out.println("Hello world");
 	//}	
 %>

@@ -103,13 +103,12 @@ CREATE TABLE news (
        headline VARCHAR(30),
        news_date DATE,
        news_time TIME,
-       picture BLOB,
        text VARCHAR(400)
 );
 
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 1, 2);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30', 2, 1);
-INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24' 3, 3);
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, city_id, skill_id) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24', 3, 3);
 
 INSERT INTO skill (skill) VALUES ('Pro');
 INSERT INTO skill (skill) VALUES ('Medium');
@@ -121,6 +120,9 @@ INSERT INTO city (city) VALUES ('Los Angeles');
 
 INSERT INTO area (area, city_id) VALUES ('South San Diego', 1);
 INSERT INTO area (area, city_id) VALUES ('North San Diego', 1);
+
+INSERT INTO news (headline, news_date, news_time, text) VALUES ('Shark Attack', '2011-11-17','10:15:54','A shark attacked danndandan');  
+
 
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm' 1);
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it' 2);

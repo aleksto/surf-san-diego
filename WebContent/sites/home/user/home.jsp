@@ -38,7 +38,7 @@
 		
 		try{
 			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("user")) 
+			if (request.isUserInRole("3")) 
 			 	out.println("(user)");
 			else{
 				//REDIRECT TILBAKE TIL INDEX MED WARNING
