@@ -19,7 +19,6 @@ CREATE TABLE user_info (
 	lastname VARCHAR(50),
 	email VARCHAR(50),
 	date_of_birth DATE,
-	city_id INT REFERENCES city (id),
 	skill_id INT REFERENCES skill (id)
 );
 
