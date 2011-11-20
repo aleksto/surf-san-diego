@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -39,10 +39,10 @@
 	<div id="main-content">
 		<div id="content-area">
 			
-			<h2>News</h2>
+		<h2>News</h2>
 			
-			<form name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
-	
+			<form name="frm" method="post" action="commitNews.jsp" onSubmit="return validateForm()">
+			
 			<table>
 				<tr>			
 					<td>Headline:</td> 
@@ -53,53 +53,10 @@
 					<td> <textarea id="text" name="text" rows=20" cols="60"> </textarea></td>
 				</tr>
 			</table>
-	</form>
-	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-	<%
+			
+			<p><input type="submit" value="Submit"></p>
+			</form>
 	
-
-    try {
-    	/*
-    	Class.forName("org.gjt.mm.mysql.Driver");
-        conn =
-           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-                                       "user=root&password=pothead");
-       */
-       
-	   	Connection conn = null;
-	   	PreparedStatement pstmt = null;
-        
-	   	Context context = new InitialContext();      
-        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-        conn=ds.getConnection();
-        
-	 	int updateQuery = 0;
-        
-        pstmt = conn.prepareStatement("INSERT INTO news (headline,text,timestamp) VALUES (?, ?, ?)");
-        pstmt.setString(1, request.getParameter("headline"));
-        pstmt.setString(2, request.getParameter("text")); 
-        pstmt.setString(2, request.getParameter("newsDate"));
-        updateQuery += pstmt.executeUpdate();
-
-   		conn.commit();
-        
-        if (updateQuery != 0) 
-         	out.println("Success");
-        else
-         	out.println("Not success");
-
-        pstmt.close();
-        conn.close();
-
-	}	
-	catch (Exception e){
-    	e.printStackTrace();
-    }
-      %>
-      
-      	<form name="frm" method="post" action="home.jsp" >
-			 	<p><button type="submit" value = "Submit">Post news</button> </p>
-		</form>
 			
 		</div>
 		<div id="sidebar">
