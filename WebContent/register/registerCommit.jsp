@@ -71,12 +71,35 @@
         pstmt.setInt(3, index);
         updateQuery += pstmt.executeUpdate();
         out.println(updateQuery);
-        conn.commit();
         if (updateQuery != 0) 
          	out.println("Success");
         else
          	out.println("Not success");
         pstmt.close();
+        
+        ResultSet resultSet2 = null;
+        pstmt = conn.prepareStatement("SELECT id FROM user_account WHERE id=(SELECT max(id) FROM user_account)");      
+        resultSet = pstmt.executeQuery();
+        int index2 = 0;
+        while(resultSet.next()){
+        	index2 = resultSet.getInt(1);
+        }
+        out.println("Index2: "+ index);
+        pstmt.close();
+        
+        pstmt = conn.prepareStatement("INSERT INTO user_role (user_account_id, role, username) VALUES (?, ?, ?)");
+        pstmt.setInt(1, index2);
+        pstmt.setString(2, "user");
+        pstmt.setString(3, request.getParameter("username"));
+        updateQuery += pstmt.executeUpdate();
+        out.println(updateQuery);
+        if (updateQuery != 0) 
+         	out.println("Success");
+        else
+         	out.println("Not success");
+        pstmt.close();
+        
+        conn.commit();
         conn.close();
         
  
@@ -108,7 +131,7 @@
     } 
     */
 
-    String redirectURL = "sites/home/home.jsp";
+    String redirectURL = "../sites/home/home.jsp";
     response.sendRedirect(redirectURL);
     
     %>

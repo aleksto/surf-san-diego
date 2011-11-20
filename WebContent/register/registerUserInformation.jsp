@@ -8,7 +8,6 @@
 	<link href="../css/style.css" rel="stylesheet" type="text/css" />
 	
 	<script type="text/javascript">
-
 		function showSkills(str) {
 			var xmlHttp = new XMLHttpRequest();
 			var url="getSkills.jsp";
@@ -18,7 +17,6 @@
 			xmlHttp.open("GET", url, true);
 			xmlHttp.send(null);
 
-  
 			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			  xmlhttp=new XMLHttpRequest();
 			}
@@ -30,10 +28,7 @@
 			   
 			  }
 			}
-		}
-			
-		
-		
+		}				
 	</script>
 	
 	<script>
@@ -101,18 +96,10 @@
 			</div>
 				
 			<div id="user">
-				<form method="POST" action="j_security_check">
-					<div id="username">
-						Username:<input size="20" name="j_username" type="text"/><br/>
-					</div>
-					<div id="password">
-						Password: <input size="20" name="j_password" type="password"/><br/>
-					</div>
-					
-					<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-					<input type="submit" value="Login"/>
-				</form> 
+				<a href="./../sites/home/user/home.jsp" style ="text-decoration:none">Login</a>
+				<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 			</div>
+			
 			<div id="pages">
 				<ul>
 					<li><a href="../sites/home/home.jsp">Home</a></li>

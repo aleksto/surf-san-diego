@@ -72,7 +72,7 @@
 			<h2>News</h2>
 			 <p> News about surfing </p>
 			
-			<a href='../../showNews.do'>Show News</a>
+			<a href='showNews.do'>Show News</a>
 			<c:forEach var="news" items="${ news }">
             <ul>
                 <li>${news.getDate()}  ${news.getTitle()} </li>

@@ -30,8 +30,6 @@
 		</div>
 			
 		<div id="user">
-			
-		
 			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>

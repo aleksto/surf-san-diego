@@ -53,17 +53,8 @@
 		</div>
 			
 		<div id="user">
-			<form method="POST" action="j_security_check">
-				<div id="username">
-					Username:<input size="20" name="j_username" type="text"/><br/>
-				</div>
-				<div id="password">
-					Password: <input size="20" name="j_password" type="password"/><br/>
-				</div>
-				
-				<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-				<input type="submit" value="Login"/>
-			</form> 
+			<a href="./../sites/home/user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
 			<ul>
