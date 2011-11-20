@@ -45,18 +45,20 @@
 			<h2>News</h2>
 			
 			<a href='showNews.do'>Link</a>
+			
 			<c:forEach var="news" items="${ news }">
     
             <ul>
                 <li>Title
                     <p>${news.getTitle()}</p>
                 </li>
-                <li>
+                <li>Text
                     <p>${news.getText()}</p>
                 </li>
             </ul>
            
-        </c:forEach>
+           
+        	</c:forEach>
 
 			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
 	<%

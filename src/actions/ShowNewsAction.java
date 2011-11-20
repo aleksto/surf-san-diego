@@ -18,9 +18,7 @@ import org.apache.struts.action.ActionMapping;
 
 
 public class ShowNewsAction extends Action {
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
-
-		
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {		
 		DBModel dbModel = null;
 		ArrayList<NewsModel> newsModels = null;
 		try {

@@ -59,7 +59,7 @@
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>3</role-name>
+  		<role-name>user</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -74,11 +74,11 @@
   			poster area
   		</web-resource-name>
   		<url-pattern>
-  			/sites/home/poster/test
+  			/sites/home/poster/*
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>2</role-name>
+  		<role-name>poster</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
@@ -93,11 +93,11 @@
   			admin area
   		</web-resource-name>
   		<url-pattern>
-  			/sites/home/user/*
+  			/sites/home/admin/*
   		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
-  		<role-name>1</role-name>
+  		<role-name>admin</role-name>
   	</auth-constraint>
   	<user-data-constraint>
   		<transport-guarantee>
