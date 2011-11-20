@@ -32,24 +32,6 @@
 			}
 		}
 			
-		//function loadXMLDoc() {
-			//var xmlHttp=new XMLHttpRequest();
-		
-		//	if (window.XMLHttpRequest)	{// code for IE7+, Firefox, Chrome, Opera, Safari
-		//	  xmlhttp=new XMLHttpRequest();
-			//}
-			//else {// code for IE6, IE5
-		  		//xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  	//}
-		
-			//xmlhttp.onreadystatechange=function() {
-		  
-		//	if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
-			//    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-			//}
-		//}
-		//xmlhttp.open("GET","skillsa.xml",true);
-		//xmlhttp.send();
 		
 		
 	</script>
@@ -148,28 +130,23 @@
 		<div id="main-content">
 			<div id="content-area">
 				<h2>Fill in</h2>
+		
 				
 					<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">
 						<p>	<table>
 						<tr>			
 							<td>First Name:*</td> 
-							<td><input type="text" id="first_name" name="first_name" size=25 /></td>
+							<td><input type="text" id="firstname" name="firstname" size=25 /></td>
 						</tr>
 						<tr>
 							<td>Last Name:*</td> 	
-							<td><input type="text" id="last_name"name="last_name" size=25 /></td></tr>
+							<td><input type="text" id="lastname"name="lastname" size=25 /></td></tr>
 						<tr>
 							<td>E-mail:* </td>	
 							<td><input type="text" id="email"name="email" size=25 /> </td></tr>
 						<tr>
 							<td>Location:</td> 	
-							<td>	<select id="location">
-										<option value="">Select location:</option>
-										<option>San Diego</option>
-						  				<option>LA</option>
-										<option>Santa Barbara</option>
-									</select>
-							</td>
+							<td><input type="text" id="location"name="location" size=25 /> </td>
 						</tr>
 						<tr>		
 							<td>Date of birth:</td>
@@ -181,10 +158,10 @@
 						<tr>
 							<td>Skills: </td>	 
 							<td><select name="skills" onchange="showSkills(Prof)"> 
-									<option value="">Select skill:</option>
-									<option value ="Beg"> Beginner</option>
-									<option value ="Inter">Intermediate</option>
-									<option value ="Prof">Professional</option>
+									<option id="">Select skill:</option>
+									<option id ="1"> Beginner</option>
+									<option id ="2"> Intermediate</option>
+									<option id ="3"> Professional</option>
 							 	</select>
 							 </td>
 						</tr>	
@@ -198,6 +175,52 @@
 							populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
 						};
 					</script>
+					
+					<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+					<%
+					
+				
+				    try {
+				    	/*
+				    	Class.forName("org.gjt.mm.mysql.Driver");
+				        conn =
+				           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+				                                       "user=root&password=pothead");
+				       */
+				       
+					   	Connection conn = null;
+					   	PreparedStatement pstmt = null;
+				        
+					   	Context context = new InitialContext();      
+				        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+				        conn=ds.getConnection();
+				        
+					 	int updateQuery = 0;
+				        
+				        pstmt = conn.prepareStatement("INSERT INTO user_info (firstname, lastname,email,location date_of_birth) VALUES (?, ?, ?,?)");
+				        pstmt.setString(1, request.getParameter("firstname"));
+				        pstmt.setString(2, request.getParameter("lastname")); 
+				        pstmt.setString(3, request.getParameter("email"));
+				        pstmt.setString(3, request.getParameter("location"));
+				        pstmt.setString(3, request.getParameter("date_of_birth"));
+				        updateQuery += pstmt.executeUpdate();
+				
+				   		conn.commit();
+				        
+				        if (updateQuery != 0) 
+				         	out.println("Success");
+				        else
+				         	out.println("Not success");
+				
+				        pstmt.close();
+				        conn.close();
+				        
+				 
+					}	
+					catch (Exception e){
+				    	e.printStackTrace();
+				    }
+				      %>
 					
 			</div>
 			<div id="sidebar">

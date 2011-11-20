@@ -81,10 +81,10 @@
 			<h2>Fill in</h2>
 			 <p> 
 			<% 
-			String firstName = request.getParameter("first_name");
-			session.setAttribute("first_name", firstName); 
-			String lastName = request.getParameter("last_name");
-			session.setAttribute("last_name", lastName); 
+			String firstName = request.getParameter("firstname");
+			session.setAttribute("firstname", firstName); 
+			String lastName = request.getParameter("lastname");
+			session.setAttribute("lastname", lastName); 
 			
 			out.println(firstName + " " + lastName + ", please enter you account details");
 			%>	
