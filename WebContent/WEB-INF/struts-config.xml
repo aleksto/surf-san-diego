@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts-config>
+
+
+	<!-- Form Bean Definitions -->
+
+	<form-beans>
+		<!--  
+		<form-bean type="forms.StudentFormInsert"
+			name="studentFormInsert" />
+		-->
+	</form-beans>
+
+
+	<!-- Global Exception Definitions -->
+
+	<global-exceptions>
+		<exception key="error.db" type="db.DbException"
+			path="/pages/db-exception.jsp" />
+	</global-exceptions>
+
+
+	<!-- Global Forward Definitions -->
+
+	<global-forwards>
+		<forward name="sites/home/poster/showNews" path="/showNews.do" />
+	</global-forwards>
+
+
+	<!-- Action Mapping Definitions -->
+
+	<action-mappings>
+
+		<action path="/sites/home/poster/showNews" type="actions.ShowNewsAction">
+			<forward name="success" path="/sites/home/poster/home.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<!-- Message Resources Definitions -->
+
+	<message-resources parameter="MessageResources" />
+
+
+</struts-config>
