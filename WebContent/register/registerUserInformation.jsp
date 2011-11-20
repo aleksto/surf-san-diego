@@ -93,8 +93,6 @@
 	} 
 %> 
 
-
-
 	<div id="wrapper">
 		<div id="header">
 			<div id= "head">
@@ -117,7 +115,7 @@
 			</div>
 			<div id="pages">
 				<ul>
-					<li><a href="#">Home</a></li>
+					<li><a href="../sites/home/home.jsp">Home</a></li>
 					<li><a href="#">Beaches</a></li>
 					<li><a href="#">Weather</a></li>
 					<li><a href="#">Events</a></li>
@@ -254,9 +252,7 @@
         	out.println(updateQuery.getString(6));
         	out.println(updateQuery.getString(7));
         //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
-        	
-        	
-        	
+  	
         }
 
         pstmt.close();

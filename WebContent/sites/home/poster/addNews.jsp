@@ -1,14 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add news</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Add news</title>
+	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	
+
+<div id="wrapper">
+	<div id="header">
+		<div id="head">
+			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			</h1>
+		</div>
+			
+		<div id="user">
+			<a href="../user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+		</div>
+		<div id="pages">
+			<ul>
+				<li><a href="home.jsp">Home</a></li>
+				<li><a href="beaches/addBeach.jsp">Beaches</a></li>
+				<li><a href="#">Weather</a></li>
+				<li><a href="#">Events</a></li>
+				<li><a href="#">Media</a></li>
+				<li><a href="#">Contact</a></li>
+			
+			</ul>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div id="main-content">
+		<div id="content-area">
+			
+			<h2>News</h2>
+			
+			<form name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
 	
 			<table>
 				<tr>			
@@ -17,7 +50,7 @@
 				</tr>
 				<tr>
 					<td>Text:</td> 	
-					<td> <textarea id="text" name="text" rows=20" cols="100"> </textarea></td>
+					<td> <textarea id="text" name="text" rows=20" cols="60"> </textarea></td>
 				</tr>
 			</table>
 	</form>
@@ -57,8 +90,7 @@
 
         pstmt.close();
         conn.close();
-        
- 
+
 	}	
 	catch (Exception e){
     	e.printStackTrace();
@@ -68,8 +100,17 @@
       	<form name="frm" method="post" action="home.jsp" >
 			 	<p><button type="submit" value = "Submit">Post news</button> </p>
 		</form>
-
-	
-		
+			
+		</div>
+		<div id="sidebar">
+			<h3>Something fun </h3>
+			
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div id="footer">
+		<p> Copyright Ali, Maria, Ingrid. All Rights Reserved </p>
+	</div>
+</div>
 </body>
 </html>

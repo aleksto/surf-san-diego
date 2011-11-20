@@ -11,7 +11,6 @@
 
 <body>
 	
-
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
@@ -58,9 +57,7 @@
             </ul>
            
         </c:forEach>
-			 
 
-			 
 			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
 	<%
 
@@ -98,8 +95,7 @@
     	e.printStackTrace();
     }  
       %>
-		  
-			 
+
 			 <form name="frm" method="post" action="addNews.jsp" >
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
 			 </form>
