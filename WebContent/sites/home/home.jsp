@@ -42,11 +42,47 @@
 				</p></div>
 			</div>
 			<h2>News</h2>
-			 <p> News about surfing </p>
-			 <%
-			 	String newStory = "";
-			 	out.println(newStory);
-			 %>
+			 
+			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+	<%
+
+    try {
+    	/*
+    	Class.forName("org.gjt.mm.mysql.Driver");
+        conn =
+           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+                                       "user=root&password=pothead");
+       */
+       
+	   	Connection conn = null;
+	   	PreparedStatement pstmt = null;
+        
+	   	Context context = new InitialContext();      
+        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+        conn=ds.getConnection();
+        
+        ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT * FROM news");      
+        updateQuery = pstmt.executeQuery();
+        
+        while( updateQuery.next()){
+        	out.println(updateQuery.getString(2));
+        	out.println(updateQuery.getString(3));
+        	out.println(updateQuery.getString(4));
+        	
+        	
+        //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
+    	
+        }
+
+        pstmt.close();
+        conn.close();
+        //rset = close();
+        
+    }catch (Exception e){
+    	e.printStackTrace();
+    }  
+      %>
 			
 		</div>
 		<div id="sidebar">

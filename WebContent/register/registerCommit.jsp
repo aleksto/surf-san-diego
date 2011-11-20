@@ -58,9 +58,6 @@
     	e.printStackTrace();
     }  
      
-
-     
-     
         /*
      // Query the student PIDs
         Statement stmt = conn.createStatement();
@@ -84,9 +81,8 @@
         System.out.println("VendorError: " + ex.getErrorCode());
     } 
     */
-    
+
     %>
-    
     	< /br> 
     	Return: <a href="user/home.jsp">Home</a>
     

@@ -72,12 +72,14 @@
         	out.println();
         	out.println(updateQuery.getString(2));
         //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
-  	
+        	
+        	
+        	
         }
 
         pstmt.close();
         conn.close();
-
+        //rset = close();
         
     }catch (Exception e){
     	e.printStackTrace();
