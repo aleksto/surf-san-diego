@@ -88,7 +88,7 @@ CREATE TABLE user_traffic (
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
-       description VARCHAR(200),
+       description VARCHAR(200)
 );
 
 CREATE TABLE beach_comment (
@@ -131,9 +131,9 @@ INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked dannd
 INSERT INTO news (headline, text) VALUES ('Croc Attack','A crock attacked danndandan');
 
 
-INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm' 1);
-INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it' 2);
-INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at' 3);
+INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
+INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
+INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
 
 INSERT INTO user_role (user_account_id, role_id, username) VALUES (1, 1, 'maria');
 INSERT INTO user_role (user_account_id, role_id, username) VALUES (2, 1, 'ingrid');
