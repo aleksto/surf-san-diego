@@ -84,7 +84,7 @@ CREATE TABLE user_traffic (
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
-       description VARCHAR(200),
+       description VARCHAR(200)
 );
 
 CREATE TABLE beach_comment (
