@@ -130,7 +130,6 @@ INSERT INTO area (area, city_id) VALUES ('North San Diego', 1);
 INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked danndandan');  
 INSERT INTO news (headline, text) VALUES ('Croc Attack','A crock attacked danndandan');
 
-
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
 INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
@@ -138,3 +137,6 @@ INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 
 INSERT INTO user_role (user_account_id, role_id, username) VALUES (1, 1, 'maria');
 INSERT INTO user_role (user_account_id, role_id, username) VALUES (2, 1, 'ingrid');
 INSERT INTO user_role (user_account_id, role_id, username) VALUES (3, 2, 'aleksto');
+
+INSERT INTO beach (name, description) VALUES ('Pacific beach', 'Great surfing');
+INSERT INTO beach (name, description) VALUES ('Mission beach', 'Great surfing');

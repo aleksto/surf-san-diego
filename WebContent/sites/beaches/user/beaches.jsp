@@ -66,10 +66,7 @@
             
             			 
 	 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-	 
 
-
-	
 	 <%
 
     try {

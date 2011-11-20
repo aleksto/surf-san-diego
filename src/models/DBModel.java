@@ -44,7 +44,7 @@ public class DBModel{
 		ArrayList<BeachModel> beachModels = new ArrayList<BeachModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT * FROM beach");      
+        pstmt = conn.prepareStatement("SELECT name, description FROM beach");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
         	System.out.println("Adding: " + updateQuery.getString(2) + " and: " + updateQuery.getString(3) + " to ArrayList");

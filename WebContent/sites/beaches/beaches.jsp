@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,14 +9,7 @@
 	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<%
-	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
-		String name = session.getAttribute("theName").toString();
-		out.println("Name: " + name);
-		String password = session.getAttribute("thePassword").toString();
-		out.println("<br /> Password: " + password);
-	}
-%>
+<body>
 
 <div id="wrapper">
 	<div id="header">
@@ -50,22 +44,23 @@
 				</p></div>
 			</div>
 			<h2>Beaches</h2>
-            <tr>
-                <td>
-                    <form action="response.jsp">
-                        <strong>Select city:</strong>
-                        <select name="city_id">
-                            <option></option>
-                        </select>
-                        <input type="submit" value="submit" name="submit" />
-                    </form>
-                </td>
-            </tr>
-            
-            			 
-			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-	<%
-
+			
+			<a href='showBeach.do'>Link</a>
+			<c:forEach var="beach" items="${ beach }">
+    
+            <ul>
+                <li>
+                    <p>${beach.getName()}</p>
+                </li>
+                <li>
+                    <p>${beach.getDescription()}</p>
+                </li>
+            </ul>
+           
+        </c:forEach>
+        
+<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+<%
     try {
     	/*
     	Class.forName("org.gjt.mm.mysql.Driver");
@@ -88,22 +83,9 @@
         	out.println(updateQuery.getString(2));
         	out.println();
         	out.println(updateQuery.getString(3));
-        	out.println("\r");
         //	Beaches beach = new News(updateQuery.getString(1), updateQuery.getString(2), updateQuery.getString(3));
         }
         
-        //Statement stmt = conn.createStatement();
-        //ResultSet rset =  stmt.executeQuery("SELECT id FROM news");
-        // Print out the PID (1st attribute)
-        //while (rset.next ())
-        //System.out.println (rset.getInt(1));
-        
-        /*
-        if (updateQuery != 0) 
-         	out.println("Success");
-        else
-         	out.println("Not success");
-		*/
         pstmt.close();
         conn.close();
         //rset = close();
@@ -112,11 +94,6 @@
     	e.printStackTrace();
     }  
       %>
-		  <%
-			 	String newStory = "";
-			 	out.println(newStory);
-			 	
-			 %>
 			
 		</div>
 		<div id="sidebar">
