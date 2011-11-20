@@ -73,8 +73,9 @@
 			<h2>News</h2>
 			 <c:forEach var="news" items="${ news }">
             <ul>
-                <li>${news.getDate()}  ${news.getTitle()} </li>
+                <li>  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
+                    <p> ${news.getTimestamp()}</p>
             </ul>           
         	</c:forEach>
 
