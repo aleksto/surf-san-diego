@@ -25,8 +25,8 @@
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="beaches/addBeach.jsp">Beaches</a></li>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -59,8 +59,46 @@
            
         </c:forEach>
 			 
-      
-		 
+
+			 
+			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+	<%
+
+    try {
+    	/*
+    	Class.forName("org.gjt.mm.mysql.Driver");
+        conn =
+           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+                                       "user=root&password=pothead");
+       */
+       
+	   	Connection conn = null;
+	   	PreparedStatement pstmt = null;
+        
+	   	Context context = new InitialContext();      
+        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+        conn=ds.getConnection();
+        
+        ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT headline,text FROM news");      
+        updateQuery = pstmt.executeQuery();
+        int i = 0;
+        while( updateQuery.next()){
+        	out.println(updateQuery.getString(1));
+        	out.println();
+        	out.println(updateQuery.getString(2));
+        //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
+  	
+        }
+
+        pstmt.close();
+        conn.close();
+        
+    }catch (Exception e){
+    	e.printStackTrace();
+    }  
+      %>
+		  
 			 
 			 <form name="frm" method="post" action="addNews.jsp" >
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>

@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS beach;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
+DROP TABLE IF EXISTS beach_comment;
+DROP TABLE IF EXISTS beach_rate;
 
 CREATE TABLE user_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -87,7 +89,12 @@ CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
        description VARCHAR(200),
-       picture BLOB
+);
+
+CREATE TABLE beach_comment (
+		beach_id INT REFERENCES beach(id),
+		user_id INT REFERENCES user_account(id),
+		comment VARCHAR(200)
 );
 
 CREATE TABLE surf_conditions (

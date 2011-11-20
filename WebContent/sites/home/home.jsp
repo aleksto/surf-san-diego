@@ -24,7 +24,7 @@
 		<div id="pages">
 			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="beaches/addBeach.jsp">Beaches</a></li>
+				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
