@@ -1,6 +1,7 @@
 package actions;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.naming.NamingException;
@@ -18,7 +19,6 @@ import org.apache.struts.action.ActionMapping;
 
 public class ShowBeachAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
-
 		DBModel dbModel = null;
 		ArrayList<BeachModel> beachModels = null;
 		try {

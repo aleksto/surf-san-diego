@@ -24,11 +24,13 @@
 					document.frm.password.focus();
 					return false;
 				}
-			    if(document.getElementById("password") != document.getElementById("checkPassword")){
+			    /*
+			    else if(document.getElementById("password") != document.getElementById("checkPassword")){
 					alert("Your passwords did not match");
 			 		document.frm.password.focus();
 			  		return false;
 				}
+			    */
 			}
 		</script>
 </head>
@@ -85,6 +87,18 @@
 			session.setAttribute("firstname", firstName); 
 			String lastName = request.getParameter("lastname");
 			session.setAttribute("lastname", lastName); 
+			String email = request.getParameter("email");
+			session.setAttribute("email", email); 
+			String location = request.getParameter("location");
+			session.setAttribute("location", location); 
+			String day = request.getParameter("daydropdown");
+			session.setAttribute("day", day); 
+			String month = request.getParameter("monthdropdown");
+			session.setAttribute("month", month); 
+			String year = request.getParameter("yeardropdown");
+			session.setAttribute("year", year); 
+			String skill = request.getParameter("skill_id");
+			session.setAttribute("skill", skill); 
 			
 			out.println(firstName + " " + lastName + ", please enter you account details");
 			%>	

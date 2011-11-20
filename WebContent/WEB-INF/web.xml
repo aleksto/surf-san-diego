@@ -76,6 +76,9 @@
   		<url-pattern>
   			/sites/home/poster/*
   		</url-pattern>
+  		<url-pattern>
+  			/sites/home/user/*
+  		</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>poster</role-name>
@@ -92,6 +95,12 @@
   		<web-resource-name>
   			admin area
   		</web-resource-name>
+  		<url-pattern>
+  			/sites/home/poster/*
+  		</url-pattern>
+  		<url-pattern>
+  			/sites/home/user/*
+  		</url-pattern>
   		<url-pattern>
   			/sites/home/admin/*
   		</url-pattern>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
+	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
 	<%
 
     try {
@@ -18,38 +18,64 @@
                                        "user=root&password=pothead");
        */
        
+       out.println(session.getAttribute("firstname").toString() + "<br>");
+       out.println(session.getAttribute("lastname").toString() + "<br>");
+       out.println(session.getAttribute("email").toString() + "<br>");
+       out.println(session.getAttribute("location").toString() + "<br>");
+       out.println(session.getAttribute("day") + "<br>");
+       out.println(session.getAttribute("month") + "<br>");
+       out.println(session.getAttribute("year") + "<br>");
+       java.util.Date today = new java.util.Date();
+       java.sql.Date sqlDate = new java.sql.Date(today.getTime());
+       out.println(session.getAttribute("skill").toString() + "<br>");
+       out.println(request.getParameter("username") + "<br>");
+       out.println(request.getParameter("password") + "<br>");
+       out.println(request.getParameter("checkPassword") + "<br>");
+          
 	   	Connection conn = null;
-	   	PreparedStatement pstmt = null;
-        
 	   	Context context = new InitialContext();      
         DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
         conn=ds.getConnection();
         
+        PreparedStatement pstmt = null;
         int updateQuery = 0;
-        
-        pstmt = conn.prepareStatement("INSERT INTO users (user_name, password) VALUES (?, ?)");
-        pstmt.setString(1, request.getParameter("username"));
-        pstmt.setString(2, request.getParameter("password"));       
+        pstmt = conn.prepareStatement("INSERT INTO user_info (firstname, lastname, email, location, date_of_birth, skill_id) VALUES (?, ?, ?, ?, ?, ?)");
+        pstmt.setString(1, session.getAttribute("firstname").toString());
+        pstmt.setString(2, session.getAttribute("lastname").toString());
+        pstmt.setString(3, session.getAttribute("email").toString());       
+        pstmt.setString(4, session.getAttribute("location").toString());       
+        //FIKS DISSE!!!
+        pstmt.setDate(5, sqlDate);       
+        pstmt.setInt(6, 1);             
         updateQuery += pstmt.executeUpdate();
-        
-        pstmt = conn.prepareStatement("INSERT INTO user_roles (user_name, role) VALUES (?, ?)");
-        pstmt.setString(1, request.getParameter("username"));
-        pstmt.setString(2, "Member");
-        updateQuery += pstmt.executeUpdate();
-        
-        pstmt = conn.prepareStatement("INSERT INTO user_info (username, firstname, lastname) VALUES (?, ?, ?)");
-        pstmt.setString(1, request.getParameter("username"));
-        pstmt.setString(2, session.getAttribute("firstname").toString());
-        pstmt.setString(3, session.getAttribute("lastname").toString());
-        updateQuery += pstmt.executeUpdate();
-
-        conn.commit();
-        
+        out.println(updateQuery);
         if (updateQuery != 0) 
          	out.println("Success");
         else
          	out.println("Not success");
+        pstmt.close();
 
+        ResultSet resultSet = null;
+        pstmt = conn.prepareStatement("SELECT id FROM user_info WHERE id=(SELECT max(id) FROM user_info)");      
+        resultSet = pstmt.executeQuery();
+        int index = 0;
+        while(resultSet.next()){
+        	index = resultSet.getInt(1);
+        }
+        out.println("Index: "+ index);
+        pstmt.close();
+        
+        pstmt = conn.prepareStatement("INSERT INTO user_account (username, password, user_id) VALUES (?, ?, ?)");
+        pstmt.setString(1, request.getParameter("username"));
+        pstmt.setString(2, request.getParameter("password"));
+        pstmt.setInt(3, index);
+        updateQuery += pstmt.executeUpdate();
+        out.println(updateQuery);
+        conn.commit();
+        if (updateQuery != 0) 
+         	out.println("Success");
+        else
+         	out.println("Not success");
         pstmt.close();
         conn.close();
         
@@ -82,10 +108,11 @@
     } 
     */
 
-    %>
-    	< /br> 
-    	Return: <a href="user/home.jsp">Home</a>
+    String redirectURL = "sites/home/home.jsp";
+    response.sendRedirect(redirectURL);
     
+    %>
+
     </body>
 </html>
     

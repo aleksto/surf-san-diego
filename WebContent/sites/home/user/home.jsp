@@ -1,17 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
 
+<head>
+	<%
+	if(request != null){
+		if (request.isUserInRole("admin")) 
+			response.sendRedirect("./../admin/home.jsp");
+		else if (request.isUserInRole("poster")) 
+			response.sendRedirect("./../poster/home.jsp");
+		else if (request.isUserInRole("user")) { }	
+		else 
+			response.sendRedirect("./../home.jsp");
+	}
+	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-
-
-
 
 <div id="wrapper">
 	<div id="header">
@@ -21,30 +30,19 @@
 		</div>
 			
 		<div id="user">
-		
+
 		<%
-			if(request != null){
-				if (request.isUserInRole("1")) 
-					response.sendRedirect("./../admin/home.jsp");
-				else if (request.isUserInRole("2")) 
-					response.sendRedirect("./../poster/home.jsp");
-				else{
-					%>
-					<a href="user/home.jsp" style ="text-decoration:none">Login</a>
-					<a href="register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-					<%
-				}
-			}
-		
 		try{
 			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("3")) 
+			if (request.isUserInRole("user")) 
 			 	out.println("(user)");
 			else{
-				//REDIRECT TILBAKE TIL INDEX MED WARNING
+				//Add warning
+				response.sendRedirect("./../home.jsp");
 			}
 		}catch(NullPointerException e){
-			//REDIRECT TILBAKE TIL INDEX MED WARNING
+			//Add warning
+			response.sendRedirect("./../home.jsp");
 		}	
 			
 		%>
@@ -73,8 +71,18 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
+			
 			<h2>News</h2>
-			 <p> News about surfing </p>
+			<a href='./../showNews.do'>Show News</a>
+			<c:forEach var="news" items="${ news }">
+            <ul>
+                <li>${news.getDate()}  ${news.getTitle()} </li>
+                    <p>${news.getText()}</p>
+     
+            </ul>   
+        	</c:forEach>
+		
+           
 			
 		</div>
 		<div id="sidebar">

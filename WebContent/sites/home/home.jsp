@@ -3,6 +3,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<%
+	if(request != null){
+		if (request.isUserInRole("admin")) 
+			response.sendRedirect("admin/home.jsp");
+		else if (request.isUserInRole("poster")) 
+			response.sendRedirect("poster/home.jsp");
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("user/home.jsp");
+	}
+	%>	
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
@@ -20,7 +30,9 @@
 		</div>
 			
 		<div id="user">
-			<a href="../user/home.jsp" style ="text-decoration:none">Login</a>
+			
+		
+			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
@@ -45,16 +57,11 @@
 			</div>
 			<h2>News</h2>
 			
-			<a href='showNews.do'>Link</a>
+			<a href='showNews.do'>Show News</a>
 			<c:forEach var="news" items="${ news }">
-    
             <ul>
-                <li>Title
-                    <p>${news.getTitle()}</p>
-                </li>
-                <li>
+                <li>${news.getDate()}  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
-                </li>
      
             </ul>
            

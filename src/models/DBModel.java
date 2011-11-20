@@ -28,16 +28,16 @@ public class DBModel{
 		ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT headline,text FROM news");      
+        pstmt = conn.prepareStatement("SELECT headline, text, newsDate FROM news");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getString(2) + " to ArrayList");
-        	NewsModel newsModel = new NewsModel(updateQuery.getString(1), updateQuery.getString(2));
+        	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getString(2) + "and: " + (updateQuery.getTimestamp(3).getYear()+1900) + " to ArrayList");
+        	NewsModel newsModel = new NewsModel(updateQuery.getString(1), updateQuery.getString(2), updateQuery.getTimestamp(3));
         	newsModels.add(newsModel);
         }
 	    pstmt.close();
-	    return newsModels;
-	    
+	    return newsModels;	
+	
 	}  
 	
 	public ArrayList<BeachModel> getBeaches() throws SQLException{

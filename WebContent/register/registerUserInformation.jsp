@@ -148,9 +148,9 @@
 						</tr>
 						<tr>		
 							<td>Date of birth:</td>
-							<td><select id="daydropdown"> </select> 
-								<select id="monthdropdown"> </select> 
-								<select id="yeardropdown"></select>
+							<td><select name="daydropdown" id="daydropdown"> </select> 
+								<select name="monthdropdown" id="monthdropdown"> </select> 
+								<select name="yeardropdown" id= "yeardropdown"></select>
 							</td>
 						</tr>
 						<tr>
@@ -164,7 +164,7 @@
 							 </td>
 						</tr>	
 					</table>
-							<p><button type="submit" value = "Submit" action="a.jsp">Submit</button> </p>
+							<p><button type="submit" value = "Submit"> Submit</button> </p>
 					</form>
 			
 					<script type="text/javascript">
@@ -172,92 +172,9 @@
 						window.onload=function(){
 							populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
 						};
+					
 					</script>
-					
-					<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-					<%
-					
 				
-				    try {
-				    	/*
-				    	Class.forName("org.gjt.mm.mysql.Driver");
-				        conn =
-				           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-				                                       "user=root&password=pothead");
-				       */
-				       
-					   	Connection conn = null;
-					   	PreparedStatement pstmt = null;
-				        
-					   	Context context = new InitialContext();      
-				        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-				        conn=ds.getConnection();
-				        
-					 	int updateQuery = 0;
-				        
-				        pstmt = conn.prepareStatement("INSERT INTO user_info (firstname, lastname,email,location date_of_birth,skills) VALUES (?, ?, ?,?,?)");
-				        pstmt.setString(1, request.getParameter("firstname"));
-				        pstmt.setString(2, request.getParameter("lastname")); 
-				        pstmt.setString(3, request.getParameter("email"));
-				        pstmt.setString(3, request.getParameter("location"));
-				        pstmt.setString(3, request.getParameter("date_of_birth"));
-				        pstmt.setString(3, request.getParameter("skills"));
-				        updateQuery += pstmt.executeUpdate();
-				
-				   		conn.commit();
-				        
-				        if (updateQuery != 0) 
-				         	out.println("Success");
-				        else
-				         	out.println("Not success");
-				
-				        pstmt.close();
-				        conn.close();
-				        
-				 
-					}	
-					catch (Exception e){
-				    	e.printStackTrace();
-				    }
-				      %>
-				      
-			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-	<%
-
-    try {
-    	/*
-    	Class.forName("org.gjt.mm.mysql.Driver");
-        conn =
-           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-                                       "user=root&password=pothead");
-       */
-       
-	   	Connection conn = null;
-	   	PreparedStatement pstmt = null;
-        
-	   	Context context = new InitialContext();      
-        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-        conn=ds.getConnection();
-        
-        ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT * FROM user_info");      
-        updateQuery = pstmt.executeQuery();
-       
-        while( updateQuery.next()){
-        	      
-        	out.println(updateQuery.getString(2));
-        	out.println(updateQuery.getString(3));
-        	out.println(updateQuery.getString(4));
-        	out.println(updateQuery.getString(5));
-        	out.println(updateQuery.getString(6));
-        	out.println(updateQuery.getString(7));
-        //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
-  	
-        }
-
-        pstmt.close();
-        conn.close();
-        //rset = close();
         
     }catch (Exception e){
     	e.printStackTrace();

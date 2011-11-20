@@ -3,7 +3,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+	<%
+	if(request != null){
+		if (request.isUserInRole("admin")) 
+			response.sendRedirect("./../admin/home.jsp");
+		else if (request.isUserInRole("poster")) { }	
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("./../user/home.jsp");
+		else 
+			response.sendRedirect("./../home.jsp");
+	}
+	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
@@ -19,9 +29,25 @@
 		</div>
 			
 		<div id="user">
-			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
-			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+		
+		<% 
+		try{
+			out.println("Welcome " + request.getUserPrincipal().getName());
+			if (request.isUserInRole("poster")) 
+			 	out.println("(poster)");
+			else{
+				//Add warning
+				response.sendRedirect("./../home.jsp");
+			}
+		}catch(NullPointerException e){
+			//Add warning
+			response.sendRedirect("./../home.jsp");
+		}	
+		%>
+		
+		<p><a href="./../../../invalidate.jsp">Logout</a></p>
 		</div>
+		
 		<div id="pages">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
@@ -42,61 +68,15 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
+			
+			<a href='showNews.do'>Show News</a>
 			<h2>News</h2>
-			
-			<a href='showNews.do'>Link</a>
-			
-			<c:forEach var="news" items="${ news }">
-    
+			 <c:forEach var="news" items="${ news }">
             <ul>
-                <li>Title
-                    <p>${news.getTitle()}</p>
-                </li>
-                <li>Text
+                <li>${news.getDate()}  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
-                </li>
-            </ul>
-           
-           
+            </ul>           
         	</c:forEach>
-
-			 <%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource"%>
-	<%
-
-    try {
-    	/*
-    	Class.forName("org.gjt.mm.mysql.Driver");
-        conn =
-           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-                                       "user=root&password=pothead");
-       */
-       
-	   	Connection conn = null;
-	   	PreparedStatement pstmt = null;
-        
-	   	Context context = new InitialContext();      
-        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-        conn=ds.getConnection();
-        
-        ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT headline,text FROM news");      
-        updateQuery = pstmt.executeQuery();
-        int i = 0;
-        while( updateQuery.next()){
-        	out.println(updateQuery.getString(1));
-        	out.println();
-        	out.println(updateQuery.getString(2));
-        //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
-  	
-        }
-
-        pstmt.close();
-        conn.close();
-        
-    }catch (Exception e){
-    	e.printStackTrace();
-    }  
-      %>
 
 			 <form name="frm" method="post" action="addNews.jsp" >
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
