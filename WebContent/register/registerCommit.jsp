@@ -37,10 +37,10 @@
         pstmt.setString(2, "Member");
         updateQuery += pstmt.executeUpdate();
         
-        pstmt = conn.prepareStatement("INSERT INTO user_info (user_name, first_name, last_name) VALUES (?, ?, ?)");
+        pstmt = conn.prepareStatement("INSERT INTO user_info (username, firstname, lastname) VALUES (?, ?, ?)");
         pstmt.setString(1, request.getParameter("username"));
-        pstmt.setString(2, session.getAttribute("first_name").toString());
-        pstmt.setString(3, session.getAttribute("last_name").toString());
+        pstmt.setString(2, session.getAttribute("firstname").toString());
+        pstmt.setString(3, session.getAttribute("lastname").toString());
         updateQuery += pstmt.executeUpdate();
 
         conn.commit();
