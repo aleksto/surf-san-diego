@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,9 +7,9 @@
 	if(request != null){
 		if (request.isUserInRole("admin")) 
 			response.sendRedirect("./../admin/beaches.jsp");
-		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/beaches.jsp");
-		else if (request.isUserInRole("user")) { }	
+		else if (request.isUserInRole("poster")) { }	
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("./../user/beaches.jsp");
 		else 
 			response.sendRedirect("./../beaches.jsp");
 	}
@@ -31,8 +32,8 @@
 		<%
 		try{
 			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("user")) 
-			 	out.println("(user)");
+			if (request.isUserInRole("poster")) 
+			 	out.println("(poster)");
 			else{
 				//Add warning
 				response.sendRedirect("./../beaches.jsp");
@@ -66,7 +67,44 @@
 				</p></div>
 			</div>
 			<h2>Beaches</h2>
-
+			<a href='showBeaches.do'>Link</a>
+			<c:forEach var="beaches" items="${ beaches }">
+	            <ul>
+	                <li>${beaches.getName()}</li>
+	                    <p>${beaches.getDescription()}</p>
+				            <form form name="frm" method="post" action="addComment.jsp">
+			               		<table>
+									<tr>	
+									<td><input type="hidden" id="id" name="id" value="${beaches.getId()}" size=25 /></td>			
+									<td><input type="text" id="comment" name="comment" value="Write a comment..." size=25 /></td>
+									<td>	
+									<select id="location">
+										<option value="">Rate beach:</option>
+										<option>*</option>
+										<option>**</option>
+										<option>***</option>
+							 		</select>
+								</td>
+									</tr>
+								</table>
+								<input type="submit" value="Post">
+			               	</form>
+			        </ul>
+			</c:forEach>
+			
+			
+            <tr>
+                <td>
+                   <form action="response.jsp">
+                        <strong>Select city:</strong>
+                        <select name="city_id">
+                            <option></option>
+                        </select>
+                        <input type="submit" value="submit" name="submit" />
+                    </form>
+                 </td>  
+            </tr>
+            
            
 		    <!--  
 			 <p>			

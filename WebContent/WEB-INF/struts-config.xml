@@ -30,6 +30,12 @@
 		<forward name="sites/home/poster/showNews" path="/showNews.do" />
 		<forward name="sites/home/admin/showNews" path="/showNews.do" />
 		
+		<!-- beaches.jsp (News) -->
+		<forward name="sites/beaches/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/beaches/user/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/beaches/poster/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/beaches/admin/showBeaches" path="/showBeaches.do" />
+		
 	</global-forwards>
 
 
@@ -48,6 +54,20 @@
 		</action>
 		<action path="/sites/home/admin/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/admin/home.jsp" />
+		</action>
+		
+		<!-- beaches.jsp (News) -->
+		<action path="/sites/beaches/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/beaches/beaches.jsp" />
+		</action>
+		<action path="/sites/beaches/user/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/beaches/user/beaches.jsp" />
+		</action>
+		<action path="/sites/beaches/poster/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/beaches/poster/beaches.jsp" />
+		</action>
+		<action path="/sites/beaches/admin/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/beaches/admin/beaches.jsp" />
 		</action>
 		
 	</action-mappings>

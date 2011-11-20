@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/home.jsp");
+		if (request.isUserInRole("admin")) { }	
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/home.jsp");
-		else if (request.isUserInRole("user")) { }	
+			response.sendRedirect("./../poster/beaches.jsp");
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("./../user/beaches.jsp");
 		else 
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../beaches.jsp");
 	}
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -25,7 +23,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -33,11 +31,11 @@
 		<%
 		try{
 			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("user")) 
-			 	out.println("(user)");
+			if (request.isUserInRole("admin")) 
+			 	out.println("(admin)");
 			else{
 				//Add warning
-				response.sendRedirect("./../home.jsp");
+				response.sendRedirect("./../beaches.jsp");
 			}
 		}catch(NullPointerException e){
 			//Add warning
@@ -49,8 +47,8 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="./../../../index.jsp">Home</a></li>
+				<li><a href="beaches.jsp">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -67,17 +65,35 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			
-			<h2>News</h2>
-			<a href='showNews.do'>Show News</a>
-			<c:forEach var="news" items="${ news }">
-            <ul>
-                <li>${news.getDate()}  ${news.getTitle()} </li>
-                    <p>${news.getText()}</p>
-            </ul>   
-        	</c:forEach>
-		
+			<h2>Beaches</h2>
+            <tr>
+                <td>
+                   <form action="response.jsp">
+                        <strong>Select city:</strong>
+                        <select name="city_id">
+                            <option></option>
+                        </select>
+                        <input type="submit" value="submit" name="submit" />
+                    </form>
+                </td>  
+            </tr>
+            
            
+		    <!--  
+			 <p>			
+				<td>Comment:</td> 
+					<td><textarea rows="3" cols="30"></textarea></td>
+				
+				<td>	
+					<select id="location">
+						<option value="">Rate beach:</option>
+						<option>*</option>
+						<option>**</option>
+						<option>***</option>
+			 		</select>
+				</td>
+             </p>
+			-->
 			
 		</div>
 		<div id="sidebar">

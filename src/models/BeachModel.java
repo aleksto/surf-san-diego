@@ -4,10 +4,20 @@ public class BeachModel {
 		
 	private String name;
 	private String description;
+	private int id;
 	
-	public BeachModel(String name, String description){
+	public BeachModel(int id, String name, String description){
+		this.id = id;
 		this.setName(name);
 		this.description = description;
+	}
+	
+	public void setIndex(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setName(String name) {

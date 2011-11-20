@@ -44,11 +44,11 @@ public class DBModel{
 		ArrayList<BeachModel> beachModels = new ArrayList<BeachModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT name, description FROM beach");      
+        pstmt = conn.prepareStatement("SELECT id, name, description FROM beach");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("Adding: " + updateQuery.getString(2) + " and: " + updateQuery.getString(3) + " to ArrayList");
-        	BeachModel beachModel = new BeachModel(updateQuery.getString(2), updateQuery.getString(3));
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + " to ArrayList");
+        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3));
         	beachModels.add(beachModel);
         }
 	    pstmt.close();

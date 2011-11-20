@@ -8,7 +8,6 @@ DROP TABLE IF EXISTS weather_forcast;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS user_event;
 DROP TABLE IF EXISTS user_traffic;
-DROP TABLE IF EXISTS beach;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
@@ -81,10 +80,11 @@ CREATE TABLE user_traffic (
        comments VARCHAR(200)
 );
 
+DROP TABLE IF EXISTS beach;
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
-       description VARCHAR(200)
+       description VARCHAR(1000)
 );
 
 CREATE TABLE beach_comment (
@@ -134,3 +134,32 @@ INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 
 INSERT INTO user_role (user_account_id, role, username) VALUES (1, 'user', 'maria');
 INSERT INTO user_role (user_account_id, role, username) VALUES (2, 'poster', 'ingrid');
 INSERT INTO user_role (user_account_id, role, username) VALUES (3, 'poster', 'aleksto');
+
+INSERT INTO beach (name, description) VALUES ('San Diego', 
+'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Vestibulum nunc diam, euismod nec tincidunt at, luctus at elit. 
+Aenean risus velit, imperdiet a fringilla id, interdum id turpis. 
+In magna nisi, sagittis nec vehicula ac, rhoncus vitae nisi. 
+Duis blandit tempus massa, quis tincidunt est vehicula nec. 
+Mauris vel elit quis elit bibendum posuere. Aliquam auctor 
+accumsan ipsum sed aliquet. Aenean non eros odio, sit amet 
+commodo odio. Morbi sem lectus, pulvinar et gravida quis, 
+sollicitudin et sem. Ut eget mi at est semper condimentum 
+bibendum et dolor. ');
+
+INSERT INTO beach (name, description) VALUES (
+'Las Vegas', 
+'Fusce elit turpis, aliquet sit amet ultrices at, volutpat 
+in odio. Etiam quis urna magna. Nam at nisl orci, non rutrum 
+lacus. Vivamus fringilla facilisis nisl, quis convallis 
+mi pretium sit amet. Sed vestibulum diam in quam venenatis
+ut bibendum felis malesuada. Donec eu lacus ut eros volutpat 
+dictum et a est. Mauris eget odio erat, in fringilla justo. 
+Maecenas ut velit justo. Curabitur et tortor vitae nisl aliquet 
+cursus. Vestibulum pulvinar leo a orci euismod facilisis id 
+at ipsum. Morbi ut purus turpis, vel imperdiet nibh. Praesent 
+felis ante, aliquam vitae condimentum sit amet, ultrices 
+malesuada dui. Duis urna nisi, dignissim tincidunt tincidunt 
+sed, aliquet ac sapien. Curabitur ornare interdum fermentum. 
+Donec ac justo accumsan arcu dignissim tincidunt quis sit amet sapien. ');
+

@@ -54,9 +54,10 @@
   		<web-resource-name>
   			User area
   		</web-resource-name>
-  		<url-pattern>
-  			/sites/home/user/*
-  		</url-pattern>
+  		<!-- home -->
+  		<url-pattern>/sites/home/user/*</url-pattern>
+  		<!-- beaches -->
+  		<url-pattern>/sites/beaches/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>user</role-name>
@@ -73,12 +74,12 @@
   		<web-resource-name>
   			poster area
   		</web-resource-name>
-  		<url-pattern>
-  			/sites/home/poster/*
-  		</url-pattern>
-  		<url-pattern>
-  			/sites/home/user/*
-  		</url-pattern>
+  		<!-- home -->
+  		<url-pattern>/sites/home/poster/*</url-pattern>
+  		<url-pattern>/sites/home/user/*</url-pattern>
+  		<!-- beaches -->
+  		<url-pattern>/sites/beaches/poster/*</url-pattern>
+  		<url-pattern>/sites/beaches/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>poster</role-name>
@@ -95,15 +96,14 @@
   		<web-resource-name>
   			admin area
   		</web-resource-name>
-  		<url-pattern>
-  			/sites/home/poster/*
-  		</url-pattern>
-  		<url-pattern>
-  			/sites/home/user/*
-  		</url-pattern>
-  		<url-pattern>
-  			/sites/home/admin/*
-  		</url-pattern>
+  		<!-- home -->
+  		<url-pattern>/sites/home/admin/*</url-pattern>
+  		<url-pattern>/sites/home/poster/*</url-pattern>
+  		<url-pattern>/sites/home/user/*</url-pattern>
+  		<!-- beaches -->
+  		<url-pattern>/sites/beaches/admin/*</url-pattern>
+  		<url-pattern>/sites/beaches/poster/*</url-pattern>
+  		<url-pattern>/sites/beaches/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>admin</role-name>
