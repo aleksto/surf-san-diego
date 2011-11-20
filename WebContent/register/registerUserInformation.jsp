@@ -157,7 +157,7 @@
 						</tr>
 						<tr>
 							<td>Skills: </td>	 
-							<td><select name="skills" onchange="showSkills(Prof)"> 
+							<td><select name="skill_id" onchange="showSkills(Prof)"> 
 									<option id="">Select skill:</option>
 									<option id ="1"> Beginner</option>
 									<option id ="2"> Intermediate</option>
@@ -246,8 +246,7 @@
         updateQuery = pstmt.executeQuery();
        
         while( updateQuery.next()){
-        	
-        
+        	      
         	out.println(updateQuery.getString(2));
         	out.println(updateQuery.getString(3));
         	out.println(updateQuery.getString(4));

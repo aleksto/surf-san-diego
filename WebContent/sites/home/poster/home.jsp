@@ -68,8 +68,8 @@
         updateQuery = pstmt.executeQuery();
         int i = 0;
         while( updateQuery.next()){
-        	out.println(updateQuery.getString(1));
-        	out.println();
+        	 out.println(updateQuery.getString(1));
+        	
         	out.println(updateQuery.getString(2));
         //	News news = new News(updateQuery.getString(1), updateQuery.getString(2));
         	
@@ -85,7 +85,7 @@
     	e.printStackTrace();
     }  
       %>
-		  
+		 
 			 
 			 <form name="frm" method="post" action="addNews.jsp" >
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
