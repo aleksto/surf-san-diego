@@ -7,10 +7,8 @@
 	<title>The surfer</title>
 </head>
 <body>
-		
-	 
+ 
 		<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-
 	<% 
 	
     try {
@@ -22,8 +20,8 @@
        */
        
       
-       out.println(request.getParameter("headline") + "<br>");
-       out.println(request.getParameter("text") + "<br>");
+       out.println(request.getParameter("comment") + "<br>");
+      // out.println(request.getParameter("text") + "<br>");
        
        Connection conn = null;
 	   	Context context = new InitialContext();      
@@ -33,9 +31,9 @@
 	    PreparedStatement pstmt = null;
         int updateQuery = 0;
       
-        pstmt = conn.prepareStatement("INSERT INTO news (headline, text) VALUES (?, ?)");
-        pstmt.setString(1, request.getParameter("headline"));
-        pstmt.setString(2, request.getParameter("text"));
+        pstmt = conn.prepareStatement("INSERT INTO beach_comment (comment) VALUES (?)");
+        pstmt.setString(1, request.getParameter("comment"));
+        
         
         updateQuery += pstmt.executeUpdate();
         out.println(updateQuery);
@@ -54,7 +52,7 @@
     }  
         
 		
-		 String redirectURL = "../poster/home.jsp";
+		 String redirectURL = "../beaches.jsp";
 		   response.sendRedirect(redirectURL);
 		    
 	%>	

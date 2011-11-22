@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%
@@ -66,7 +66,43 @@
 				</p></div>
 			</div>
 			<h2>Beaches</h2>
-
+			<a href='showBeaches.do'>Link</a>
+			<c:forEach var="beaches" items="${ beaches }">
+	            <ul>
+	                <li>${beaches.getName()}</li>
+	                    <p>${beaches.getDescription()}</p>
+				            <form form name="frm" method="post" action="CommentsCommit.jsp">
+				            <table>
+									<tr>	
+									<td><input type="hidden" id="id" name="id" value="${beaches.getId()}" size=25 /></td>			
+									<td><input type="text" id="comment" name="comment" value="Write a comment..." size=25 /></td>
+									<td>	
+									<select id="location">
+										<option value="">Rate beach:</option>
+										<option>*</option>
+										<option>**</option>
+										<option>***</option>
+							 		</select>
+								</td>
+									</tr>
+								</table>
+								<input type="submit" value="Post">
+			               	</form>
+			        </ul>
+			</c:forEach>
+			 <tr>
+                <td>
+                   <form action="response.jsp">
+                        <strong>Select city:</strong>
+                        <select name="city_id">
+                            <option></option>
+                        </select>
+                        <input type="submit" value="submit" name="submit" />
+                    </form>
+                 </td>  
+            </tr>
+	                 	
+	     
            
 		    <!--  
 			 <p>			

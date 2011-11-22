@@ -33,19 +33,19 @@
 	
 	<script>
 		function validateForm(){
-		    if(document.getElementById("first_name").value==""){
+		    if(document.getElementById("firstname").value==""){
 		      alert("Please enter your first name");
-		      document.frm.first_name.focus();
+		      document.frm.firstname.focus();
 		      return false;
 		    }
-		    else if(document.getElementById("last_name").value==""){
+		    else if(document.getElementById("lastname").value==""){
 		      alert("Please enter your last name");
-		      document.frm.last_name.focus();
+		      document.frm.lastname.focus();
 		      return false;
 		    }
 		    else if(document.getElementById("email").value==""){
 			      alert("Please enter your email");
-			      document.frm.last_name.focus();
+			      document.frm.email.focus();
 			      return false;
 			    }
 		}
@@ -103,7 +103,7 @@
 			<div id="pages">
 				<ul>
 					<li><a href="../sites/home/home.jsp">Home</a></li>
-					<li><a href="#">Beaches</a></li>
+					<li><a href="../sites/beaches/beaches.jsp">Beaches</a></li>
 					<li><a href="#">Weather</a></li>
 					<li><a href="#">Events</a></li>
 					<li><a href="#">Media</a></li>
@@ -161,13 +161,7 @@
 						};
 					
 					</script>
-				
-        
-    }catch (Exception e){
-    	e.printStackTrace();
-    }  
-      %>
-					
+			
 			</div>
 			<div id="sidebar">
 				<h3>Something fun </h3>

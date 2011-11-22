@@ -54,7 +54,7 @@
 			</div>
 			<h2>Beaches</h2>
 			
-			<a href='showBeaches.do'>Link</a>
+			<a href='showBeaches.do'>Show beaches</a>
 			<c:forEach var="beaches" items="${ beaches }">
 	            <ul>
 	                <li>${beaches.getName()}</li>
