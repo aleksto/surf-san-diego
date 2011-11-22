@@ -58,9 +58,10 @@
 			<a href='showNews.do'>Show News</a>
 			<c:forEach var="news" items="${ news }">
             <ul>
-                <li>${news.getDate()}  ${news.getTitle()} </li>
+                <li>  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
-     
+                    <p> ${news.getTimestamp()}</p>
+                    
             </ul>
            
         </c:forEach>
