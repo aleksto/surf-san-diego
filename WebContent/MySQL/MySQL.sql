@@ -135,31 +135,21 @@ INSERT INTO user_role (user_account_id, role, username) VALUES (1, 'user', 'mari
 INSERT INTO user_role (user_account_id, role, username) VALUES (2, 'poster', 'ingrid');
 INSERT INTO user_role (user_account_id, role, username) VALUES (3, 'poster', 'aleksto');
 
-INSERT INTO beach (name, description) VALUES ('San Diego', 
-'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Vestibulum nunc diam, euismod nec tincidunt at, luctus at elit. 
-Aenean risus velit, imperdiet a fringilla id, interdum id turpis. 
-In magna nisi, sagittis nec vehicula ac, rhoncus vitae nisi. 
-Duis blandit tempus massa, quis tincidunt est vehicula nec. 
-Mauris vel elit quis elit bibendum posuere. Aliquam auctor 
-accumsan ipsum sed aliquet. Aenean non eros odio, sit amet 
-commodo odio. Morbi sem lectus, pulvinar et gravida quis, 
-sollicitudin et sem. Ut eget mi at est semper condimentum 
-bibendum et dolor. ');
+INSERT INTO beach (name, description) VALUES ('Pacific Beach', 
+'Pacific Beachs namesake stretches for miles from the Mission 
+Bay jetty to the cliffs of La Jolla. The boardwalk, officially called 
+Ocean Front Walk/Ocean Boulevard, is a pedestrian walkway that runs 
+approximately 3.2 miles along the beach from the end of Law St.
+ in the north down into Mission Beach, ending at the mouth of
+ Mission Bay in the south. There are many local shops, bars, and 
+restaurants along the boardwalk, and it is typically crowded with pedestrians,
+ cyclists, rollerbladers, and shoppers. Also adjacent to the boardwalk is the Crystal Pier, 
+a public pier and hotel at the west end of Garnet Avenue.');
 
 INSERT INTO beach (name, description) VALUES (
-'Las Vegas', 
-'Fusce elit turpis, aliquet sit amet ultrices at, volutpat 
-in odio. Etiam quis urna magna. Nam at nisl orci, non rutrum 
-lacus. Vivamus fringilla facilisis nisl, quis convallis 
-mi pretium sit amet. Sed vestibulum diam in quam venenatis
-ut bibendum felis malesuada. Donec eu lacus ut eros volutpat 
-dictum et a est. Mauris eget odio erat, in fringilla justo. 
-Maecenas ut velit justo. Curabitur et tortor vitae nisl aliquet 
-cursus. Vestibulum pulvinar leo a orci euismod facilisis id 
-at ipsum. Morbi ut purus turpis, vel imperdiet nibh. Praesent 
-felis ante, aliquam vitae condimentum sit amet, ultrices 
-malesuada dui. Duis urna nisi, dignissim tincidunt tincidunt 
-sed, aliquet ac sapien. Curabitur ornare interdum fermentum. 
-Donec ac justo accumsan arcu dignissim tincidunt quis sit amet sapien. ');
+'Santa Monica Beach', 
+' Permitted year-round depending on the level of beach activity.
+ During the summer, surfing is allowed only between lifeguard towers
+ 18 and 20 (Pico Blvd. and Bay St.), and between 28 and 29(Ashland Ave. and Pier St.).
+ Always check with lifeguards before surfing.');
 
