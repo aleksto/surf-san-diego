@@ -43,12 +43,6 @@ CREATE TABLE city (
        city VARCHAR(20)
 );
 
-CREATE TABLE area (
-       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       area VARCHAR(30),
-       city_id INT REFERENCES city (id)
-);
-
 CREATE TABLE skill (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	skill VARCHAR(20)
@@ -75,22 +69,24 @@ CREATE TABLE user_event (
        id_event INT
 );
 
-CREATE TABLE user_traffic (
-       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       comments VARCHAR(200)
-);
-
 DROP TABLE IF EXISTS beach;
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
-       description VARCHAR(1000)
+       description VARCHAR(1000),
+       city_id REFERENCES city(id)
 );
 
 CREATE TABLE beach_comment (
 		beach_id INT REFERENCES beach(id),
 		user_id INT REFERENCES user_account(id),
 		comment VARCHAR(200)
+);
+
+CREATE TABLE beach_rate (
+		beach_id INT REFERENCES beach(id),
+		user_id INT REFERENCES user_account(id),
+		rate INT
 );
 
 CREATE TABLE surf_conditions (
