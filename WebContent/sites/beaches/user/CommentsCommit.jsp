@@ -21,7 +21,8 @@
        
       
        out.println(request.getParameter("comment") + "<br>");
-      // out.println(request.getParameter("text") + "<br>");
+       
+       //out.println(request.getParameter("text") + "<br>");
        
        Connection conn = null;
 	   	Context context = new InitialContext();      
@@ -31,8 +32,19 @@
 	    PreparedStatement pstmt = null;
         int updateQuery = 0;
       
+        
+        // Fikse beach_id og user_id!!
+        
+       //ResultSet resultSet = null;
+       //pstmt = conn.prepareStatement("SELECT * FROM beach, beach_comment WHERE beach.id = beach_comment.id_beach");      
+       //resultSet = pstmt.executeQuery();
+      	 
+       //  int index = resultSet.getInt(1);
+        
         pstmt = conn.prepareStatement("INSERT INTO beach_comment (comment) VALUES (?)");
+        //pstmt.setInt(1, index);
         pstmt.setString(1, request.getParameter("comment"));
+       
         
         
         updateQuery += pstmt.executeUpdate();
@@ -44,7 +56,21 @@
         else
          	out.println("Not success");
         pstmt.close();
-        conn.close();
+        
+        
+        // Fikse rating. Hvordan funker INT???
+        pstmt = conn.prepareStatement("INSERT INTO beach_rate (rate) VALUES (?)");
+        pstmt.setInt(1, 1);
+        
+        updateQuery += pstmt.executeUpdate();
+        out.println(updateQuery);
+        conn.commit();
+        
+        if (updateQuery != 0) 
+         	out.println("Success");
+        else
+         	out.println("Not success");
+        pstmt.close();
         
  
 	}catch (Exception e){

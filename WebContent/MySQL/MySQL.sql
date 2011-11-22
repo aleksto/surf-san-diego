@@ -74,7 +74,7 @@ CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
        description VARCHAR(1000),
-       city_id REFERENCES city(id)
+       city_id INT REFERENCES city(id)
 );
 
 CREATE TABLE beach_comment (

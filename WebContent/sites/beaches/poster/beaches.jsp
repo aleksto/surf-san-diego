@@ -78,11 +78,12 @@
 									<td><input type="hidden" id="id" name="id" value="${beaches.getId()}" size=25 /></td>			
 									<td><input type="text" id="comment" name="comment" value="Write a comment..." size=25 /></td>
 									<td>	
-									<select id="location">
-										<option value="">Rate beach:</option>
-										<option>*</option>
-										<option>**</option>
-										<option>***</option>
+									<select name="rate">
+										<option id ="">Rate beach:</option>
+										<option id ="1"> *</option>
+										<option id ="2"> **</option>
+										<option id ="3"> ***</option>
+										
 							 		</select>
 								</td>
 									</tr>
