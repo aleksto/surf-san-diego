@@ -1,6 +1,7 @@
 package actions;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 import javax.naming.NamingException;
@@ -14,8 +15,6 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-
 
 public class ShowNewsAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {		
