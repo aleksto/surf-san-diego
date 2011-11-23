@@ -2,22 +2,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/home.jsp");
+			response.sendRedirect("admin/beaches.jsp");
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/home.jsp");
-		else if (request.isUserInRole("user")) { }	
-		else 
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("poster/beaches.jsp");
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("user/beaches.jsp");
 	}
-	%>
+	%>	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
-	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,33 +23,20 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../index.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-		<%
-		try{
-			out.println("Welcome " + request.getUserPrincipal().getName());
-			if (request.isUserInRole("user")) 
-			 	out.println("(user)");
-			else{
-				//Add warning
-				response.sendRedirect("./../home.jsp");
-			}
-		}catch(NullPointerException e){
-			//Add warning
-			response.sendRedirect("./../home.jsp");
-		}		
-		%>
-		<p><a href="./../../../invalidate.jsp">Logout</a></p>	
+			<a href="user/beaches.jsp" style ="text-decoration:none">Login</a>
+			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+			
 		</div>
-		
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
-				<li><a href="../../surf_conditions/surf_con.jsp">Weather</a></li>
+				<li><a href="./../../index.jsp">Home</a></li>
+				<li><a href="beaches.jsp">Beaches</a></li>
+				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
@@ -67,19 +52,16 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
+			<h2>Surf Conditions</h2>
 			
-			<h2>News</h2>
-			<a href='showNews.do'>Show News</a>
-			
-            <c:forEach var="news" items="${ news }">
-            <ul>
-                <li>  ${news.getTitle()} </li>
-                    <p>${news.getText()}</p>
-                    <p> ${news.getTimestamp()}</p>
-            </ul>           
+			<a href='showSurfCon.do'>Show surf conditions</a>
+			<c:forEach var="surf_conditions" items="${ surf_conditions }">
+	            <ul>
+	                <li>${surf_conditions.getWave_size()}</li>
+	                    <p>${surf_conditions.getTime()}</p>
+	                 	
+	            </ul>
         	</c:forEach>
-		
-           
 			
 		</div>
 		<div id="sidebar">

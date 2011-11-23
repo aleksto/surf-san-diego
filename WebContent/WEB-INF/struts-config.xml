@@ -30,11 +30,17 @@
 		<forward name="sites/home/poster/showNews" path="/showNews.do" />
 		<forward name="sites/home/admin/showNews" path="/showNews.do" />
 		
-		<!-- beaches.jsp (News) -->
+		<!-- beaches.jsp (Beaches) -->
 		<forward name="sites/beaches/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/beaches/user/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/beaches/poster/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/beaches/admin/showBeaches" path="/showBeaches.do" />
+		
+		<!-- surf_con.jsp (SurfConditions) -->
+		<forward name="sites/surf_conditions/showSurfCon" path="/showSurfCon.do" />
+		<forward name="sites/surf_conditions/user/showSurfCon" path="/showSurfCon.do" />
+		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
+		<forward name="sites/surf_conditions/admin/showSurfCon" path="/showSurfCon.do" />
 		
 	</global-forwards>
 
@@ -68,6 +74,19 @@
 		</action>
 		<action path="/sites/beaches/admin/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/beaches/admin/beaches.jsp" />
+		</action>
+		
+		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction">
+			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.ShowSurfConAction">
+			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/poster/showSurfCon" type="actions.ShowSurfConAction">
+			<forward name="success" path="/sites/surf_conditions/poster/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.ShowSurfConAction">
+			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
 		
 	</action-mappings>

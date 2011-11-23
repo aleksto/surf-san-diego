@@ -92,14 +92,20 @@ CREATE TABLE beach_rate (
 		rate INT
 );
 
-CREATE TABLE surf_conditions (
-       date_time DATE PRIMARY KEY,
+CREATE TABLE surf_conditions (      
+       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+       date_ DATE, 
+       time_ TIME, 
        wave_size VARCHAR(10),
        wave_direction VARCHAR(4),
        wind_speed VARCHAR(10),
        wind_direction VARCHAR(4),
        beach_id INT REFERENCES beach(id)
 );
+
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+
 
 CREATE TABLE news (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -161,6 +167,4 @@ INSERT INTO beach (name, description, city_id) VALUES (
  
  INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'HALLO');
  
- INSERT INTO surf_conditions (date_time, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-22-11', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-
+ 

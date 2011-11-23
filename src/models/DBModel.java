@@ -52,8 +52,23 @@ public class DBModel{
         	beachModels.add(beachModel);
         }
 	    pstmt.close();
-	    return beachModels;
-	    
+	    return beachModels;  
+	} 
+	
+	public ArrayList<SurfConModel> getSurfConditions() throws SQLException{
+		ArrayList<SurfConModel> surfConModels = new ArrayList<SurfConModel>();
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT (date, time, wave_size, wave_dir, wind_speed, wind_dir, beach_id) FROM surf_condition");      
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + " to ArrayList");
+        	SurfConModel surfConModel = new SurfConModel(updateQuery.getDate(1), updateQuery.getTime(2), 
+        			updateQuery.getString(3), updateQuery.getString(4), updateQuery.getString(5), updateQuery.getString(6), updateQuery.getInt(7));
+        	surfConModels.add(surfConModel);
+        }
+	    pstmt.close();
+	    return surfConModels;  
 	} 
 	
 	public void closeDB() throws SQLException{
