@@ -57,7 +57,7 @@
 			<a href='showSurfCon.do'>Show surf conditions</a>
 			<c:forEach var="surf_conditions" items="${ surf_conditions }">
 	            <ul>
-	                <li>${surf_conditions.getWave_size()}</li>
+	                <li>${surf_conditions.getDate(), surf_conditions.getTime()}</li>
 	                    <p>${surf_conditions.getTime()}</p>
 	                 	
 	            </ul>

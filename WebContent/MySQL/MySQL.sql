@@ -104,7 +104,13 @@ CREATE TABLE surf_conditions (
 );
 
 INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
 
 
 CREATE TABLE news (

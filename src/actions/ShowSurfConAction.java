@@ -29,7 +29,7 @@ public class ShowSurfConAction extends Action {
 			e.printStackTrace();
 		}
 		// Store the RowSet in the request scope
-		request.setAttribute("beaches", surfConModel);
+		request.setAttribute("surf_conditions", surfConModel);
 
 		return mapping.findForward("success");
 	}

@@ -59,7 +59,7 @@ public class DBModel{
 		ArrayList<SurfConModel> surfConModels = new ArrayList<SurfConModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT (date, time, wave_size, wave_dir, wind_speed, wind_dir, beach_id) FROM surf_condition");      
+        pstmt = conn.prepareStatement("SELECT date, time, wave_size, wave_dir, wind_speed, wind_dir, beach_id FROM surf_condition");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
         	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + " to ArrayList");
