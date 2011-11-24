@@ -6,9 +6,7 @@
 <head>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("admin/beaches.jsp");
-		else if (request.isUserInRole("poster")) 
+		if (request.isUserInRole("poster")) 
 			response.sendRedirect("poster/beaches.jsp");
 		else if (request.isUserInRole("user")) 
 			response.sendRedirect("user/beaches.jsp");
@@ -20,24 +18,24 @@
 </head>
 
 <body>
+	
 
 <div id="wrapper">
 	<div id="header">
-		<div id= "head">
-			<h1> <a href ="../../index.jsp" style ="text-decoration:none"> The surfer</a>
+		<div id="head">
+			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="user/beaches.jsp" style ="text-decoration:none">Login</a>
+			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-			
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="./../../index.jsp">Home</a></li>
-				<li><a href="beaches.jsp">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
+				<li><a href="home.jsp">Home</a></li>
+				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="../surf_conditions/surf_con.jsp">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
@@ -53,17 +51,32 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>Surf Conditions</h2>
+			<h2>News</h2>
 			
-			<a href='showSurfCon.do'>Show surf conditions</a>
+			<a href='showSurfCon.do'>Show surfing conditions</a>
 			<c:forEach var="surf_conditions" items="${ surf_conditions }">
-	            <ul>
-	                <li>${surf_conditions.getId(),</li>
-	                    <p>${surf_conditions.getWave_size()}</p>
-	                 	
-	            </ul>
-        	</c:forEach>
-			
+            <ul>
+            <table border = "4">
+            <tr>
+            	<th colspan = "4">${surf_conditions.getTime()}</th>	
+            </tr>
+            <tr>
+           		<td>Wave size:</td>
+           		<td>Wave direction:</td>
+           		<td>Wind speed:</td>
+           		<td>Wind direction:</td>
+           	</tr>
+           	<tr>
+           		<td>${surf_conditions.getWave_size()}</td>
+           		<td>${surf_conditions.getWave_dir()}</td>
+           		<td>${surf_conditions.getWind_speed()}</td>
+           		<td>${surf_conditions.getWind_dir()}</td>
+           	</tr>
+            </table>
+            </ul>
+        </c:forEach>
+		 
+		
 		</div>
 		<div id="sidebar">
 			<h3>Something fun </h3>

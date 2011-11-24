@@ -17,6 +17,7 @@ public class SurfConModel {
 	public SurfConModel(int id, Date date_, Time time_, String wave_size, 
 		String wave_dir, String wind_speed, String wind_dir, int beach_id ) {
 		
+		this.setId(id);
 		this.setDate(date_);
 		this.setTime(time_);
 		this.setWave_size(wave_size);
@@ -28,6 +29,10 @@ public class SurfConModel {
 
 	public int getId() {
 		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Date getDate() {

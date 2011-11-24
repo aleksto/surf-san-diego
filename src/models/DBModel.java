@@ -94,7 +94,7 @@ public class DBModel{
 		ArrayList<SurfConModel> surfConModels = new ArrayList<SurfConModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT id FROM surf_conditions");      
+        pstmt = conn.prepareStatement("SELECT * FROM surf_conditions");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
         	System.out.println("ADDING: " + updateQuery.getInt(1) + " to ArrayList");
