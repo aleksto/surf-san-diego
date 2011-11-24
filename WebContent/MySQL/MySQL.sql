@@ -3,9 +3,7 @@ DROP TABLE IF EXISTS user_account;
 DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS skill;
 DROP TABLE IF EXISTS city;
-DROP TABLE IF EXISTS area;
 DROP TABLE IF EXISTS weather_forcast;
-DROP TABLE IF EXISTS weathe_forcast;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS user_event;
 DROP TABLE IF EXISTS user_traffic;
@@ -15,6 +13,7 @@ DROP TABLE IF EXISTS user_role;
 DROP TABLE IF EXISTS beach_comment;
 DROP TABLE IF EXISTS beach_rating;
 DROP TABLE IF EXISTS surf_location;
+DROP TABLE IF EXISTS beach;
 
 CREATE TABLE user_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -46,7 +45,7 @@ CREATE TABLE city (
 );
 
 CREATE TABLE skill (
-	id INT PRIMARY KEY,
+	id INT,
 	skill VARCHAR(20)
 );
 
@@ -71,7 +70,6 @@ CREATE TABLE user_event (
        id_event INT
 );
 
-DROP TABLE IF EXISTS beach;
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
@@ -103,16 +101,6 @@ CREATE TABLE surf_conditions (
        beach_id INT REFERENCES beach(id)
 );
 
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-
-
 CREATE TABLE news (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        headline VARCHAR(30),
@@ -126,9 +114,10 @@ CREATE TABLE surf_location (
 		city_id INT REFERENCES city(id)
 );
 
-INSERT INTO skill (id, skill) VALUES (1, 'Pro');
-INSERT INTO skill (id, skill) VALUES (2, 'Medium');
-INSERT INTO skill (id, skill) VALUES (3, 'Beginner');
+INSERT INTO skill (id, skill) VALUES 
+(1, 'pro'),
+(2, 'medium'),
+(3, 'beginner');
 
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 'San Dieog', 2);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 1);
@@ -138,8 +127,8 @@ INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1)
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
 INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
 
-INSERT INTO city (city) VALUES ('San Diego');
-INSERT INTO city (city) VALUES ('Santa Barbara');
+INSERT INTO city (city) VALUES ('San Diego'),
+INSERT INTO city (city) VALUES ('Santa Barbara'),
 INSERT INTO city (city) VALUES ('Los Angeles');
 
 INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked danndandan');  
@@ -172,11 +161,18 @@ INSERT INTO beach (name, description, city_id) VALUES (
  18 and 20 (Pico Blvd. and Bay St.), and between 28 and 29(Ashland Ave. and Pier St.).
  Always check with lifeguards before surfing.', 3);
  
- INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'HALLO');
- 
- INSERT INTO surf_conditions (date_time, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-22-11', '2-3 feet', 'WNW', '5-6', 'NW', 1);
 
- INSERT INTO beach_rating (beach_id, user_id, rating) VALUE (1, 1, 1);
+ 
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
  
  
+INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'ok');
+INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (1, 1, 1);
+INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (2, 1, 1);

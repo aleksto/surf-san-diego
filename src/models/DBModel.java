@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -93,12 +94,12 @@ public class DBModel{
 		ArrayList<SurfConModel> surfConModels = new ArrayList<SurfConModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT date, time, wave_size, wave_dir, wind_speed, wind_dir, beach_id FROM surf_condition");      
+        pstmt = conn.prepareStatement("SELECT id FROM surf_conditions");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + " to ArrayList");
-        	SurfConModel surfConModel = new SurfConModel(updateQuery.getDate(1), updateQuery.getTime(2), 
-        			updateQuery.getString(3), updateQuery.getString(4), updateQuery.getString(5), updateQuery.getString(6), updateQuery.getInt(7));
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to ArrayList");
+        	SurfConModel surfConModel = new SurfConModel(updateQuery.getInt(1), updateQuery.getDate(2), updateQuery.getTime(3), 
+        			updateQuery.getString(4), updateQuery.getString(5), updateQuery.getString(6), updateQuery.getString(7), updateQuery.getInt(8));
         	surfConModels.add(surfConModel);
         }
 	    pstmt.close();

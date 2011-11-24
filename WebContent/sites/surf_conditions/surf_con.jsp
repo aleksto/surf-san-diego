@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -57,8 +58,8 @@
 			<a href='showSurfCon.do'>Show surf conditions</a>
 			<c:forEach var="surf_conditions" items="${ surf_conditions }">
 	            <ul>
-	                <li>${surf_conditions.getDate(), surf_conditions.getTime()}</li>
-	                    <p>${surf_conditions.getTime()}</p>
+	                <li>${surf_conditions.getId(),</li>
+	                    <p>${surf_conditions.getWave_size()}</p>
 	                 	
 	            </ul>
         	</c:forEach>
