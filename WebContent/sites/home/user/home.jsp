@@ -128,7 +128,7 @@
        <p><input type="submit" value="Submit"></p>
        </form>
        
-       <% if index %>
+     
 			
 		</div>
 		<div style="clear:both"></div>
