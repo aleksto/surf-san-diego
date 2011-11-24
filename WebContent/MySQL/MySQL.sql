@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
 DROP TABLE IF EXISTS beach_comment;
-DROP TABLE IF EXISTS beach_rate;
+DROP TABLE IF EXISTS beach_rating;
 DROP TABLE IF EXISTS surf_location;
 
 CREATE TABLE user_info (
@@ -86,10 +86,10 @@ CREATE TABLE beach_comment (
 );
 
 
-CREATE TABLE beach_rate (
+CREATE TABLE beach_rating (
 		beach_id INT REFERENCES beach(id),
 		user_id INT REFERENCES user_account(id),
-		rate INT
+		rating INT
 );
 
 CREATE TABLE surf_conditions (      
@@ -145,6 +145,7 @@ INSERT INTO city (city) VALUES ('Los Angeles');
 INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked danndandan');  
 INSERT INTO news (headline, text) VALUES ('Croc Attack','A crock attacked danndandan');
 
+
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
 INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
@@ -172,5 +173,10 @@ INSERT INTO beach (name, description, city_id) VALUES (
  Always check with lifeguards before surfing.', 3);
  
  INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'HALLO');
+ 
+ INSERT INTO surf_conditions (date_time, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-22-11', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+
+ INSERT INTO beach_rating (beach_id, user_id, rating) VALUE (1, 1, 1);
  
  
