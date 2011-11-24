@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -20,10 +20,9 @@
 
         out.println(request.getParameter("headline") + "<br>");
         out.println(request.getParameter("text") + "<br>");
-        out.println(request.getParameter("city") + "<br>");
-        //String  = request.getParameter("id");	
-		//out.println(session.getAttribute("id").toString() + "<br>");
-		
+        String id = request.getParameter("id");
+		session.setAttribute("id", id); 
+		out.println(session.getAttribute("id").toString() + "<br>");
 		
 		Connection conn = null;
 	   	Context context = new InitialContext();      
@@ -32,30 +31,17 @@
         
         PreparedStatement pstmt = null;
         int updateQuery = 0;
-        
-        updateQuery += pstmt.executeUpdate();
-        out.println(updateQuery);
-        if (updateQuery != 0) 
-         	out.println("Success");
-        else
-         	out.println("Not success");
-        pstmt.close();
-        
 
-        ResultSet resultSet = null;
-		pstmt = conn.prepareStatement("SELECT id FROM city");
+        ResultSet resultSet = null; 
+		pstmt = conn.prepareStatement(" SELECT id FROM city");
 		resultSet = pstmt.executeQuery();
-		int index = 0;
-        while(resultSet.next()){
-        	index = resultSet.getInt(1);
-        }
-        out.println("Index: "+ index);
+		
         pstmt.close();
 
 		pstmt = conn.prepareStatement("INSERT INTO news (headline, text, city_id) VALUES (?, ?, ?)");
         pstmt.setString(1, request.getParameter("headline"));
         pstmt.setString(2, request.getParameter("text"));
-        pstmt.setInt(3, index);
+        pstmt.setInt(3, Integer.valueOf(session.getAttribute("id").toString()));
         updateQuery += pstmt.executeUpdate();
         out.println(updateQuery);
         if (updateQuery != 0) 

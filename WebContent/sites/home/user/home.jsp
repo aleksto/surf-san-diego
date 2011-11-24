@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -76,16 +76,17 @@
                 <li>  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
-                    <p> ${news.getCity()} </p>
-            </ul>           
+            </ul>        
         	</c:forEach>
 		 
 		</div>
 		
 		<div id="sidebar">
-			<h3>Something fun </h3>
+			<h3>Surf location </h3>
 				<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-			
+				<form name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
+				
+				<p>Choose your surf location and get news.  </p>
 				<p><select name='city' onchange="city(this.value)"> </p> 
 		       	<option value="none">Select city: </option> 
 			<% 	
@@ -104,12 +105,14 @@
 		       	
 				PreparedStatement pstmt = null;
 				ResultSet updateQuery = null;
-				pstmt = conn.prepareStatement("SELECT city FROM city");
+				pstmt = conn.prepareStatement("SELECT city, id FROM city");
 				updateQuery = pstmt.executeQuery();
+				int index = 0;
 				while(updateQuery.next()){
 					 String str=updateQuery.getString("city");
+					 index =updateQuery.getInt("id");
 				%>
-		    		<option value="<%=str%>"><%=str%></option>
+		    		<option value="<%=index%>"><%=str%></option>
 		    	<%
 				}
 				%>
@@ -122,6 +125,10 @@
     	e.printStackTrace();
    		} 
        %>
+       <p><input type="submit" value="Submit"></p>
+       </form>
+       
+       <% if index %>
 			
 		</div>
 		<div style="clear:both"></div>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <head>
@@ -53,12 +53,12 @@
 					<td> <textarea id="text" name="text" rows=20" cols="60"> </textarea></td>
 				</tr>
 				
-				
+				<tr>
 				
 				<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
 			
 				<td>City:</td>
-				<p><select name='city' onchange="city(this.value)"> </p>
+				<p><select name="id" > </p>
 		       	<option value="none">Select city: </option>
 			<% 	
 			try {
@@ -77,20 +77,20 @@
 		       	
 				PreparedStatement pstmt = null;
 				ResultSet updateQuery = null;
-				pstmt = conn.prepareStatement("SELECT city FROM city");
+				pstmt = conn.prepareStatement("SELECT city, id FROM city");
 				updateQuery = pstmt.executeQuery();
+				int index = 0;
 				while(updateQuery.next()){
 					 String str=updateQuery.getString("city");
+					 index =updateQuery.getInt("id");
 				%>
-		    		<option value="<%=str%>"><%=str%></option>
-		    	<%
+		    		<option value= "<%=index%>"><%=str%></option>
+		    	<% 
 				}
 				%>
 				</select>
-				
-				
-				
-				 <%
+		
+	<%
 			pstmt.close();
 			conn.close(); 
 		}
@@ -98,6 +98,7 @@
     	e.printStackTrace();
    		} 
        %>
+       </tr>
 			
 	</table>
 			

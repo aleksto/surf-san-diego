@@ -7,11 +7,13 @@ public class NewsModel {
 	private String title;
 	private String text;
 	private Timestamp timestamp;
+
 	
 	public NewsModel(String title, String text, Timestamp timestamp){
 		this.setTitle(title);
 		this.text = text;
 		this.setTimestamp(timestamp);
+		
 		
 	}
 	
@@ -27,6 +29,8 @@ public class NewsModel {
 	public String getTitle() {
 		return title;
 	}
+	
+	
 
 	public void setText(String text) {
 		this.text = text;

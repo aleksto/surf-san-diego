@@ -3,6 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%
