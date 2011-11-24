@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <head>
@@ -54,59 +56,24 @@
 				</tr>
 				
 				<tr>
-				
-				<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-			
+
 				<td>City:</td>
-				<p><select name="id" > </p>
-		       	<option value="none">Select city: </option>
-			<% 	
-			try {
-		    	/*
-		    	Class.forName("org.gjt.mm.mysql.Driver");
-		        conn =
-		           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-		                                       "user=root&password=pothead");
-		       */
-		       
-		        Connection conn = null;
-		       
-				Context context = new InitialContext();      
-				DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-				conn=ds.getConnection();  
-		       	
-				PreparedStatement pstmt = null;
-				ResultSet updateQuery = null;
-				pstmt = conn.prepareStatement("SELECT city, id FROM city");
-				updateQuery = pstmt.executeQuery();
-				int index = 0;
-				while(updateQuery.next()){
-					 String str=updateQuery.getString("city");
-					 index =updateQuery.getInt("id");
-				%>
-		    		<option value= "<%=index%>"><%=str%></option>
-		    	<% 
-				}
-				%>
-				</select>
-		
-	<%
-			pstmt.close();
-			conn.close(); 
-		}
-		catch (Exception e) {
-    	e.printStackTrace();
-   		} 
-       %>
-       </tr>
 			
+				<p><select name="id" onchange "id(this.value)"></p>
+					<option value="none"> Select city: </option> 
+            			<c:forEach items="${city}" var="city">
+                		<c:set var="id" value="${city}" />
+                		<option value="$city.id">${city.city}</option>
+            			</c:forEach>
+				</select> 
+
+       </tr>
+
 	</table>
 			
 			<p><input type="submit" value="Submit"></p>
 			
-			</form>
-	
-			
+			</form>	
 		</div>
 		<div id="sidebar">
 			<h3>Something fun </h3>

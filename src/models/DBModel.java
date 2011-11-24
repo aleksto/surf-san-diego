@@ -106,6 +106,23 @@ public class DBModel{
 	    return surfConModels;  
 	} 
 	
+	public ArrayList<CityModel> getCity() throws SQLException{
+		ArrayList<CityModel> cityModels = new ArrayList<CityModel>();
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+		pstmt = conn.prepareStatement("SELECT id, city FROM city");     
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("Adding: " + updateQuery.getInt(1) + " and: " + updateQuery.getString(2) +" to ArrayList");
+        	CityModel cityModel = new CityModel(updateQuery.getInt(1), updateQuery.getString(2));
+        	cityModels.add(cityModel);
+        }
+	    pstmt.close();
+	    return cityModels;	
+	
+	}  
+	
+	
 	public void closeDB() throws SQLException{
 	     conn.close();
 

@@ -79,7 +79,7 @@
             </ul>           
         	</c:forEach>
 
-			 <form name="frm" method="post" action="addNews.jsp" >
+			 <form name="frm" method="post" action="showCity.do" >
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
 			 </form>
 			

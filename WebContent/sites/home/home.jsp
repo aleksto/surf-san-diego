@@ -1,4 +1,6 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -55,14 +57,13 @@
 			<h2>News</h2>
 			
 			<a href='showNews.do'>Show News</a>
-			<c:forEach var="news" items="${ news }">
+			  <c:forEach var="news" items="${ news }">
             <ul>
                 <li>  ${news.getTitle()} </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
-            </ul>      
-           
-        </c:forEach>
+            </ul>        
+        	</c:forEach>
 		 
 		
 		</div>

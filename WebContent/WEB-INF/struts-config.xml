@@ -42,6 +42,12 @@
 		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/admin/showSurfCon" path="/showSurfCon.do" />
 		
+		<!-- addNews.jsp (City) -->
+		<forward name="sites/home/user/showCity" path="/showCity.do" />
+		<forward name="sites/home/poster/showCity" path="/showCity.do" />
+		<forward name="sites/home/admin/showCity" path="/showCity.do" />
+		
+		
 	</global-forwards>
 
 
@@ -88,6 +94,19 @@
 		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.ShowSurfConAction">
 			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
+		
+		
+		<!-- addNews.jsp (City) -->
+		<action path="/sites/home/user/showCity" type="actions.ShowCityAction">
+			<forward name="success" path="/sites/home/user/addNews.jsp" />
+		</action>
+		<action path="/sites/home/poster/showCity" type="actions.ShowCityAction">
+			<forward name="success" path="/sites/home/poster/addNews.jsp" />
+		</action>
+		<action path="/sites/home/admin/showCity" type="actions.ShowCityAction">
+			<forward name="success" path="/sites/home/admin/addNews.jsp" />
+		</action>
+		
 		
 	</action-mappings>
 
