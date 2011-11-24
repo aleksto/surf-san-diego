@@ -52,9 +52,57 @@
 					<td>Text:</td> 	
 					<td> <textarea id="text" name="text" rows=20" cols="60"> </textarea></td>
 				</tr>
-			</table>
+				
+				
+				
+				<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
+			
+				<td>City:</td>
+				<p><select name='city' onchange="city(this.value)"> </p>
+		       	<option value="none">Select city: </option>
+			<% 	
+			try {
+		    	/*
+		    	Class.forName("org.gjt.mm.mysql.Driver");
+		        conn =
+		           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+		                                       "user=root&password=pothead");
+		       */
+		       
+		        Connection conn = null;
+		       
+				Context context = new InitialContext();      
+				DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+				conn=ds.getConnection();  
+		       	
+				PreparedStatement pstmt = null;
+				ResultSet updateQuery = null;
+				pstmt = conn.prepareStatement("SELECT city FROM city");
+				updateQuery = pstmt.executeQuery();
+				while(updateQuery.next()){
+					 String str=updateQuery.getString("city");
+				%>
+		    		<option value="<%=str%>"><%=str%></option>
+		    	<%
+				}
+				%>
+				</select>
+				
+				
+				
+				 <%
+			pstmt.close();
+			conn.close(); 
+		}
+		catch (Exception e) {
+    	e.printStackTrace();
+   		} 
+       %>
+			
+	</table>
 			
 			<p><input type="submit" value="Submit"></p>
+			
 			</form>
 	
 			

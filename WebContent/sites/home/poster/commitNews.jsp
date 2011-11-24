@@ -7,12 +7,9 @@
 	<title>The surfer</title>
 </head>
 <body>
-		
-	 
 		<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
 
-	<% 
-	
+	<%
     try {
     	/*
     	Class.forName("org.gjt.mm.mysql.Driver");
@@ -20,43 +17,63 @@
            DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
                                        "user=root&password=pothead");
        */
-       
-      
-       out.println(request.getParameter("headline") + "<br>");
-       out.println(request.getParameter("text") + "<br>");
-       
-       Connection conn = null;
+
+        out.println(request.getParameter("headline") + "<br>");
+        out.println(request.getParameter("text") + "<br>");
+        out.println(request.getParameter("city") + "<br>");
+        //String  = request.getParameter("id");	
+		//out.println(session.getAttribute("id").toString() + "<br>");
+		
+		
+		Connection conn = null;
 	   	Context context = new InitialContext();      
-	    DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-	    conn=ds.getConnection();
-	    
-	    PreparedStatement pstmt = null;
+        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+        conn=ds.getConnection();
+        
+        PreparedStatement pstmt = null;
         int updateQuery = 0;
-      
-        pstmt = conn.prepareStatement("INSERT INTO news (headline, text) VALUES (?, ?)");
-        pstmt.setString(1, request.getParameter("headline"));
-        pstmt.setString(2, request.getParameter("text"));
         
         updateQuery += pstmt.executeUpdate();
         out.println(updateQuery);
-        conn.commit();
-        
         if (updateQuery != 0) 
          	out.println("Success");
         else
          	out.println("Not success");
         pstmt.close();
+        
+
+        ResultSet resultSet = null;
+		pstmt = conn.prepareStatement("SELECT id FROM city");
+		resultSet = pstmt.executeQuery();
+		int index = 0;
+        while(resultSet.next()){
+        	index = resultSet.getInt(1);
+        }
+        out.println("Index: "+ index);
+        pstmt.close();
+
+		pstmt = conn.prepareStatement("INSERT INTO news (headline, text, city_id) VALUES (?, ?, ?)");
+        pstmt.setString(1, request.getParameter("headline"));
+        pstmt.setString(2, request.getParameter("text"));
+        pstmt.setInt(3, index);
+        updateQuery += pstmt.executeUpdate();
+        out.println(updateQuery);
+        if (updateQuery != 0) 
+         	out.println("Success");
+        else
+         	out.println("Not success");
+        pstmt.close();
+        
+        conn.commit();
         conn.close();
         
- 
 	}catch (Exception e){
     	e.printStackTrace();
     }  
         
-		
 		 String redirectURL = "../poster/home.jsp";
 		   response.sendRedirect(redirectURL);
-		    
+    
 	%>	
 		
 

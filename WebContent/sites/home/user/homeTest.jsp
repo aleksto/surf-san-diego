@@ -69,16 +69,37 @@
 			</div>
 
 			<h2>News</h2>
-			<a href='showNews.do'>Show News</a>
+			<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
+				<% 	
+			try {
+		    	/*
+		    	Class.forName("org.gjt.mm.mysql.Driver");
+		        conn =
+		           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
+		                                       "user=root&password=pothead");
+		       */
+		       Connection conn = null;
+		       
+				Context context = new InitialContext();      
+				DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
+				conn=ds.getConnection();  
+		       	
+				PreparedStatement pstmt = null;
+				ResultSet updateQuery = null; pstmt = conn.prepareStatement("SELECT  FROM news");
+				updateQuery = pstmt.executeQuery();
+				while(updateQuery.next()){
+					 String str=updateQuery.getString("city");
+				
+				}
+	
+			pstmt.close();
+			conn.close(); 
+		}
+		catch (Exception e) {
+    	e.printStackTrace();
+   		} 
+       %>
 			
-            <c:forEach var="news" items="${ news }">
-            <ul>
-                <li>  ${news.getTitle()} </li>
-                    <p>${news.getText()}</p>
-                    <p> ${news.getTimestamp()}</p>
-                    <p> ${news.getCity()} </p>
-            </ul>           
-        	</c:forEach>
 		 
 		</div>
 		

@@ -46,7 +46,7 @@
         pstmt.setString(4, session.getAttribute("location").toString());       
         //FIKS DISSE!!!
         pstmt.setDate(5, sqlDate);       
-        pstmt.setInt(6, 1);             
+        pstmt.setInt(6, Integer.valueOf(session.getAttribute("skill").toString()));          
         updateQuery += pstmt.executeUpdate();
         out.println(updateQuery);
         if (updateQuery != 0) 

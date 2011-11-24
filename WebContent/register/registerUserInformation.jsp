@@ -25,7 +25,6 @@
 			}
 			xmlhttp.onreadystatechange=function()	{
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
-			   
 			  }
 			}
 		}				
@@ -116,7 +115,6 @@
 			<div id="content-area">
 				<h2>Fill in</h2>
 		
-				
 					<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">
 						<p>	<table>
 						<tr>			
@@ -142,11 +140,11 @@
 						</tr>
 						<tr>
 							<td>Skills: </td>	 
-							<td><select name="skill_id" onchange="showSkills(Prof)"> 
-									<option id="">Select skill:</option>
-									<option id ="1"> Beginner</option>
-									<option id ="2"> Intermediate</option>
-									<option id ="3"> Professional</option>
+							<td><select name="skill_id"> 
+									<option value="">Select skill:</option>
+									<option value ="1"> Beginner</option>
+									<option value ="2"> Intermediate</option>
+									<option value ="3"> Professional</option>
 							 	</select>
 							 </td>
 						</tr>	
