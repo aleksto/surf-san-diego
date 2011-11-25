@@ -47,7 +47,12 @@
 		<forward name="sites/home/poster/showCity" path="/showCity.do" />
 		<forward name="sites/home/admin/showCity" path="/showCity.do" />
 		
+		<forward name="sites/surf_conditions/" path="/selectBeach.do" />
+		<forward name="sites/surf_conditions/user/showSurfCon" path="/selectBeach.do" />
+		<forward name="sites/surf_conditions/poster/showSurfCon" path="/selectBeach.do" />
+		<forward name="sites/surf_conditions/admin/showSurfCon" path="/selectBeach.do" />
 		
+	
 	</global-forwards>
 
 
@@ -82,6 +87,7 @@
 			<forward name="success" path="/sites/beaches/admin/beaches.jsp" />
 		</action>
 		
+		<!-- surf conditions -->
 		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction">
 			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
 		</action>
@@ -92,6 +98,19 @@
 			<forward name="success" path="/sites/surf_conditions/poster/surf_con.jsp" />
 		</action>
 		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.ShowSurfConAction">
+			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
+		</action>
+		
+		<action path="/sites/surf_conditions" type="actions.SelectBeachAction">
+			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.SelectBeachAction">
+			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/poster/showSurfCon" type="actions.SelectBeachAction">
+			<forward name="success" path="/sites/surf_conditions/poster/surf_con.jsp" />
+		</action>
+		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.SelectBeachAction">
 			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
 		
@@ -106,7 +125,6 @@
 		<action path="/sites/home/admin/showCity" type="actions.ShowCityAction">
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
-		
 		
 	</action-mappings>
 
