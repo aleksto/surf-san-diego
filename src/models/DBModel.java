@@ -60,6 +60,7 @@ public class DBModel{
 	    return beachModels;    
 	} 
 	
+	
 	public ArrayList<BeachCommentModel> getComments(int beachId) throws SQLException {
 		ArrayList<BeachCommentModel> beachComments = new ArrayList<BeachCommentModel>();
 		PreparedStatement pstmt = null;
@@ -119,8 +120,22 @@ public class DBModel{
         }
 	    pstmt.close();
 	    return cityModels;	
+	} 
 	
-	}  
+	public ArrayList<BeachModel> selectBeach() throws SQLException{
+		ArrayList<BeachModel> beachSelection = new ArrayList<BeachModel>();
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT id, name FROM beach"); 
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2));
+        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2));
+        	beachSelection.add(beachModel);
+        }
+	    pstmt.close();
+	    return beachSelection; 
+	}
 	
 	
 	public void closeDB() throws SQLException{

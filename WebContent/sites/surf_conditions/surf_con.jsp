@@ -5,12 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%
-	if(request != null){
-		if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/beaches.jsp");
-		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/beaches.jsp");
-	}
+
 	%>	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
@@ -51,14 +46,20 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>News</h2>
-			
-			<a href='showSurfCon.do'>Show surfing conditions</a>
+			<h2>Surfing conditions</h2>
+				
+			<a href='selectBeach.do'>Show beach selection</a>
+			<c:forEach var="beaches" items="${ beaches }">
+					<li>${beaches.getId()}</li>
+	                    <p>${beaches.getName()}</p>
+			</c:forEach>
+				
+			<a href='showSurfCon.do'>Show surfing conditions</a>	
 			<c:forEach var="surf_conditions" items="${ surf_conditions }">
-            <ul>
+   
             <table border = "4">
             <tr>
-            	<th colspan = "4">${surf_conditions.getTime()}</th>	
+            	<th colspan = "4">${surf_conditions.getDate()}   ${surf_conditions.getTime()}</th>	
             </tr>
             <tr>
            		<td>Wave size:</td>
@@ -73,7 +74,7 @@
            		<td>${surf_conditions.getWind_dir()}</td>
            	</tr>
             </table>
-            </ul>
+          
         </c:forEach>
 		 
 		

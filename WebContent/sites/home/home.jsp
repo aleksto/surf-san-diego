@@ -37,8 +37,8 @@
 		<div id="pages">
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
-				<li><a href="../surf_conditions/surf_con.jsp">Weather</a></li>
+				<li><a href="../beaches/showBeaches.do">Beaches</a></li>
+				<li><a href="../surf_conditions/selectBeach.do">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>

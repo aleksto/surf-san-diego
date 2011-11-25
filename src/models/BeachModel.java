@@ -18,6 +18,11 @@ public class BeachModel {
 		this.description = description;
 	}
 	
+	public BeachModel(int id, String name){
+		this.id = id;
+		this.name = name;
+	}
+	
 	public void setIndex(int id) {
 		this.id = id;
 	}
