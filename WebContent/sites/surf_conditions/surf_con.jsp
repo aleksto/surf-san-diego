@@ -48,12 +48,6 @@
 			</div>
 			<h2>Surfing conditions</h2>
 				
-			<a href='selectBeach.do'>Show beach selection</a>
-			<c:forEach var="beaches" items="${ beaches }">
-					<li>${beaches.getId()}</li>
-	                    <p>${beaches.getName()}</p>
-			</c:forEach>
-				
 			<a href='showSurfCon.do'>Show surfing conditions</a>	
 			<c:forEach var="surf_conditions" items="${ surf_conditions }">
    

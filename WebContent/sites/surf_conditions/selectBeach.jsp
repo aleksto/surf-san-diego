@@ -1,20 +1,12 @@
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%
-	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("admin/home.jsp");
-		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/home.jsp");
-		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/home.jsp");
-	}
-	%>	
 
+	%>	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
@@ -37,8 +29,8 @@
 		<div id="pages">
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../beaches/showBeaches.do">Beaches</a></li>
-				<li><a href="../surf_conditions/showBeaches.do">Weather</a></li>
+				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="../surf_conditions/selectBeach.jsp">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
@@ -54,18 +46,16 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>News</h2>
+			<h2>Surfing conditions</h2>
 			
-			<a href='showNews.do'>Show News</a>
-			  <c:forEach var="news" items="${ news }">
-            <ul>
-                <li>  ${news.getTitle()} </li>
-                    <p>${news.getText()}</p>
-                    <p> ${news.getTimestamp()}</p>
-            </ul>        
+			
+			<select name="id" onchange "id(this.value)">
+			<option value="none"> Select beach: </option> 
+			<c:forEach var="beaches" items="${ beaches }">
+	                <option>${beaches.getName()}</option>     	
         	</c:forEach>
-		 
-		
+        	</select>
+				
 		</div>
 		<div id="sidebar">
 			<h3>Something fun </h3>
@@ -79,4 +69,3 @@
 </div>
 </body>
 </html>
-

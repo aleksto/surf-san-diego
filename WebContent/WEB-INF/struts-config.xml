@@ -36,21 +36,24 @@
 		<forward name="sites/beaches/poster/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/beaches/admin/showBeaches" path="/showBeaches.do" />
 		
-		<!-- surf_con.jsp (SurfConditions) -->
+		<!-- addNews.jsp (City) -->
+		<forward name="sites/home/user/showCity" path="/showCity.do" />
+		<forward name="sites/home/poster/showCity" path="/showCity.do" />
+		<forward name="sites/home/admin/showCity" path="/showCity.do" />		
+		
+		<!-- selectBeach.jsp (Surf_conditions) -->
+		<forward name="sites/surf_conditions/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/surf_conditions/user/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/surf_conditions/poster/showBeaches" path="/showBeaches.do" />
+		<forward name="sites/surf_conditions/admin/showBeaches" path="/showBeaches.do" />
+		
+		<!-- surf_con.jsp (Surf_conditions) -->
 		<forward name="sites/surf_conditions/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/user/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/admin/showSurfCon" path="/showSurfCon.do" />
 		
-		<!-- addNews.jsp (City) -->
-		<forward name="sites/home/user/showCity" path="/showCity.do" />
-		<forward name="sites/home/poster/showCity" path="/showCity.do" />
-		<forward name="sites/home/admin/showCity" path="/showCity.do" />
 		
-		<forward name="sites/surf_conditions/selectBeach" path="/selectBeach.do" />
-		<forward name="sites/surf_conditions/user/showSurfCon" path="/selectBeach.do" />
-		<forward name="sites/surf_conditions/poster/showSurfCon" path="/selectBeach.do" />
-		<forward name="sites/surf_conditions/admin/showSurfCon" path="/selectBeach.do" />
 		
 	
 	</global-forwards>
@@ -101,17 +104,19 @@
 			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
 		
-		<action path="/sites/surf_conditions/selectBeach" type="actions.SelectBeachAction">
-			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		
+		<!-- Beach selection -->
+		<action path="/sites/surf_conditions/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/surf_conditions/selectBeach.jsp" />
 		</action>
-		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.SelectBeachAction">
-			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
+		<action path="/sites/surf_conditions/user/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/surf_conditions/user/selectBeach.jsp" />
 		</action>
-		<action path="/sites/surf_conditions/poster/showSurfCon" type="actions.SelectBeachAction">
-			<forward name="success" path="/sites/surf_conditions/poster/surf_con.jsp" />
+		<action path="/sites/surf_conditions/poster/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/surf_conditions/poster/selectBeach.jsp" />
 		</action>
-		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.SelectBeachAction">
-			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
+		<action path="/sites/surf_conditions/admin/showBeaches" type="actions.ShowBeachesAction">
+			<forward name="success" path="/sites/surf_conditions/admin/selectBeach.jsp" />
 		</action>
 		
 		

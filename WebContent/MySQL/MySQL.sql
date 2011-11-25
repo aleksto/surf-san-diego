@@ -114,10 +114,9 @@ CREATE TABLE surf_location (
 		city_id INT REFERENCES city(id)
 );
 
-INSERT INTO skill (id, skill) VALUES 
-(1, 'pro'),
-(2, 'medium'),
-(3, 'beginner');
+INSERT INTO skill (id, skill) VALUES (1, 'pro');
+INSERT INTO skill (id, skill) VALUES (2, 'medium');
+INSERT INTO skill (id, skill) VALUES (3, 'beginner');
 
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 'San Dieog', 2);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 1);
@@ -130,7 +129,6 @@ INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 
 INSERT INTO city (city) VALUES ('San Diego'),
 INSERT INTO city (city) VALUES ('Santa Barbara'),
 INSERT INTO city (city) VALUES ('Los Angeles');
-
 
 INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
 INSERT INTO news (headline, text, city_id) VALUES ('Croc Attack','A crock attacked danndandan', 1);
