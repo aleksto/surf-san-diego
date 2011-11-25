@@ -47,7 +47,7 @@
 		<forward name="sites/home/poster/showCity" path="/showCity.do" />
 		<forward name="sites/home/admin/showCity" path="/showCity.do" />
 		
-		<forward name="sites/surf_conditions/" path="/selectBeach.do" />
+		<forward name="sites/surf_conditions/selectBeach" path="/selectBeach.do" />
 		<forward name="sites/surf_conditions/user/showSurfCon" path="/selectBeach.do" />
 		<forward name="sites/surf_conditions/poster/showSurfCon" path="/selectBeach.do" />
 		<forward name="sites/surf_conditions/admin/showSurfCon" path="/selectBeach.do" />
@@ -101,7 +101,7 @@
 			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
 		
-		<action path="/sites/surf_conditions" type="actions.SelectBeachAction">
+		<action path="/sites/surf_conditions/selectBeach" type="actions.SelectBeachAction">
 			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
 		</action>
 		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.SelectBeachAction">
