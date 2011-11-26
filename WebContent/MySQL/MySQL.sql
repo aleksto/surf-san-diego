@@ -126,8 +126,8 @@ INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1)
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
 INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
 
-INSERT INTO city (city) VALUES ('San Diego'),
-INSERT INTO city (city) VALUES ('Santa Barbara'),
+INSERT INTO city (city) VALUES ('San Diego');
+INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
 
 INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  

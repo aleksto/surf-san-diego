@@ -49,12 +49,16 @@
 			<h2>Surfing conditions</h2>
 			
 			
-			<select name="id" onchange "id(this.value)">
+			<p><select name="id" onchange "id(this.value)"></p>
 			<option value="none"> Select beach: </option> 
 			<c:forEach var="beaches" items="${ beaches }">
 	                <option>${beaches.getName()}</option>     	
         	</c:forEach>
         	</select>
+        	
+        	 <p><form name="form" method="post" action="showSurfCon.do" ></p>
+			 	<button type="submit" value = "Submit">Show</button>
+			 </form>
 				
 		</div>
 		<div id="sidebar">

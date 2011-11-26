@@ -11,6 +11,11 @@
 			name="studentFormInsert" />
 		-->
 	</form-beans>
+		<form-bean type = "forms.SurfConditionForm" name = "SurfConditionForm"/>
+	<form-beans>
+	
+	
+	</form-beans>
 
 
 	<!-- Global Exception Definitions -->
@@ -91,8 +96,10 @@
 		</action>
 		
 		<!-- surf conditions -->
-		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction">
-			<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction"
+				validate="true" scope="request" input="/sites/surf_conditions/surfCon.jsp"
+				name="SurfConditionForm">
+			<forward name="success" path="/sites/surf_conditions/showSurfCon.do" redirect="true" />
 		</action>
 		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.ShowSurfConAction">
 			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
