@@ -31,7 +31,7 @@ public class ShowBeachesAction extends Action {
 		
 		// Store the RowSet in the request scope
 		request.setAttribute("beaches", beachModels);
-
+		
 		return mapping.findForward("success");
 	}
 }

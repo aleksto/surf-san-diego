@@ -3,12 +3,13 @@ package models;
 public class BeachCommentModel {
 	
 	private int beachId;
-	private int userId;
 	private String comment;
+	private UserInfoModel userInfoModel;
 
-	public BeachCommentModel(int beachId, int userId, String comment){
+
+	public BeachCommentModel(int beachId, UserInfoModel userInfoModel, String comment){
 		this.beachId = beachId;
-		this.userId = userId;
+		this.userInfoModel = userInfoModel;
 		this.comment = comment;	
 	}
 
@@ -19,14 +20,7 @@ public class BeachCommentModel {
 	public int getBeachId() {
 		return beachId;
 	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
+	
 
 	public void setComment(String comment) {
 		this.comment = comment;
@@ -35,4 +29,14 @@ public class BeachCommentModel {
 	public String getComment() {
 		return comment;
 	}
+
+	public void setUserInfoModel(UserInfoModel userInfoModel) {
+		this.userInfoModel = userInfoModel;
+	}
+
+	public UserInfoModel getUserInfoModel() {
+		return userInfoModel;
+	}
+
 }
+

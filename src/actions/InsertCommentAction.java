@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionMapping;
 
 import forms.BeachEvaluationForm;
 
-public class InsertCommentAction extends Action {
+public class InsertBeachEvaluationFormAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)  {
@@ -26,8 +26,8 @@ public class InsertCommentAction extends Action {
 		DBModel dbModel = null;
 		try {
 			dbModel = new DBModel();
-			dbModel.insertComment(Integer.valueOf(beachEvaluationForm.getId()), beachEvaluationForm.getComment());
-			dbModel.insertRating(Integer.valueOf(beachEvaluationForm.getId()), Integer.valueOf(beachEvaluationForm.getRating()));
+			dbModel.insertComment(Integer.valueOf(beachEvaluationForm.getBeachId()), beachEvaluationForm.getUsername(), beachEvaluationForm.getComment());
+			dbModel.insertRating(Integer.valueOf(beachEvaluationForm.getBeachId()), beachEvaluationForm.getUsername(), Integer.valueOf(beachEvaluationForm.getRating()));
 			dbModel.closeDB();
 		} catch (NamingException e) {
 			e.printStackTrace();

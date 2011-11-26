@@ -21,8 +21,22 @@ public class DBModel{
   
 		Context context = new InitialContext();      
 		DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-		conn=ds.getConnection();  
-		
+		conn=ds.getConnection();  	
+	}
+	
+	//Vurderer Œ bytte Access Control til id-nummer istedenfor brukernavn
+	public int getUserId(String username) throws SQLException{
+		int userId = 0;
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT id FROM user_account WHERE username=" + username);  
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to CommentList");
+        	userId = updateQuery.getInt(1);
+        }
+        pstmt.close();
+        return userId;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -40,8 +54,7 @@ public class DBModel{
 	    pstmt.close();
 	    return newsModels;	
 	
-	}  
-	
+	} 
 	
 	public ArrayList<BeachModel> getBeaches() throws SQLException{
 		ArrayList<BeachModel> beachModels = new ArrayList<BeachModel>();
@@ -69,11 +82,27 @@ public class DBModel{
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
         	System.out.println("ADDING: " + updateQuery.getInt(1) + " to CommentList");
-        	BeachCommentModel beachComment = new BeachCommentModel(beachId, updateQuery.getInt(1), updateQuery.getString(2));
+        	BeachCommentModel beachComment = new BeachCommentModel(beachId, getUserInfo(updateQuery.getInt(1)), updateQuery.getString(2));
         	beachComments.add(beachComment);
         }
         pstmt.close();
         return beachComments;
+	}
+	
+	public void insertComment(int beachId, String username, String comment) throws SQLException {
+        PreparedStatement pstmt = null;
+        int updateQuery = 0;
+        pstmt = conn.prepareStatement("INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (?, ?, ?)");
+        pstmt.setInt(1, beachId);       
+        pstmt.setInt(2, getUserId(username));
+        pstmt.setString(3, comment);
+        updateQuery += pstmt.executeUpdate();
+        if (updateQuery != 0) 
+         	System.out.println("insertComment: Success");
+        else
+         	System.out.println("insertComment: Not success");
+        pstmt.close();
+        conn.commit();
 	}
 
 	public ArrayList<BeachRatingModel> getRatings(int beachId) throws SQLException {
@@ -83,12 +112,57 @@ public class DBModel{
         pstmt = conn.prepareStatement("SELECT user_id, rating FROM beach_rating WHERE beach_id=" + beachId);  
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to CommentList");
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to RatingList");
         	BeachRatingModel beachRating = new BeachRatingModel(beachId, updateQuery.getInt(1), updateQuery.getInt(2));
         	beachRatings.add(beachRating);
         }
         pstmt.close();
         return beachRatings;
+	}
+	
+	public void insertRating(int beachId, String username, int rating) throws SQLException {
+		PreparedStatement pstmt = null;
+        int updateQuery = 0;
+        pstmt = conn.prepareStatement("INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (?, ?, ?)");
+      
+        pstmt.setInt(1, beachId);       
+        pstmt.setInt(2, getUserId(username));
+        pstmt.setInt(3, rating);
+        updateQuery += pstmt.executeUpdate();
+        if (updateQuery != 0) 
+         	System.out.println("insertRating: Success");
+        else
+         	System.out.println("insertRating: Not success");
+        pstmt.close();
+        conn.commit();
+	}
+	
+	public UserInfoModel getUserInfo(int userId) throws SQLException{
+		UserInfoModel userInfo = null;
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT * FROM user_info WHERE id=" + userId);  
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to CommentList");
+        	userInfo = new UserInfoModel(userId, updateQuery.getString(2), updateQuery.getString(3), updateQuery.getString(4), updateQuery.getString(5), updateQuery.getDate(6), updateQuery.getInt(7));
+        }
+        pstmt.close();
+        return userInfo;
+	}
+	
+	public UserAccountModel getUserAccount(int userId) throws SQLException{
+		UserAccountModel userAccount = null;
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT * FROM user_account WHERE user_id=" + userId);  
+        updateQuery = pstmt.executeQuery();
+        while(updateQuery.next()){
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to CommentList");
+        	userAccount = new UserAccountModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), userId);
+        }
+        pstmt.close();
+        return userAccount;
 	}
 
 	public ArrayList<SurfConModel> getSurfConditions() throws SQLException{
