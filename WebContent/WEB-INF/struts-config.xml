@@ -133,6 +133,12 @@
 			<forward name="success" path="/sites/beaches/poster/showBeaches.do" redirect="true" />
 		</action>
 		
+		<!-- Add news -->
+		<action path="/sites/home/poster/addNews" type="actions.InsertNews"
+			validate="true" scope="request" input="/sites/home/poster/addNews.jsp" name="addNewsForm">
+			<forward name="success" path="/sites/home/poster/showCity.do" redirect="true" />
+		</action>
+		
 	</action-mappings>
 
 	<!-- Message Resources Definitions -->

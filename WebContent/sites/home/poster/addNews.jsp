@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<head>
+
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Add news</title>
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-	
 
 <div id="wrapper">
 	<div id="header">
@@ -42,21 +41,26 @@
 		<div id="content-area">
 			
 		<h2>News</h2>
-			
+					<c:forEach var="news" items="${ news }">
+						<b>${news.getHeadline()}</b></li>
+	                    <p>${news.getText()}</p>
+
+	                   	<html:errors></html:errors>
+				            <html:form method="post" action="/sites/home/poster/home">
+			               		<table>
+									<tr>	
+									<td><html:text styleId="id" property="id" value="${news.getId()}"> </html:text></td>			
+									<td><html:text styleId="headline" property="headline" value="Write a comment..." size="25"> </html:text></td>
+									</tr>
+								</table>
+								<html:submit value="Submit"></html:submit>
+			               	</html:form>
+			               	</c:forEach>
+
 			<form name="frm" method="post" action="commitNews.jsp" onSubmit="return validateForm()">
 			
 			<table>
-				<tr>			
-					<td>Headline:</td> 
-					<td><input type="text" id="headline" name="headline" size=40 /></td>
-				</tr>
-				<tr>
-					<td>Text:</td> 	
-					<td> <textarea id="text" name="text" rows=20" cols="60"> </textarea></td>
-				</tr>
 				
-				<tr>
-
 				<td>City:</td>
 			
 				<p><select name="id" onchange "id(this.value)"></p>
@@ -66,9 +70,6 @@
                 		<option value="$city.id">${city.city}</option>
             			</c:forEach>
 				</select> 
-
-       </tr>
-
 	</table>
 			
 			<p><input type="submit" value="Submit"></p>

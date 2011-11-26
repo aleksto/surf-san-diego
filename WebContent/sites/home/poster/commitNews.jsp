@@ -20,9 +20,9 @@
 
         out.println(request.getParameter("headline") + "<br>");
         out.println(request.getParameter("text") + "<br>");
-        String id = request.getParameter("id");
-		session.setAttribute("id", id); 
-		out.println(session.getAttribute("id").toString() + "<br>");
+        String id = request.getParameter("$city.id");
+		session.setAttribute("$city.id", id); 
+		out.println(session.getAttribute("$city.id").toString() + "<br>");
 		
 		Connection conn = null;
 	   	Context context = new InitialContext();      
@@ -59,7 +59,6 @@
         
 		 String redirectURL = "../poster/home.jsp";
 		   response.sendRedirect(redirectURL);
-    
 	%>	
 		
 

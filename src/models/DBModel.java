@@ -40,21 +40,22 @@ public class DBModel{
 	}
 	
 	@SuppressWarnings("deprecation")
-	public ArrayList<NewsModel> getNews() throws SQLException{
+public ArrayList<NewsModel> getNews() throws SQLException{
 		ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT headline, text, newsDate FROM news");      
+        pstmt = conn.prepareStatement("SELECT headline, text, newsDate, city_id FROM news");      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getString(2) + "and: " + (updateQuery.getTimestamp(3).getYear()+1900) + " to ArrayList");
-        	NewsModel newsModel = new NewsModel(updateQuery.getString(1), updateQuery.getString(2), updateQuery.getTimestamp(3));
+        	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getString(2) + "and: " + (updateQuery.getTimestamp(3).getYear()+1900) + "and: " + updateQuery.getInt(4) + "to ArrayList");
+        	NewsModel newsModel = new NewsModel(updateQuery.getString(1), updateQuery.getString(2), updateQuery.getTimestamp(3), updateQuery.getInt(4));
         	newsModels.add(newsModel);
         }
 	    pstmt.close();
 	    return newsModels;	
+	}  
 	
-	} 
+
 	
 	public ArrayList<BeachModel> getBeaches() throws SQLException{
 		ArrayList<BeachModel> beachModels = new ArrayList<BeachModel>();
@@ -195,6 +196,25 @@ public class DBModel{
 	    pstmt.close();
 	    return cityModels;	
 	} 
+	
+	public void insertNews(int id, String headline, String text, int city_id) throws SQLException {
+        PreparedStatement pstmt = null;
+        int updateQuery = 0;
+        pstmt = conn.prepareStatement("INSERT INTO news (id, headline, text, city_id) VALUES (?, ?, ?, ?)");
+      
+        pstmt.setInt(1, id);       
+        pstmt.setInt(2, 1);
+        pstmt.setString(3, headline);
+        pstmt.setString(4, text);
+        updateQuery += pstmt.executeUpdate();
+        if (updateQuery != 0) 
+         	System.out.println("insertComment: Success");
+        else
+         	System.out.println("insertComment: Not success");
+        pstmt.close();
+        conn.commit();
+	}
+
 	
 	
 	public void closeDB() throws SQLException{

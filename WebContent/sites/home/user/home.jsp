@@ -83,55 +83,23 @@
 		
 		<div id="sidebar">
 			<h3>Surf location </h3>
-				<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-				<form name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
 				
-				<p>Choose your surf location and get news.  </p>
-				<p><select name='city' onchange="city(this.value)"> </p> 
-		       	<option value="none">Select city: </option> 
-			<% 	
-			try {
-		    	/*
-		    	Class.forName("org.gjt.mm.mysql.Driver");
-		        conn =
-		           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-		                                       "user=root&password=pothead");
-		       */
-		       Connection conn = null;
-		       
-				Context context = new InitialContext();      
-				DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-				conn=ds.getConnection();  
-		       	
-				PreparedStatement pstmt = null;
-				ResultSet updateQuery = null;
-				pstmt = conn.prepareStatement("SELECT city, id FROM city");
-				updateQuery = pstmt.executeQuery();
-				int index = 0;
-				while(updateQuery.next()){
-					 String str=updateQuery.getString("city");
-					 index =updateQuery.getInt("id");
-				%>
-		    		<option value="<%=index%>"><%=str%></option>
-		    	<%
-				}
-				%>
-				</select>
-				 <%
-			pstmt.close();
-			conn.close(); 
-		}
-		catch (Exception e) {
-    	e.printStackTrace();
-   		} 
-       %>
+				<form  name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
+				
+				<p>City:</p>
+			<a href='showCity.do'>Show City</a>
+				<p><select name="id" onchange "id(this.value)"></p>
+					<option value="none"> Select city: </option> 
+            			<c:forEach items="${city}" var="city">
+                			<c:set var="id" value="${city}" />
+                			<option value="$city.id">${city.city}</option>
+            			</c:forEach>
+					</select> 
+       		
+				
        <p><input type="submit" value="Submit"></p>
        </form>
-       
-       
-       
-     
-			
+	
 		</div>
 		<div style="clear:both"></div>
 	</div>
