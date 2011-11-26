@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -73,59 +72,58 @@
 			<a href='showBeaches.do'>Link</a>
 			<c:forEach var="beaches" items="${ beaches }">
 	            <ul>
-	                <li>${beaches.getName()}</li>
+	                <li><b>${beaches.getName()}</b></li>
 	                    <p>${beaches.getDescription()}</p>
-				            <form form name="frm" method="post" action="addComment.jsp">
+	                    
+	                   	<html:errors></html:errors>
+				            <html:form method="post" action="/sites/beaches/poster/addEvaluation">
 			               		<table>
-									<tr>	
-									<td><input type="hidden" id="id" name="id" value="${beaches.getId()}" size=25 /></td>			
-									<td><input type="text" id="comment" name="comment" value="Write a comment..." size=25 /></td>
+									<tr>
+									<td><html:hidden property="beachId" value="${beaches.getId()}"></html:hidden></td>			
+									<td><html:text styleId="comment" property="comment" value="Write a comment..." size="25"> </html:text></td>
 									<td>	
-									<select name="rate">
-										<option id ="">Rate beach:</option>
-										<option id ="1"> *</option>
-										<option id ="2"> **</option>
-										<option id ="3"> ***</option>
-										
-							 		</select>
+									<html:select styleId="rating" property="rating">
+										<html:option value="0">Rate beach:</html:option>
+										<html:option value="1">*</html:option>
+										<html:option value="2">**</html:option>
+										<html:option value="3">***</html:option>
+							 		</html:select>
 								</td>
 									</tr>
 								</table>
-								<input type="submit" value="Post">
-			               	</form>
+								<html:submit value="Submit"></html:submit>
+			               	</html:form>
+			               	
+			               	<%
+			               	int counter=0;
+			               	boolean showMoreButton=false;
+							%>
+							<p>
+			               	<c:forEach var="comment" items="${ beaches.getComments() }">
+			               		<%if(counter<3){ %>
+			               		_____________________________________________________________ <br>
+			               		${ comment.getUserInfoModel().getFirstName()} ${ comment.getUserInfoModel().getLastName() } <br>
+			               		 Rating: 
+			               		 <c:forEach var="rating" items="${ beaches.getRatings() }">
+			               		 	<c:if test="${ rating.getUserId() == comment.getUserInfoModel().getId() }">
+			               		 		${rating.getRating()}
+			               		 	</c:if>
+ 		
+			               		 </c:forEach>  <br>
+			               		 ${ comment.getComment() } 
+			               		
+			               		<% } 
+			               		else if(counter==3){ showMoreButton=true; }
+			               		counter++;%>
+			               	</c:forEach>
+			            	_____________________________________________________________</p>      	
+			               	<p><% if(showMoreButton) out.println("Show all comments (IMPLEMENT!)"); %></p>
+			               	
+			               
 			        </ul>
 			</c:forEach>
 			
-			
-            <tr>
-                <td>
-                   <form action="response.jsp">
-                        <strong>Select city:</strong>
-                        <select name="city_id">
-                            <option></option>
-                        </select>
-                        <input type="submit" value="submit" name="submit" />
-                    </form>
-                 </td>  
-            </tr>
-            
-           
-		    <!--  
-			 <p>			
-				<td>Comment:</td> 
-					<td><textarea rows="3" cols="30"></textarea></td>
-				
-				<td>	
-					<select id="location">
-						<option value="">Rate beach:</option>
-						<option>*</option>
-						<option>**</option>
-						<option>***</option>
-			 		</select>
-				</td>
-             </p>
-			-->
-			
+
 		</div>
 		<div id="sidebar">
 			<h3>Something fun </h3>

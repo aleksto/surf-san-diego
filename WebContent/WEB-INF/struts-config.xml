@@ -4,19 +4,12 @@
 
 
 	<!-- Form Bean Definitions -->
-
-	<form-beans>
-		<!--  
-		<form-bean type="forms.StudentFormInsert"
-			name="studentFormInsert" />
-		-->
-	</form-beans>
-		<form-bean type = "forms.SurfConditionForm" name = "SurfConditionForm"/>
-	<form-beans>
 	
-	
+	<form-beans>
+		<form-bean type="forms.SurfConditionForm" name="SurfConditionForm"/>
+		<form-bean type="forms.BeachEvaluationForm" name="beachEvaluationForm" />
 	</form-beans>
-
+	
 
 	<!-- Global Exception Definitions -->
 
@@ -57,10 +50,6 @@
 		<forward name="sites/surf_conditions/user/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
 		<forward name="sites/surf_conditions/admin/showSurfCon" path="/showSurfCon.do" />
-		
-		
-		
-	
 	</global-forwards>
 
 
@@ -138,11 +127,15 @@
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
 		
+		<!-- Add Comment & Rating -->
+		<action path="/sites/beaches/poster/addEvaluation" type="actions.InsertBeachEvaluationFormAction"
+			validate="true" scope="request" input="/sites/beaches/poster/beaches.jsp" name="beachEvaluationForm">
+			<forward name="success" path="/sites/beaches/poster/showBeaches.do" redirect="true" />
+		</action>
+		
 	</action-mappings>
 
 	<!-- Message Resources Definitions -->
-
 	<message-resources parameter="MessageResources" />
-
 
 </struts-config>
