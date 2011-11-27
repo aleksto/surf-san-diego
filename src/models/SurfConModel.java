@@ -12,7 +12,7 @@ public class SurfConModel {
 	private String wave_dir;
 	private String wind_speed;
 	private String wind_dir;
-	private int beach_id;
+	public static int beach_id;
 	
 	public SurfConModel(int id, Date date_, Time time_, String wave_size, 
 		String wave_dir, String wind_speed, String wind_dir, int beach_id ) {
@@ -83,7 +83,7 @@ public class SurfConModel {
 		this.wind_dir = wind_dir;
 	}
 
-	public int getBeach_id() {
+	public static int getBeach_id() {
 		return beach_id;
 	}
 

@@ -85,10 +85,9 @@
 		</action>
 		
 		<!-- surf conditions -->
-		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction"
-				validate="true" scope="request" input="/sites/surf_conditions/surfCon.jsp"
-				name="SurfConditionForm">
-			<forward name="success" path="/sites/surf_conditions/showSurfCon.do" redirect="true" />
+		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfCon.do"
+			validate="true" scope="request" input="/sites/surf_conditions/showBeaches.do" name="SurfConditionForm">
+			<forward name="success" path="/sites/surf_condition/showBeaches.do" redirect="true" />
 		</action>
 		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.ShowSurfConAction">
 			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
@@ -100,8 +99,7 @@
 			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
 		</action>
 		
-		
-		<!-- Beach selection -->
+		<!-- Beach selection -->		
 		<action path="/sites/surf_conditions/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/surf_conditions/selectBeach.jsp" />
 		</action>
@@ -132,6 +130,8 @@
 			validate="true" scope="request" input="/sites/beaches/poster/beaches.jsp" name="beachEvaluationForm">
 			<forward name="success" path="/sites/beaches/poster/showBeaches.do" redirect="true" />
 		</action>
+		
+		
 		
 		<!-- Add news -->
 		<action path="/sites/home/poster/addNews" type="actions.InsertNews"

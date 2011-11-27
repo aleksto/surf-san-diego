@@ -66,8 +66,9 @@ public ArrayList<NewsModel> getNews() throws SQLException{
         while(updateQuery.next()){
             ArrayList<BeachCommentModel> comments = getComments(updateQuery.getInt(1));
             ArrayList<BeachRatingModel> ratings = getRatings(updateQuery.getInt(1));
+            ArrayList<SurfConModel> surfCons = getSurfConditions(updateQuery.getInt(1));
         	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + "+++ to BeachList");
-        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), comments, ratings);
+        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), comments, ratings, surfCons);
         	beachModels.add(beachModel);
         }
 	    pstmt.close();
@@ -166,14 +167,15 @@ public ArrayList<NewsModel> getNews() throws SQLException{
         return userAccount;
 	}
 
-	public ArrayList<SurfConModel> getSurfConditions() throws SQLException{
+	public ArrayList<SurfConModel> getSurfConditions(int beach_id) throws SQLException{
+		System.out.println("!!!!!!!ID " + beach_id);
 		ArrayList<SurfConModel> surfConModels = new ArrayList<SurfConModel>();
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT * FROM surf_conditions");      
+        pstmt = conn.prepareStatement("SELECT * FROM surf_conditions WHERE beach_id=" + beach_id);      
         updateQuery = pstmt.executeQuery();
         while(updateQuery.next()){
-        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to ArrayList");
+        	System.out.println("ADDING: " + updateQuery.getInt(1) + " to SurfConList");
         	SurfConModel surfConModel = new SurfConModel(updateQuery.getInt(1), updateQuery.getDate(2), updateQuery.getTime(3), 
         			updateQuery.getString(4), updateQuery.getString(5), updateQuery.getString(6), updateQuery.getString(7), updateQuery.getInt(8));
         	surfConModels.add(surfConModel);
@@ -181,6 +183,7 @@ public ArrayList<NewsModel> getNews() throws SQLException{
 	    pstmt.close();
 	    return surfConModels;  
 	} 
+
 	
 	public ArrayList<CityModel> getCity() throws SQLException{
 		ArrayList<CityModel> cityModels = new ArrayList<CityModel>();

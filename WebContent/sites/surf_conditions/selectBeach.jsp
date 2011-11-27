@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +31,7 @@
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
 				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
-				<li><a href="../surf_conditions/selectBeach.jsp">Weather</a></li>
+				<li><a href="../surf_conditions/showBeaches.do">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
@@ -47,18 +48,43 @@
 				</p></div>
 			</div>
 			<h2>Surfing conditions</h2>
-			
-			
-			<p><select name="id" onchange "id(this.value)"></p>
-			<option value="none"> Select beach: </option> 
-			<c:forEach var="beaches" items="${ beaches }">
-	                <option>${beaches.getName()}</option>     	
-        	</c:forEach>
-        	</select>
+				 <form method="post">
+			           <table>
+						<tr>	
+						<select property="beach_id">
+							<option value="0">Select beach:</option>
+							<c:forEach var="beaches" items="${ beaches }">
+								<option value="${beaches.getId()}">${beaches.getName()}</option>    	
+        					</c:forEach>
+						</select>
+						</tr>
+						</table>
+			      </form>
+			      
+			<c:forEach var="surfCon" items="${ beaches.getSurfCons() }">
+				
+   
+            <table border = "4">
+            <tr>
+            	<th colspan = "4"> ${surf_conditions.getDate()}   ${surf_conditions.getTime()}</th>
+            </tr>
+            <tr>
+           		<td>Wave size:</td>
+           		<td>Wave direction:</td>
+           		<td>Wind speed:</td>
+           		<td>Wind direction:</td>
+           	</tr>
+           	<tr>
+           		<td>${surf_conditions.getWave_size()}</td>
+           		<td>${surf_conditions.getWave_dir()}</td>
+           		<td>${surf_conditions.getWind_speed()}</td>
+           		<td>${surf_conditions.getWind_dir()}</td>
+           	</tr>
+            </table>
+            </c:forEach>
+          
         	
-        	 <p><form name="form" method="post" action="showSurfCon.do" ></p>
-			 	<button type="submit" value = "Submit">Show</button>
-			 </form>
+        	
 				
 		</div>
 		<div id="sidebar">

@@ -15,20 +15,25 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import forms.SurfConditionForm;
+
 public class ShowSurfConAction extends Action {
+	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
+		
+		SurfConditionForm surfConditionForm = (SurfConditionForm) form;
 		DBModel dbModel = null;
 		ArrayList<SurfConModel> surfConModel = null;
 		try {
 			dbModel = new DBModel();
-			surfConModel = dbModel.getSurfConditions();
+			surfConModel = dbModel.getSurfConditions(Integer.valueOf(surfConditionForm.getBeach_id()));
 			dbModel.closeDB();
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// Store the RowSet in the request scope
+		
 		request.setAttribute("surf_conditions", surfConModel);
 
 		return mapping.findForward("success");
