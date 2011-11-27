@@ -39,42 +39,38 @@
 	</div>
 	<div id="main-content">
 		<div id="content-area">
-			
+		
+		
 		<h2>News</h2>
-					<c:forEach var="news" items="${ news }">
-						<b>${news.getHeadline()}</b></li>
-	                    <p>${news.getText()}</p>
+			<html:errors></html:errors>
+		          <html:form method="post" action="/sites/home/poster/addNews">
+		           		<table>
+		           		
+		           			<td>City:</td>
+		           			
+		           				<html:select styleId="city_id" property="city_id">
+										<html:option value="none">Select city:</html:option>
+											<c:forEach items="${city}" var="city">
+				                				<c:set var="id" value="${city}" />
+				                				<html:option value="${city.getId()}">${city.getCity()}</html:option>
+				            			</c:forEach>
+				            	</html:select>
 
-	                   	<html:errors></html:errors>
-				            <html:form method="post" action="/sites/home/poster/home">
-			               		<table>
-									<tr>	
-									<td><html:text styleId="id" property="id" value="${news.getId()}"> </html:text></td>			
-									<td><html:text styleId="headline" property="headline" value="Write a comment..." size="25"> </html:text></td>
-									</tr>
-								</table>
+		           			<tr>
+		           										
+								<td> Headline: </td> 
+								 <td ><html:text styleId="headline" property="headline" value="" size="25"> </html:text></td>
+							</tr>
+							<tr>
+								<td> Text: </td>
+								<td ><html:text styleId="text" property="text" value="" size="25"> </html:text></td>	
+						</table>
 								<html:submit value="Submit"></html:submit>
 			               	</html:form>
-			               	</c:forEach>
-
-			<form name="frm" method="post" action="commitNews.jsp" onSubmit="return validateForm()">
 			
-			<table>
-				
-				<td>City:</td>
+		
+					
 			
-				<p><select name="id" onchange "id(this.value)"></p>
-					<option value="none"> Select city: </option> 
-            			<c:forEach items="${city}" var="city">
-                		<c:set var="id" value="${city}" />
-                		<option value="$city.id">${city.city}</option>
-            			</c:forEach>
-				</select> 
-	</table>
-			
-			<p><input type="submit" value="Submit"></p>
-			
-			</form>	
 		</div>
 		<div id="sidebar">
 			<h3>Something fun </h3>

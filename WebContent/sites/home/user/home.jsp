@@ -73,7 +73,7 @@
 			
             <c:forEach var="news" items="${ news }">
             <ul>
-                <li>  ${news.getTitle()} </li>
+                <li>  ${news.getHeadline()} </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
             </ul>        
@@ -86,15 +86,17 @@
 				
 				<form  name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
 				
-				<p>City:</p>
+				<p>Set your surf location:</p>
 			<a href='showCity.do'>Show City</a>
 				<p><select name="id" onchange "id(this.value)"></p>
 					<option value="none"> Select city: </option> 
             			<c:forEach items="${city}" var="city">
                 			<c:set var="id" value="${city}" />
-                			<option value="$city.id">${city.city}</option>
+                			<option value="${city.id}">${city.city}</option>
             			</c:forEach>
 					</select> 
+					
+			
        		
 				
        <p><input type="submit" value="Submit"></p>

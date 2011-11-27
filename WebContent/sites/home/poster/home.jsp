@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%
@@ -73,13 +74,14 @@
 			<h2>News</h2>
 			 <c:forEach var="news" items="${ news }">
             <ul>
-                <li>  ${news.getTitle()} </li>
+                <li>  ${news.getHeadline()} </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
             </ul>           
         	</c:forEach>
 
 			 <form name="frm" method="post" action="showCity.do" >
+			 	
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
 			 </form>
 			

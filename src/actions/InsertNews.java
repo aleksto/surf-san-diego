@@ -26,7 +26,7 @@ public class InsertNews extends Action {
 		DBModel dbModel = null;
 		try {
 			dbModel = new DBModel();
-			dbModel.insertNews(Integer.valueOf(addNewsForm.getId()), addNewsForm.getHeadline(), addNewsForm.getText(), addNewsForm.getCity_id());
+			dbModel.insertNews(addNewsForm.getHeadline(), addNewsForm.getText(), Integer.valueOf(addNewsForm.getCity_id()));
 			
 			dbModel.closeDB();
 		} catch (NamingException e) {

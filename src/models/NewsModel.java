@@ -4,13 +4,15 @@ import java.sql.Timestamp;
 
 public class NewsModel {
 	
+	private int id;
 	private String headline;
 	private String text;
 	private Timestamp timestamp;
 	private int city_id;
 
-	public NewsModel(String headline, String text, Timestamp timestamp, int city_id){
-		this.setTitle(headline);
+	public NewsModel(int id, String headline, String text, Timestamp timestamp, int city_id){
+		this.id = id;
+		this.setHeadline(headline);
 		this.text = text;
 		this.setTimestamp(timestamp);
 		this.city_id = city_id;
@@ -21,11 +23,19 @@ public class NewsModel {
 		return year + "-" + timestamp.getMonth() + "-" + timestamp.getDate();
 	}
 
-	public void setTitle(String title) {
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setHeadline(String headline) {
 		this.headline = headline;
 	}
 
-	public String getTitle() {
+	public String getHeadline() {
 		return headline;
 	}
 	
