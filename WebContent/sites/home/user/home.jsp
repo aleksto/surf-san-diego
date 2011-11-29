@@ -1,10 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-	<%
+	
+		<script type="text/javascript">
+		function showNews(str)
+		{
+		var xmlhttp;    
+		if (str=="")
+		  {
+		  document.getElementById("txtHint").innerHTML="";
+		  return;
+		  }
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+		    }
+		  }
+		xmlhttp.open("GET","getNews.jsp?q="+str,true);
+		xmlhttp.send();
+		}
+			
+	</script>
+	<%/*
 	if(request != null){
 		if (request.isUserInRole("admin")) 
 			response.sendRedirect("./../admin/home.jsp");
@@ -14,7 +44,7 @@
 		else 
 			response.sendRedirect("./../home.jsp");
 	}
-	%>
+	*/%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
@@ -69,39 +99,36 @@
 			</div>
 
 			<h2>News</h2>
-			<a href='showNews.do'>Show News</a>
-			
-            <c:forEach var="news" items="${ news }">
-            <ul>
-                <li>  ${news.getHeadline()} </li>
-                    <p>${news.getText()}</p>
-                    <p> ${news.getTimestamp()}</p>
-            </ul>        
-        	</c:forEach>
-		 
+
+				<div id="txtHint"></div>	
+				
+			<!-- 	<a href='showNews.do'>Show News</a>
+				 
+	            <c:forEach var="news" items="${ news }">
+	            <ul>
+	                <li>  ${news.getHeadline()} </li>
+	                    <p>${news.getText()}</p>
+	                    <p> ${news.getTimestamp()}</p>
+	            </ul>        
+	        	</c:forEach> -->
 		</div>
 		
 		<div id="sidebar">
 			<h3>Surf location </h3>
-				
-				<form  name="frm" method="post" action="home.jsp" onSubmit="return validateForm()">
-				
-				<p>Set your surf location:</p>
-			<a href='showCity.do'>Show City</a>
-				<p><select name="id" onchange "id(this.value)"></p>
-					<option value="none"> Select city: </option> 
-            			<c:forEach items="${city}" var="city">
-                			<c:set var="id" value="${city}" />
-                			<option value="${city.id}">${city.city}</option>
-            			</c:forEach>
-					</select> 
-					
+				<p> choose your surf location: </p>
 			
-       		
+				<a href='showCity.do'>Show City</a>
 				
-       <p><input type="submit" value="Submit"></p>
-       </form>
-	
+				<form action=""> 
+					<select name="news" onchange="showNews(this.value)">
+					<option value="none">Select city:</option>
+						<c:forEach items="${city}" var="city">
+				         	<c:set var="id" value="${city}" />
+				             <option value="${city.getId()}">${city.getCity()}</option>
+				         </c:forEach>
+				     </select>
+				</form> 
+
 		</div>
 		<div style="clear:both"></div>
 	</div>

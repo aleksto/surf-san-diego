@@ -131,6 +131,11 @@
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
 		
+				<!-- Show news filter -->
+		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
+				<forward name="success" path="/sites/home/user/home.jsp" />
+		</action>
+		
 		
 		<!-- Add Comment & Rating -->
 		<action path="/sites/beaches/poster/addEvaluation" type="actions.InsertBeachEvaluationFormAction"

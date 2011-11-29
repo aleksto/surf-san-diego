@@ -138,7 +138,7 @@ INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2
 INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
 
 INSERT INTO user_role (user_account_id, role, username) VALUES (1, 'poster', 'maria');
-INSERT INTO user_role (user_account_id, role, username) VALUES (2, 'poster', 'ingrid');
+INSERT INTO user_role (user_account_id, role, username) VALUES (2, 'user', 'ingrid');
 INSERT INTO user_role (user_account_id, role, username) VALUES (3, 'poster', 'aleksto');
 
 INSERT INTO beach (name, description, city_id) VALUES ('Pacific Beach', 
