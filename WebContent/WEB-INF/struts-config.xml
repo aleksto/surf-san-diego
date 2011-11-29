@@ -5,7 +5,6 @@
 	<!-- Form Bean Definitions -->
 	
 	<form-beans>
-		<form-bean type="forms.SurfConditionForm" name="SurfConditionForm"/>
 		<form-bean type="forms.BeachEvaluationForm" name="beachEvaluationForm" />
 		<form-bean type="forms.AddNewsForm" name ="addNewsForm"/>
 	</form-beans>
@@ -44,12 +43,7 @@
 		<forward name="sites/surf_conditions/user/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/surf_conditions/poster/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/surf_conditions/admin/showBeaches" path="/showBeaches.do" />
-		
-		<!-- surf_con.jsp (Surf_conditions) -->
-		<forward name="sites/surf_conditions/showSurfCon" path="/showSurfCon.do" />
-		<forward name="sites/surf_conditions/user/showSurfCon" path="/showSurfCon.do" />
-		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
-		<forward name="sites/surf_conditions/admin/showSurfCon" path="/showSurfCon.do" />
+
 		
 		<forward name="sites/home/poster/addNews" path="/addNews.do" />
 		<forward name="sites/home/admin/addNews" path="/addNews.do" />
@@ -90,22 +84,7 @@
 			<forward name="success" path="/sites/beaches/admin/beaches.jsp" />
 		</action>
 		
-		<!-- surf conditions -->
-		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfCon.do"
-			validate="true" scope="request" input="/sites/surf_conditions/showBeaches.do" name="SurfConditionForm">
-			<forward name="success" path="/sites/surf_condition/showBeaches.do" redirect="true" />
-		</action>
-		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.ShowSurfConAction">
-			<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
-		</action>
-		<action path="/sites/surf_conditions/poster/showSurfCon" type="actions.ShowSurfConAction">
-			<forward name="success" path="/sites/surf_conditions/poster/surf_con.jsp" />
-		</action>
-		<action path="/sites/surf_conditions/admin/showSurfCon" type="actions.ShowSurfConAction">
-			<forward name="success" path="/sites/surf_conditions/admin/surf_con.jsp" />
-		</action>
-		
-		<!-- Beach selection -->		
+		<!-- Surf conditions -->		
 		<action path="/sites/surf_conditions/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/surf_conditions/selectBeach.jsp" />
 		</action>
@@ -118,6 +97,8 @@
 		<action path="/sites/surf_conditions/admin/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/surf_conditions/admin/selectBeach.jsp" />
 		</action>
+		
+
 		
 		
 		<!-- addNews.jsp (City) -->

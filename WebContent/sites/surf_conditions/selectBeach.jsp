@@ -48,41 +48,42 @@
 				</p></div>
 			</div>
 			<h2>Surfing conditions</h2>
-				 <form method="post">
-			           <table>
-						<tr>	
-						<select property="beach_id">
-							<option value="0">Select beach:</option>
-							<c:forEach var="beaches" items="${ beaches }">
-								<option value="${beaches.getId()}">${beaches.getName()}</option>    	
-        					</c:forEach>
-						</select>
-						</tr>
-						</table>
-			      </form>
-			      
-			<c:forEach var="surfCon" items="${ beaches.getSurfCons() }">
 				
-   
-            <table border = "4">
-            <tr>
-            	<th colspan = "4"> ${surf_conditions.getDate()}   ${surf_conditions.getTime()}</th>
-            </tr>
-            <tr>
-           		<td>Wave size:</td>
-           		<td>Wave direction:</td>
-           		<td>Wind speed:</td>
-           		<td>Wind direction:</td>
-           	</tr>
-           	<tr>
-           		<td>${surf_conditions.getWave_size()}</td>
-           		<td>${surf_conditions.getWave_dir()}</td>
-           		<td>${surf_conditions.getWind_speed()}</td>
-           		<td>${surf_conditions.getWind_dir()}</td>
-           	</tr>
-            </table>
-            </c:forEach>
-          
+			<form action="">	
+				<select>
+					<option value="0">Select beach:</option>
+					<c:forEach var="beaches" items="${ beaches }">
+						<option value="${beaches.getId()}">${beaches.getName()}</option> 			  	
+        			</c:forEach>
+				</select>
+			</form>	      
+			
+			
+			<c:forEach var="beaches" items="${ beaches }"> 
+		 
+			<h3>${beaches.getName()}</h3>
+				
+				<c:forEach var="surfCons" items="${beaches.getSurfCons()}">
+	            <table border = "2">
+	            <tr>
+	            	<th colspan = "4"> ${surfCons.getDate()}   ${surfCons.getTime()}</th>
+	            </tr>
+	            <tr>
+	           		<td>Wave size:</td>
+	           		<td>Wave direction:</td>
+	           		<td>Wind speed:</td>
+	           		<td>Wind direction:</td>
+	           	</tr>
+	           	<tr>
+	           		<td>${surfCons.getWave_size()}</td>
+	           		<td>${surfCons.getWave_dir()}</td>
+	           		<td>${surfCons.getWind_speed()}</td>
+	           		<td>${surfCons.getWind_dir()}</td>
+	           	</tr>
+	            </table>
+	            </c:forEach>	
+	   
+        </c:forEach>
         	
         	
 				

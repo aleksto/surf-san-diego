@@ -122,10 +122,6 @@ INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skil
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 1);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24',' San Fran', 3);
 
-INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
-INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
-INSERT INTO user_account (username, password, user_id) VALUES ('aleksto', 'at', 3);
-
 INSERT INTO city (city) VALUES ('San Diego');
 INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
