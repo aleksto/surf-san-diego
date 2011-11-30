@@ -157,22 +157,22 @@ INSERT INTO beach (name, description, city_id) VALUES (
  
  
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+ VALUES ('2011-12-02', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+ VALUES ('2011-12-02', '14:00:00', '1-2 feet', 'NW', '3-4', 'NW', 1);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+ VALUES ('2011-12-02', '18:00:00', '1-2 feet', 'NW', '3-4', 'NW', 1);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
+ VALUES ('2011-12-02', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
  
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
+ VALUES ('2011-12-02', '10:00:00', '3-4 feet', 'WNW', '5-6', 'NW', 2);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
+ VALUES ('2011-12-02', '14:00:00', '3-4 feet', 'WNW', '5-6', 'W', 2);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
+ VALUES ('2011-12-02', '18:00:00', '2-3 feet', 'WNW', '5-6', 'W', 2);
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
- VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
+ VALUES ('2011-12-02', '22:00:00', '1-2 feet', 'WNW', '4-5', 'W', 2);
  
  
 INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'ok');
