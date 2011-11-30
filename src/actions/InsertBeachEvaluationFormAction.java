@@ -26,6 +26,8 @@ public class InsertBeachEvaluationFormAction extends Action {
 		DBModel dbModel = null;
 		try {
 			dbModel = new DBModel();
+			System.out.println("BEACH_ID: " + beachEvaluationForm.getBeachId() + "USERNAME" + beachEvaluationForm.getUsername() + "COMMENT" + beachEvaluationForm.getComment() + "RATING: " + beachEvaluationForm.getRating());
+
 			dbModel.insertComment(Integer.valueOf(beachEvaluationForm.getBeachId()), beachEvaluationForm.getUsername(), beachEvaluationForm.getComment());
 			dbModel.insertRating(Integer.valueOf(beachEvaluationForm.getBeachId()), beachEvaluationForm.getUsername(), Integer.valueOf(beachEvaluationForm.getRating()));
 			dbModel.closeDB();
