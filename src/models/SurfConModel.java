@@ -6,20 +6,20 @@ import java.sql.Time;
 public class SurfConModel {
 	
 	private int id;
-	private Date date_;
-	private Time time_;
+	private Date date;
+	private Time time;
 	private String wave_size;
 	private String wave_dir;
 	private String wind_speed;
 	private String wind_dir;
 	public static int beach_id;
 	
-	public SurfConModel(int id, Date date_, Time time_, String wave_size, 
+	public SurfConModel(int id, Date date, Time time, String wave_size, 
 		String wave_dir, String wind_speed, String wind_dir, int beach_id ) {
 		
 		this.setId(id);
-		this.setDate(date_);
-		this.setTime(time_);
+		this.setDate(date);
+		this.setTime(time);
 		this.setWave_size(wave_size);
 		this.setWave_dir(wave_dir);
 		this.setWind_speed(wind_speed);
@@ -36,19 +36,19 @@ public class SurfConModel {
 	}
 
 	public Date getDate() {
-		return date_;
+		return date;
 	}
 
 	public void setDate(Date date) {
-		this.date_ = date;
+		this.date = date;
 	}
 
 	public Time getTime() {
-		return time_;
+		return time;
 	}
 
 	public void setTime(Time time) {
-		this.time_ = time;
+		this.time = time;
 	}
 
 	public String getWave_size() {
