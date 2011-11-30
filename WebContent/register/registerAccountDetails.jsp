@@ -1,4 +1,8 @@
+<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,49 +10,50 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="../css/style.css" rel="stylesheet" type="text/css" />
-	
-		<script>
-			function validateForm(){
-			    if(document.getElementById("username").value==""){
-					alert("Please enter you username");
-					document.frm.username.focus();
-					return false;
-				}
-				else if(document.frm.password.value==""){
-			  		alert("Please enter your password");
-			 		document.frm.password.focus();
-			  		return false;
-				}
-			    else if(document.getElementById("checkPassword").value==""){
-					alert("Please re-enter your password");
-					document.frm.password.focus();
-					return false;
-				}
-			    /*
-			    else if(document.getElementById("password") != document.getElementById("checkPassword")){
-					alert("Your passwords did not match");
-			 		document.frm.password.focus();
-			  		return false;
-				}
-			    */
-			}
-		</script>
+	<script src="script.js" type="text/javascript"></script>
 </head>
 
 <body>
-<%
-	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
-		String name = session.getAttribute("theName").toString();
-		out.println("Name: " + name);
-		String password = session.getAttribute("thePassword").toString();
-		out.println("<br /> Password: " + password);
-	}
-%>
 
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
 			<h1> <a href ="../index.jsp" style ="text-decoration:none"> The surfer</a>
+			
+			
+			<script>
+			function validateForm(){
+			 	if(document.getElementById("username").value==""){
+					alert("Please enter you username");
+					document.frm.username.focus();
+					return false;
+				}
+			    
+				else if(document.frm.password.value==""){
+			  		alert("Please enter your password");
+			 		document.frm.password.focus();
+			  		return false;
+				}
+				else if(document.frm.password.value.length < 5){
+			  		alert("Your password should be atleast 5 characters");
+			 		document.frm.password.focus();
+			  		return false;
+				}
+			    /*
+				else if(document.getElementById("password") !== document.getElementById("checkPassword")){
+					alert("Your passwords did not match");
+			 		document.frm.password.focus();
+			  		return false;
+				}
+			    */
+			    else if(document.getElementById("checkPassword").value==""){
+					alert("Please re-enter your password");
+					document.frm.password.focus();
+					return false;
+				}
+			 }
+			</script>
+			
 			</h1>
 		</div>
 			
@@ -87,34 +92,46 @@
 			String month = request.getParameter("monthdropdown");
 			session.setAttribute("month", month); 
 			String year = request.getParameter("yeardropdown");
-			session.setAttribute("year", year); 
+			session.setAttribute("year", year);
 			String skill = request.getParameter("skill_id");
 			session.setAttribute("skill", skill); 
-			
-			out.println(firstName + " " + lastName + ", please enter you account details");
+			out.println(day + month + year);
 			%>	
 			</p>
 		
-			<form name="frm" method="post" action="registerCommit.jsp" onSubmit="return validateForm()">
+			<html:form method="post" action="/register/addUser" onsubmit="return validateForm()">				
 				<p>	
 				<table>
+				<html:hidden property="firstName" value="<%=firstName%>"></html:hidden>
+				<html:hidden property="lastname" value="<%=lastName%>"></html:hidden>			
+				<html:hidden property="email" value="<%=email%>"></html:hidden>			
+				<html:hidden property="location" value="<%=location%>"></html:hidden>			
+				<html:hidden property="day" value="<%=day%>"></html:hidden>			
+				<html:hidden property="month" value="<%=month%>"></html:hidden>			
+				<html:hidden property="year" value="<%=year%>"></html:hidden>			
+				<html:hidden property="skill" value="<%=skill%>"></html:hidden>			
+							
 					<tr>	
 						<td>Username:</td> 
-						<td><input type="text" id="username" name="username" size=20 /></td>
+						<td><html:text property="username" size="20"></html:text></td>
 					</tr>
+					
 					<tr>
 						<td>Enter password:</td> 
-						<td><input type="password" id=password" name="password" size=20 /></td>
+						<td>
+							<html:password property="password" styleId="password" size="20" onkeyup="validatePassword()"></html:password>
+							<div id="errorMessage"></div>
+							
+						</td>
 					</tr>
 					<tr>
 						<td>Re-enter password: </td>
-						<td> <input type="password" id="checkPassword" name="checkPassword" size=20 /></td>
+						<td><html:password property="checkPassword" size="20"></html:password></td>
 					</tr>
 				</table>
 				
-				<p><input type="submit" value="Submit"></p>
-					
-			</form>  
+			<p><html:submit value="Submit"></html:submit></p>
+			</html:form>
 			
 		</div>
 		<div id="sidebar">
