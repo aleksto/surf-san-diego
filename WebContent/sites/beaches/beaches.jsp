@@ -38,9 +38,6 @@
 				<li><a href="./../home/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
 			
 			</ul>
 		</div>

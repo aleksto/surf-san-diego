@@ -34,10 +34,7 @@
 			<ul>
 				<li><a href="../../../sites/home/showNews.do">Home</a></li>
 				<li><a href="../../../sites/beaches/showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="../../../sites/beaches/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>
