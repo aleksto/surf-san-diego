@@ -111,10 +111,8 @@
 		<action path="/sites/surf_conditions/admin/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/surf_conditions/admin/selectBeach.jsp" />
 		</action>
-		
 
-		
-		
+
 		<!-- addNews.jsp (City) -->
 		<action path="/sites/home/user/showCity" type="actions.ShowCityAction">
 			<forward name="success" path="/sites/home/user/home.jsp" />
