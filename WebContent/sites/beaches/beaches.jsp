@@ -35,9 +35,9 @@
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="./../home/showNews.do">Home</a></li>
+				<li><a href="../../sites/home/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
+				<li><a href="../../sites/surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>

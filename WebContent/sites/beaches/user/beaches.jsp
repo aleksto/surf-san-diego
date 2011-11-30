@@ -49,10 +49,7 @@
 			<ul>
 				<li><a href="./../../home/user/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="./../../surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>

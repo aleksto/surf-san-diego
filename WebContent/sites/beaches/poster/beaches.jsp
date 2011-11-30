@@ -53,7 +53,7 @@
 			<ul>
 				<li><a href="./../../home/poster/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>			
+				<li><a href="./../../surf_conditions/showBeaches.do">Weather</a></li>			
 			</ul>
 		</div>
 		<div style="clear:both"></div>
