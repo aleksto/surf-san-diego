@@ -35,6 +35,16 @@
 		}
 		
 		</script>
+		<%
+		if(request != null){
+			if (request.isUserInRole("admin")) 
+				response.sendRedirect("admin/showBeaches.do");
+			else if (request.isUserInRole("poster")) 
+				response.sendRedirect("poster/showBeaches.do");
+			else if (request.isUserInRole("user")) 
+				response.sendRedirect("user/showBeaches.do");
+	}
+	%>
 		
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
@@ -47,19 +57,20 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="user/showBeaches.do" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+			
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../beaches/beaches.jsp">Beaches</a></li>
-				<li><a href="../surf_conditions/showBeaches.do">Weather</a></li>
+				<li><a href="./../home/showNews.do">Home</a></li>
+				<li><a href="./../beaches/showBeaches.do">Beaches</a></li>
+				<li><a href="showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>
