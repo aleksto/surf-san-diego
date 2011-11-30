@@ -29,26 +29,6 @@
 	</form-login-config>
 </login-config>
   
-  
-  <!--  Force SSL on all application pages -->
-  <!-- 
-  <security-constraint>
-  	<web-resource-collection>
-  		<web-resource-name>
-  			User area
-  		</web-resource-name>
-  		<url-pattern>
-  			/*
-  		</url-pattern>
-  	</web-resource-collection>
-  	<user-data-constraint>
-  		<transport-guarantee>
-  			CONFIDENTIAL
-  		</transport-guarantee>
-  	</user-data-constraint>
-  </security-constraint>
-   -->
-   
   <security-constraint>
   	<web-resource-collection>
   		<web-resource-name>
@@ -80,6 +60,11 @@
   		<!-- beaches -->
   		<url-pattern>/sites/beaches/poster/*</url-pattern>
   		<url-pattern>/sites/beaches/user/*</url-pattern>
+  		<!-- surf_conditions -->
+  		<url-pattern>/sites/surf_conditions/poster/*</url-pattern>
+  		<url-pattern>/sites/surf_conditions/user/*</url-pattern>
+  		<!-- Registration - Show User Info -->
+  		<url-pattern>/register/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>poster</role-name>
@@ -91,30 +76,6 @@
   	</user-data-constraint>
  </security-constraint>
 
-  <security-constraint>
-  	<web-resource-collection>
-  		<web-resource-name>
-  			admin area
-  		</web-resource-name>
-  		<!-- home -->
-  		<url-pattern>/sites/home/admin/*</url-pattern>
-  		<url-pattern>/sites/home/poster/*</url-pattern>
-  		<url-pattern>/sites/home/user/*</url-pattern>
-  		<!-- beaches -->
-  		<url-pattern>/sites/beaches/admin/*</url-pattern>
-  		<url-pattern>/sites/beaches/poster/*</url-pattern>
-  		<url-pattern>/sites/beaches/user/*</url-pattern>
-  	</web-resource-collection>
-  	<auth-constraint>
-  		<role-name>admin</role-name>
-  	</auth-constraint>
-  	<user-data-constraint>
-  		<transport-guarantee>
-  			CONFIDENTIAL
-  		</transport-guarantee>
-  	</user-data-constraint>
-  </security-constraint>
-  
   <servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
