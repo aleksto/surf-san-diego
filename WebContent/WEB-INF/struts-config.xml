@@ -6,6 +6,7 @@
 	
 	<form-beans>
 		<form-bean type="forms.BeachEvaluationForm" name="beachEvaluationForm" />
+		<form-bean type="forms.AddUserForm" name="addUserForm" />
 		<form-bean type="forms.AddNewsForm" name ="addNewsForm"/>
 	</form-beans>
 	
@@ -20,7 +21,9 @@
 
 	<!-- Global Forward Definitions -->
 	<global-forwards>
-		
+		<!-- register user -->
+		<forward name="register/user/showUserInfo" path="/showUserInfo.do" />
+			
 		<forward name="sites/home/user/showFilterNews" path="/showFilterNews.do" />
 		
 		<!-- home.jsp (News) -->
@@ -56,14 +59,17 @@
 
 
 	<!-- Action Mapping Definitions -->
-	<action-mappings>
-	
+	<action-mappings>	
+		<!-- register -->
+		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
+			<forward name="success" path="/register/user/showUserInfo.jsp" />
+		</action> 	
 		
+		<!-- Show news -->
 		<action path="/sites/home/user/showFilterNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/user/home.jsp" />
 		</action>
-		
-		
+				
 		<!-- home.jsp (News) -->
 		<action path="/sites/home/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/home.jsp" />
@@ -120,6 +126,12 @@
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
 		
+		<!-- Add user -->
+		<action path="/register/addUser" type="actions.InsertUser"
+			validate="true" scope="request" input="/register/registerAccountDetails.jsp" name="addUserForm">
+			<forward name="success" path="/register/user/showUserInfo.do" redirect="true" />
+		</action>
+	
 				<!-- Show news filter -->
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
 				<forward name="success" path="/sites/home/user/home.jsp" />
@@ -131,9 +143,7 @@
 			validate="true" scope="request" input="/sites/beaches/poster/beaches.jsp" name="beachEvaluationForm">
 			<forward name="success" path="/sites/beaches/poster/showBeaches.do" redirect="true" />
 		</action>
-		
-		
-		
+			
 		<!-- Add news -->
 		<action path="/sites/home/poster/addNews" type="actions.InsertNews"
 			validate="true" scope="request" input="/sites/home/poster/addNews.jsp" name="addNewsForm">
