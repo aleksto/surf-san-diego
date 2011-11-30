@@ -15,18 +15,19 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import forms.SurfConditionForm;
+//import forms.SurfConditionForm;
 
 public class ShowSurfConAction extends Action {
 	
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, 
+			HttpServletResponse response)  {
 		
-		SurfConditionForm surfConditionForm = (SurfConditionForm) form;
+		//SurfConditionForm surfConditionForm = (SurfConditionForm) form;
 		DBModel dbModel = null;
 		ArrayList<SurfConModel> surfConModel = null;
 		try {
 			dbModel = new DBModel();
-			surfConModel = dbModel.getSurfConditions(Integer.valueOf(surfConditionForm.getBeach_id()));
+			surfConModel = dbModel.getSurfConditions();
 			dbModel.closeDB();
 		} catch (NamingException e) {
 			e.printStackTrace();
