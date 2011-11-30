@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -29,22 +26,13 @@
 		</div>
 			
 		<div id="user">
-			<form method="POST" action="j_security_check">
-				<div id="username">
-					Username:<input size="20" name="j_username" type="text"/><br/>
-				</div>
-				<div id="password">
-					Password: <input size="20" name="j_password" type="password"/><br/>
-				</div>
-				
-				<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
-				<input type="submit" value="Login"/>
-			</form> 
+			<a href="home.jsp" style ="text-decoration:none">Login</a>
+			<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Beaches</a></li>
+				<li><a href="../../../sites/home/showNews.do">Home</a></li>
+				<li><a href="../../../sites/beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -63,6 +51,18 @@
 			</div>
 			<h2>Login</h2>
 			 <p> Please login to continue </p>
+			 <p>
+			 <form method="POST" action="j_security_check">
+				<div id="username">
+					<p>Username:<input size="20" name="j_username" type="text"/><br/></p>
+				</div>
+				<div id="password">
+					<p>Password:<input size="20" name="j_password" type="password"/><br/></p>
+				</div>
+				
+				<p><input type="submit" value="Login"/></p>
+			</form> 
+			 </p>
 			
 		</div>
 		<div id="sidebar">

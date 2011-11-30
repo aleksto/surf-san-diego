@@ -2,7 +2,7 @@
 <html>
 	<body>
 		<%
-		    String redirectURL = "sites/home/home.jsp";
+		    String redirectURL = "sites/home/showNews.do";
 		    response.sendRedirect(redirectURL);
 		%>
 
@@ -31,7 +31,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
