@@ -28,7 +28,7 @@ public class BeachRatingModel {
 		return userId;
 	}
 
-	public void setComment(int rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 

@@ -3,13 +3,15 @@ package models;
 public class BeachCommentModel {
 	
 	private int beachId;
+	private int userId;
+	private String username;
 	private String comment;
-	private UserInfoModel userInfoModel;
 
 
-	public BeachCommentModel(int beachId, UserInfoModel userInfoModel, String comment){
+	public BeachCommentModel(int beachId, int userId, String username, String comment){
 		this.beachId = beachId;
-		this.userInfoModel = userInfoModel;
+		this.userId = userId;
+		this.username = username;
 		this.comment = comment;	
 	}
 
@@ -30,13 +32,23 @@ public class BeachCommentModel {
 		return comment;
 	}
 
-	public void setUserInfoModel(UserInfoModel userInfoModel) {
-		this.userInfoModel = userInfoModel;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public UserInfoModel getUserInfoModel() {
-		return userInfoModel;
+	public int getUserId() {
+		return userId;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+
 
 }
 

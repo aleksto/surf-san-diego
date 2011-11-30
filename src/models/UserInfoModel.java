@@ -2,6 +2,7 @@ package models;
 
 import java.sql.Date;
 
+
 public class UserInfoModel {
 	
 	private int id;
@@ -9,17 +10,27 @@ public class UserInfoModel {
 	private String lastName;
 	private String email;
 	private String location;
-	private Date dateOfBirth;
 	private int skillId;
+	private String skill;
+	private Date date;
 
-	public UserInfoModel(int id, String firstName, String lastName, String email, String location, Date dateOfBirth, int skillId){
+	public UserInfoModel(int id, String firstName, String lastName, String email, String location, Date date, int skillId){
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.location = location;
-		this.dateOfBirth = dateOfBirth;
+		this.date = date;
 		this.skillId = skillId;
+		
+		if(skillId==1)
+			skill="Pro";
+		else if(skillId==2)
+			skill="Medium";
+		else if(skillId==3)
+			skill="Beginner";
+		else
+			skill="";
 	}
 
 	public int getId() {
@@ -62,14 +73,6 @@ public class UserInfoModel {
 		this.location = location;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public int getSkillId() {
 		return skillId;
 	}
@@ -77,6 +80,20 @@ public class UserInfoModel {
 	public void setSkillId(int skillId) {
 		this.skillId = skillId;
 	}
+	
+	public String getSkill(){
+		return this.skill;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+	
+	
 	
 
 
