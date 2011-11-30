@@ -5,9 +5,37 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<%
 
-	%>	
+		<script type="text/javascript">
+		function showSurfCon(str)
+		{
+		var xmlhttp;  
+		if (str=="")
+		  {
+		  document.getElementById("surf_conditions").innerHTML="";
+		  return;
+		  }
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		    document.getElementById("surf_conditions").innerHTML=xmlhttp.responseText;
+		    }
+		  }
+		xmlhttp.open("GET","surf_con.jsp?id="+str,true);
+		xmlhttp.send();
+		}
+		
+		</script>
+		
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
@@ -44,45 +72,19 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-			<h2>Surfing conditions</h2>
+			<h2>Surfing conditions</h2>	
 				
 			<form action="">	
-				<select>
-					<option value="0">Select beach:</option>
+				<select name="surf_conditions" onchange="showSurfCon(this.value)">
+					<option value="none">Select beach:</option>
 					<c:forEach var="beaches" items="${ beaches }">
+						<c:set var="id" value="${ beaches }" />
 						<option value="${beaches.getId()}">${beaches.getName()}</option> 			  	
         			</c:forEach>
 				</select>
-			</form>	      
+			</form>	 
 			
-			
-			<c:forEach var="beaches" items="${ beaches }"> 
-		 
-			<h3>${beaches.getName()}</h3>
-				
-				<c:forEach var="surfCons" items="${beaches.getSurfCons()}">
-	            <table border = "2">
-	            <tr>
-	            	<th colspan = "4"> ${surfCons.getDate()}   ${surfCons.getTime()}</th>
-	            </tr>
-	            <tr>
-	           		<td>Wave size:</td>
-	           		<td>Wave direction:</td>
-	           		<td>Wind speed:</td>
-	           		<td>Wind direction:</td>
-	           	</tr>
-	           	<tr>
-	           		<td>${surfCons.getWave_size()}</td>
-	           		<td>${surfCons.getWave_dir()}</td>
-	           		<td>${surfCons.getWind_speed()}</td>
-	           		<td>${surfCons.getWind_dir()}</td>
-	           	</tr>
-	            </table>
-	            </c:forEach>	
-	   
-        </c:forEach>
-        	
-        	
+			<div id="surf_conditions"></div>             	
 				
 		</div>
 		<div id="sidebar">
