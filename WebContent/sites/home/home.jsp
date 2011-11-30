@@ -39,8 +39,6 @@
 				<li><a href="showNews.do">Home</a></li>
 				<li><a href="../beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="../surf_conditions/showBeaches.do">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
 				<li><a href="#">Contact</a></li>
 			
 			</ul>
@@ -58,7 +56,7 @@
 			
 			  <c:forEach var="news" items="${ news }">
             <ul>
-                <li>  ${news.getTitle()} </li>
+                <li>  ${news.getHeadline()} </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
             </ul>        

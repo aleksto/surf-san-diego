@@ -54,9 +54,6 @@
 				<li><a href="showNews.do">Home</a></li>
 				<li><a href="../../beaches/poster/showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
 			
 			</ul>
 		</div>

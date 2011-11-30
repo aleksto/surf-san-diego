@@ -53,11 +53,7 @@
 			<ul>
 				<li><a href="./../../home/poster/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
-			
+				<li><a href="#">Weather</a></li>			
 			</ul>
 		</div>
 		<div style="clear:both"></div>
