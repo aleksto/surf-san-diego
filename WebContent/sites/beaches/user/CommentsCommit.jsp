@@ -78,7 +78,7 @@
     }  
         
 		
-		 String redirectURL = "../beaches.jsp";
+		 String redirectURL = "../showBeaches.do";
 		   response.sendRedirect(redirectURL);
 		    
 	%>	

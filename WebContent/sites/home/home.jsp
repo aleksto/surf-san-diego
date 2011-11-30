@@ -7,11 +7,11 @@
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("admin/home.jsp");
+			response.sendRedirect("admin/showNews.do");
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/home.jsp");
+			response.sendRedirect("poster/showNews.do");
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/home.jsp");
+			response.sendRedirect("user/showNews.do");
 	}
 	%>	
 
@@ -26,17 +26,17 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="user/showNews.do" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
+				<li><a href="showNews.do">Home</a></li>
 				<li><a href="../beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="../surf_conditions/showBeaches.do">Weather</a></li>
 				<li><a href="#">Events</a></li>
@@ -56,7 +56,6 @@
 			</div>
 			<h2>News</h2>
 			
-			<a href='showNews.do'>Show News</a>
 			  <c:forEach var="news" items="${ news }">
             <ul>
                 <li>  ${news.getTitle()} </li>

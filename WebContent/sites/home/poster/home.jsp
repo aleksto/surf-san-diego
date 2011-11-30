@@ -7,12 +7,12 @@
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/home.jsp");
+			response.sendRedirect("./../admin/showNews.do");
 		else if (request.isUserInRole("poster")) { }	
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("./../user/home.jsp");
+			response.sendRedirect("./../user/showNews.do");
 		else 
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../showNews.do");
 	}
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -25,7 +25,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -38,11 +38,11 @@
 			 	out.println("(poster)");
 			else{
 				//Add warning
-				response.sendRedirect("./../home.jsp");
+				response.sendRedirect("./../showNews.do");
 			}
 		}catch(NullPointerException e){
 			//Add warning
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../showNews.do");
 		}	
 		%>
 		
@@ -51,8 +51,8 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="showNews.do">Home</a></li>
+				<li><a href="../../beaches/poster/showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -70,8 +70,12 @@
 				</p></div>
 			</div>
 			
-			<a href='showNews.do'>Show News</a>
 			<h2>News</h2>
+			
+			<form name="frm" method="post" action="showCity.do" >
+			 	<p><button type="submit" value = "Submit">Add news</button> </p>
+			 </form>
+			
 			 <c:forEach var="news" items="${ news }">
             <ul>
                 <li>  ${news.getHeadline()} </li>
@@ -80,10 +84,14 @@
             </ul>           
         	</c:forEach>
 
+<<<<<<< .mine
+			 
+=======
 			 <form name="frm" method="post" action="showCity.do" >
 			 	
 			 	<p><button type="submit" value = "Submit">Add news</button> </p>
 			 </form>
+>>>>>>> .r128
 			
 		</div>
 		<div id="sidebar">
