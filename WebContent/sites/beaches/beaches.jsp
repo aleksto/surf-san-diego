@@ -7,11 +7,11 @@
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("admin/beaches.jsp");
+			response.sendRedirect("admin/showBeaches.do");
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/beaches.jsp");
+			response.sendRedirect("poster/showBeaches.do");
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/beaches.jsp");
+			response.sendRedirect("user/showBeaches.do");
 	}
 	%>	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -24,19 +24,19 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="../../index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="user/beaches.jsp" style ="text-decoration:none">Login</a>
+			<a href="user/showBeaches.do" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 			
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="./../../index.jsp">Home</a></li>
-				<li><a href="beaches.jsp">Beaches</a></li>
+				<li><a href="./../home/showNews.do">Home</a></li>
+				<li><a href="showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -55,7 +55,6 @@
 			</div>
 			<h2>Beaches</h2>
 			
-			<a href='showBeaches.do'>Show beaches</a>
 			<c:forEach var="beaches" items="${ beaches }">
 	            <ul>
 	                <li>${beaches.getName()}</li>

@@ -8,14 +8,15 @@
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/beaches.jsp");
+			response.sendRedirect("./../admin/showBeaches.do");
 		else if (request.isUserInRole("poster")) { }	
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("./../user/beaches.jsp");
+			response.sendRedirect("./../user/showBeaches.do");
 		else 
-			response.sendRedirect("./../beaches.jsp");
+			response.sendRedirect("./../showBeaches.do");
 	}
 	%>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
@@ -38,7 +39,7 @@
 			 	out.println("(poster)");
 			else{
 				//Add warning
-				response.sendRedirect("./../beaches.jsp");
+				response.sendRedirect("./../showBeaches.do");
 			}
 		}catch(NullPointerException e){
 			//Add warning
@@ -50,8 +51,8 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="./../../../index.jsp">Home</a></li>
-				<li><a href="beaches.jsp">Beaches</a></li>
+				<li><a href="./../../home/poster/showNews.do">Home</a></li>
+				<li><a href="showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -69,18 +70,18 @@
 				</p></div>
 			</div>
 			<h2>Beaches</h2>
-			<a href='showBeaches.do'>Link</a>
-			<c:forEach var="beaches" items="${ beaches }">
+			<html:errors />
+			<c:forEach var="beaches" items="${beaches}">
 	            <ul>
 	                <li><b>${beaches.getName()}</b></li>
 	                    <p>${beaches.getDescription()}</p>
 	                    
-	                   	<html:errors></html:errors>
 				            <html:form method="post" action="/sites/beaches/poster/addEvaluation">
 			               		<table>
 									<tr>
 									<td><html:hidden property="beachId" value="${beaches.getId()}"></html:hidden></td>			
-									<td><html:text styleId="comment" property="comment" value="Write a comment..." size="25"> </html:text></td>
+									<td><html:hidden property="username" value="aleksto"></html:hidden></td>			
+									<td><html:text styleId="comment" property="comment" value="Write a review..." size="25"> </html:text></td>
 									<td>	
 									<html:select styleId="rating" property="rating">
 										<html:option value="0">Rate beach:</html:option>
@@ -88,40 +89,56 @@
 										<html:option value="2">**</html:option>
 										<html:option value="3">***</html:option>
 							 		</html:select>
-								</td>
+									</td>
 									</tr>
 								</table>
-								<html:submit value="Submit"></html:submit>
+								<!--<html:submit value="Submit"></html:submit>-->								
+								<html:submit property="action" value="insert">
+								</html:submit>
 			               	</html:form>
-			               	
-			               	<%
+			     
+			              	<%
 			               	int counter=0;
 			               	boolean showMoreButton=false;
+			               	boolean showAll=false;
 							%>
 							<p>
-			               	<c:forEach var="comment" items="${ beaches.getComments() }">
-			               		<%if(counter<3){ %>
-			               		_____________________________________________________________ <br>
-			               		${ comment.getUserInfoModel().getFirstName()} ${ comment.getUserInfoModel().getLastName() } <br>
-			               		 Rating: 
-			               		 <c:forEach var="rating" items="${ beaches.getRatings() }">
-			               		 	<c:if test="${ rating.getUserId() == comment.getUserInfoModel().getId() }">
-			               		 		${rating.getRating()}
-			               		 	</c:if>
- 		
-			               		 </c:forEach>  <br>
-			               		 ${ comment.getComment() } 
-			               		
-			               		<% } 
-			               		else if(counter==3){ showMoreButton=true; }
-			               		counter++;%>
-			               	</c:forEach>
-			            	_____________________________________________________________</p>      	
-			               	<p><% if(showMoreButton) out.println("Show all comments (IMPLEMENT!)"); %></p>
-			               	
-			               
+				               	<c:forEach var="comment" items="${ beaches.getComments() }">
+				               		
+				               		<%if(counter<3 || showAll){ %>
+				               		_____________________________________________________________ <br>
+				               		${ comment.getUsername() } <br>
+				               		 Rating: 
+				               		 ${rating.getRating()}
+				               		 <c:forEach var="rating" items="${ beaches.getRatings() }">
+				               		 	<c:if test="${ rating.getUserId() == comment.getUserId() }">
+				               		 		${rating.getRating()}
+				               		 	</c:if>
+				               		 </c:forEach>  <br>
+				               		 ${ comment.getComment() } 
+				               		
+				               		<% } 
+				               		else if(counter>3)
+				               			{ showMoreButton=true; }
+				               			counter++;
+				               		%>
+				               	</c:forEach>
+				            	_____________________________________________________________</p>      	
+				               	<p>
+				               	<% 
+				               		if(showMoreButton){%>
+				               			<form>
+				               				<input type="button" value="Show all" onClick="<%showAll=true;%>" />
+				               			</form>		               			
+				               	<% 	} out.println("AJAX HERE!");
+				               	%>
+				               	</p>
+			               	</p>
+			              
+			              
 			        </ul>
 			</c:forEach>
+			
 			
 
 		</div>

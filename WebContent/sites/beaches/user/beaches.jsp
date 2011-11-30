@@ -5,12 +5,12 @@
 	<%
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/beaches.jsp");
+			response.sendRedirect("./../admin/showBeaches.do");
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/beaches.jsp");
+			response.sendRedirect("./../poster/showBeaches.do");
 		else if (request.isUserInRole("user")) { }	
 		else 
-			response.sendRedirect("./../beaches.jsp");
+			response.sendRedirect("./../showBeaches.do");
 	}
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -35,7 +35,7 @@
 			 	out.println("(user)");
 			else{
 				//Add warning
-				response.sendRedirect("./../beaches.jsp");
+				response.sendRedirect("./../showBeaches.do");
 			}
 		}catch(NullPointerException e){
 			//Add warning
@@ -47,8 +47,8 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="./../../../index.jsp">Home</a></li>
-				<li><a href="beaches.jsp">Beaches</a></li>
+				<li><a href="./../../home/user/showNews.do">Home</a></li>
+				<li><a href="showBeaches.do">Beaches</a></li>
 				<li><a href="#">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -66,7 +66,6 @@
 				</p></div>
 			</div>
 			<h2>Beaches</h2>
-			<a href='showBeaches.do'>Link</a>
 			<c:forEach var="beaches" items="${ beaches }">
 	            <ul>
 	                <li>${beaches.getName()}</li>
