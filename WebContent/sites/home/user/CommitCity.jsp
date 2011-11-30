@@ -76,7 +76,7 @@
      
 
 
-    String redirectURL = "../sites/home/user/home.jsp";
+    String redirectURL = "../sites/home/user/showNews.do";
     response.sendRedirect(redirectURL);
     
     %>
