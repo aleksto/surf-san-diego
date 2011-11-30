@@ -92,8 +92,8 @@ CREATE TABLE beach_rating (
 
 CREATE TABLE surf_conditions (      
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       date_ DATE, 
-       time_ TIME, 
+       dateSC DATE, 
+       timeSC TIME, 
        wave_size VARCHAR(10),
        wave_direction VARCHAR(4),
        wind_speed VARCHAR(10),
@@ -155,24 +155,23 @@ INSERT INTO beach (name, description, city_id) VALUES (
  18 and 20 (Pico Blvd. and Bay St.), and between 28 and 29(Ashland Ave. and Pier St.).
  Always check with lifeguards before surfing.', 3);
  
-
  
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
  
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '14:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '18:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
-INSERT INTO surf_conditions (date_, time_, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-11-22', '22:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 2);
  
  
