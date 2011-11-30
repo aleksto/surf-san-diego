@@ -21,18 +21,18 @@
                                        "user=root&password=pothead");
        */
       
-      	 Connection conn = null;
+       Connection conn = null;
 	   	Context context = new InitialContext();      
         DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
         conn=ds.getConnection();
-        
+        String id = request.getParameter("id");
         Statement stmt = conn.createStatement();
-        ResultSet rset = stmt.executeQuery("SELECT headline, text, newsDate FROM news");
-        %>
+        ResultSet rset = stmt.executeQuery("SELECT * FROM news WHERE city_id =" + id); 
+       
+        %> 
 			<table>
 
 				<% while ( rset.next() ) { %>
-
 					<ul>
 					<li><%=rset.getString("headline") %></li> </ul>
 
@@ -44,15 +44,24 @@
 			</table>
 		<% 
    
-       	rset.close();
+       rset.close();
         conn.commit();
         conn.close();
-        
-	}
-	catch (Exception e)	{
+ 
+	}catch (Exception e){
     	e.printStackTrace();
     }  
 	%>
+
+	 	<a href='showFilterNews.do'>Show News</a>
+				 
+	            <c:forEach var="news" items="${ news }">
+	            <ul>
+	                <li>  ${news.getHeadline()} </li>
+	                    <p>${news.getText()}</p>
+	                    <p> ${news.getTimestamp()}</p>
+	            </ul>        
+	        </c:forEach> 
 
 </body>
 </html>

@@ -222,10 +222,6 @@ public class DBModel{
 	     conn.close();
 
 	}
-
 	
-
-	
-		
 		
 }

@@ -6,31 +6,27 @@
 <head>
 	
 		<script type="text/javascript">
-		function showNews(str)
-		{
-		var xmlhttp;    
-		if (str=="")
-		  {
-		  document.getElementById("txtHint").innerHTML="";
-		  return;
-		  }
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		xmlhttp.onreadystatechange=function()
-		  {
-		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		    {
-		    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-		    }
-		  }
-		xmlhttp.open("GET","getNews.jsp?q="+str,true);
-		xmlhttp.send();
+		function showNews(str)	{
+			
+			var xmlhttp;    
+			if (str=="")	{
+			  	document.getElementById("news").innerHTML="";
+			  	return;
+			}
+			if (window.XMLHttpRequest)	{// code for IE7+, Firefox, Chrome, Opera, Safari
+			  	xmlhttp=new XMLHttpRequest();
+			}
+			else	 {// code for IE6, IE5
+			  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()	 {
+			  	if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
+			    	document.getElementById("news").innerHTML=xmlhttp.responseText;
+			    }
+			}
+			
+			xmlhttp.open("GET","getNews.jsp?id="+str,true);
+			xmlhttp.send();
 		}
 			
 	</script>
@@ -100,17 +96,8 @@
 
 			<h2>News</h2>
 
-				<div id="txtHint"></div>	
+				<div id="news"></div>	
 				
-			<!-- 	<a href='showNews.do'>Show News</a>
-				 
-	            <c:forEach var="news" items="${ news }">
-	            <ul>
-	                <li>  ${news.getHeadline()} </li>
-	                    <p>${news.getText()}</p>
-	                    <p> ${news.getTimestamp()}</p>
-	            </ul>        
-	        	</c:forEach> -->
 		</div>
 		
 		<div id="sidebar">
@@ -120,15 +107,16 @@
 				<a href='showCity.do'>Show City</a>
 				
 				<form action=""> 
-					<select name="news" onchange="showNews(this.value)">
-					<option value="none">Select city:</option>
+					<select name="news" onchange="showNews(this.value)" >
+						<option value="none">Select city:</option>
 						<c:forEach items="${city}" var="city">
 				         	<c:set var="id" value="${city}" />
 				             <option value="${city.getId()}">${city.getCity()}</option>
 				         </c:forEach>
-				     </select>
-				</form> 
-
+				     <select>
+				</form>
+				
+				
 		</div>
 		<div style="clear:both"></div>
 	</div>

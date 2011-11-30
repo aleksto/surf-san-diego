@@ -21,6 +21,8 @@
 	<!-- Global Forward Definitions -->
 	<global-forwards>
 		
+		<forward name="sites/home/user/showFilterNews" path="/showFilterNews.do" />
+		
 		<!-- home.jsp (News) -->
 		<forward name="sites/home/showNews" path="/showNews.do" />
 		<forward name="sites/home/user/showNews" path="/showNews.do" />
@@ -55,6 +57,12 @@
 
 	<!-- Action Mapping Definitions -->
 	<action-mappings>
+	
+		
+		<action path="/sites/home/user/showFilterNews" type="actions.ShowNewsAction">
+			<forward name="success" path="/sites/home/user/home.jsp" />
+		</action>
+		
 		
 		<!-- home.jsp (News) -->
 		<action path="/sites/home/showNews" type="actions.ShowNewsAction">
