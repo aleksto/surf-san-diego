@@ -33,12 +33,12 @@
 	<%/*
 	if(request != null){
 		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/home.jsp");
+			response.sendRedirect("./../admin/showNews.do");
 		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/home.jsp");
+			response.sendRedirect("./../poster/showNews.do");
 		else if (request.isUserInRole("user")) { }	
 		else 
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../showNews.do");
 	}
 	*/%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -51,7 +51,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -63,11 +63,11 @@
 			 	out.println("(user)");
 			else{
 				//Add warning
-				response.sendRedirect("./../home.jsp");
+				response.sendRedirect("./../showNews.do");
 			}
 		}catch(NullPointerException e){
 			//Add warning
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../showNews.do");
 		}		
 		%>
 		<p><a href="./../../../invalidate.jsp">Logout</a></p>	
@@ -75,8 +75,8 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="showNews.do">Home</a></li>
+				<li><a href="../../beaches/user/showBeaches.do">Beaches</a></li>
 				<li><a href="../../surf_conditions/surf_con.jsp">Weather</a></li>
 				<li><a href="#">Events</a></li>
 				<li><a href="#">Media</a></li>
@@ -95,6 +95,15 @@
 			</div>
 
 			<h2>News</h2>
+			
+            <c:forEach var="news" items="${ news }">
+            <ul>
+                <li>  ${news.getTitle()} </li>
+                    <p>${news.getText()}</p>
+                    <p> ${news.getTimestamp()}</p>
+            </ul>        
+        	</c:forEach>
+		 
 
 				<div id="news"></div>	
 				
@@ -102,6 +111,19 @@
 		
 		<div id="sidebar">
 			<h3>Surf location </h3>
+				
+				<form  name="frm" method="post" action="showNews.do" onSubmit="return validateForm()">
+				
+				<p>City:</p>
+			<a href='showCity.do'>Show City</a>
+				<p><select name="id" onchange "id(this.value)"></p>
+					<option value="none"> Select city: </option> 
+            			<c:forEach items="${city}" var="city">
+                			<c:set var="id" value="${city}" />
+                			<option value="$city.id">${city.city}</option>
+            			</c:forEach>
+					</select> 
+       		
 				<p> choose your surf location: </p>
 			
 				<a href='showCity.do'>Show City</a>
