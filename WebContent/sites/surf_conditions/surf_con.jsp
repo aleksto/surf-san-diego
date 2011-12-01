@@ -11,53 +11,34 @@
 
 </head>
 
-
-	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-
+	<%@ page import="java.util.ArrayList" %>
 		<% 
-	 	try {
-      
-      	Connection conn = null;
-	   	Context context = new InitialContext();      
-        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-        conn=ds.getConnection();
-        String id = request.getParameter("id");
-        Statement stmt = conn.createStatement();
-        ResultSet rset = stmt.executeQuery("SELECT * FROM surf_conditions WHERE beach_id=" + id);
-        %>	
-
-			<%while(rset.next()) { %>
+		response.setContentType("text/xml");
+		ArrayList surf_conditions =  (ArrayList) request.getAttribute("surf_conditions");  
+	
+		%>		
+			<c:forEach var="surf_conditions" items="${ surf_conditions}">
+			
 			<table border="2">
+			
 			<tr>
-	        	<th colspan="4"><%=rset.getDate("dateSC") %> <%=rset.getTime("timeSC") %> </th>
+	        <th colspan="4">${surf_conditions.getDate()} ${surf_conditions.getTime()}</th>
 	        </tr>
+			
 	        <tr>
 	        	<td>Wave size:</td>
 	        	<td>Wave direction:</td>
 	        	<td>Wind speed:</td>
 	        	<td>Wind direction:</td>
 	        </tr>
+	       
 	        <tr>
-	        	<td><%=rset.getString("wave_size")%></td>
-	        	<td><%=rset.getString("wave_direction")%></td>
-	        	<td><%=rset.getString("wind_speed")%></td>
-	        	<td><%=rset.getString("wind_direction")%></td>
+	        <td>${surf_conditions.getWave_size()}</td>
+	        <td>${surf_conditions.getWave_dir()}</td>
+	        <td>${surf_conditions.getWind_speed()}</td>
+	        <td>${surf_conditions.getWind_dir()}</td>
 	        </tr>
 	        </table>
-                      
-       <%} %>
-       
-       
-       <%    	
-       	rset.close();
-        conn.commit();
-        conn.close();
-        
-		}
-		catch (Exception e)	{
-    	e.printStackTrace();
-    	}  
-    	%>
-
+	        </c:forEach>
 </body>
 </html>
