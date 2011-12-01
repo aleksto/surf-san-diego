@@ -126,7 +126,7 @@ INSERT INTO city (city) VALUES ('San Diego');
 INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
 
-INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
+INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
 INSERT INTO news (headline, text, city_id) VALUES ('Croc Attack','A crock attacked danndandan', 1);
 
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
@@ -174,7 +174,8 @@ INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_spe
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-12-02', '22:00:00', '1-2 feet', 'WNW', '4-5', 'W', 2);
  
- 
 INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'ok');
 INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (1, 1, 1);
 INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (2, 1, 1);
+
+INSERT INTO surf_location (username, city_id) VALUES ('Ingrid', 2);

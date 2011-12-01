@@ -262,11 +262,11 @@ public class DBModel{
 	    return surfConModels;  
 	} 
 	@SuppressWarnings("deprecation")
-	public ArrayList<NewsModel> getNews(int id) throws SQLException{
+	public ArrayList<NewsModel> getNews() throws SQLException{
 			ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 			PreparedStatement pstmt = null;
 			ResultSet updateQuery = null;
-	        pstmt = conn.prepareStatement("SELECT * FROM news WHERE city_id =" + id);     
+	        pstmt = conn.prepareStatement("SELECT * FROM news");     
 	        updateQuery = pstmt.executeQuery();
 	        while(updateQuery.next()){
 	        	System.out.println("Adding: " + updateQuery.getInt(1)+ updateQuery.getString(2) + " and: " + updateQuery.getString(3) + "and: " + (updateQuery.getTimestamp(4).getYear()+1900) + "and: " + updateQuery.getInt(5) + "to ArrayList");
@@ -334,14 +334,15 @@ public class DBModel{
         pstmt.close();
         conn.commit();
 	}
+	 
+
 
 	public void insertCity(String username, int city_id) throws SQLException{
 		PreparedStatement pstmt = null;
         int updateQuery = 0;
-        pstmt = conn.prepareStatement("INSERT INTO surf_location (username,  city_id  ) VALUES ( ?,?)"); 
-        pstmt.setString(1, username);
-        pstmt.setInt(2, city_id);
-       
+        pstmt = conn.prepareStatement("UPDATE surf_location SET city_id=? WHERE username = ?"); 
+        pstmt.setInt(1, city_id);
+        pstmt.setString(2, username);
         
         updateQuery += pstmt.executeUpdate();
         if (updateQuery != 0) 

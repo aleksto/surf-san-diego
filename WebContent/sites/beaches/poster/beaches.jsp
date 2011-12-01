@@ -76,7 +76,7 @@
 			               		<table>
 									<tr>
 									<td><html:hidden property="beachId" value="${beaches.getId()}"></html:hidden></td>			
-									<td><html:hidden property="username" value="aleksto"></html:hidden></td>			
+									<td><html:hidden property="username" value="<%= request.getUserPrincipal().getName() %>"></html:hidden></td>			
 									<td><html:text styleId="comment" property="comment" value="Write a review..." size="25"> </html:text></td>
 									<td>	
 									<html:select styleId="rating" property="rating">
