@@ -7,9 +7,8 @@
 	<form-beans>
 		<form-bean type="forms.BeachEvaluationForm" name="beachEvaluationForm" />
 		<form-bean type="forms.AddUserForm" name="addUserForm" />
-		<form-bean type="forms.AddNewsForm" name ="addNewsForm"/>
+		<form-bean type="forms.AddNewsForm" name ="addNewsForm"/>	
 	</form-beans>
-	
 
 	<!-- Global Exception Definitions -->
 
@@ -112,7 +111,6 @@
 			<forward name="success" path="/sites/surf_conditions/admin/selectBeach.jsp" />
 		</action>
 
-
 		<!-- addNews.jsp (City) -->
 		<action path="/sites/home/user/showCity" type="actions.ShowCityAction">
 			<forward name="success" path="/sites/home/user/home.jsp" />
@@ -133,6 +131,12 @@
 				<!-- Show news filter -->
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
 				<forward name="success" path="/sites/home/user/home.jsp" />
+		</action>
+		
+		<!-- Show surf conditions filter -->
+		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
+			scope="request" input="showBeaches.do">
+				<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
 		</action>
 		
 		
