@@ -1,6 +1,7 @@
 package actions;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 import javax.naming.NamingException;
@@ -15,14 +16,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import forms.SurfConditionForm;
-
 public class ShowSurfConAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
 		String id = request.getParameter("id");
-		SurfConditionForm surfConditionForm = (SurfConditionForm) form;
-		System.out.println("halllloooooooo" + id);
 		DBModel dbModel = null;
 		ArrayList<SurfConModel> surfConModel = null;
 		try {
@@ -36,7 +33,6 @@ public class ShowSurfConAction extends Action {
 		}
 		
 		request.setAttribute("surf_conditions", surfConModel);
-		System.out.println("HALLO!!!");
 
 		return mapping.findForward("success");
 	}
