@@ -20,13 +20,14 @@ import forms.SurfConditionForm;
 public class ShowSurfConAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {
-		
+		String id = request.getParameter("id");
 		SurfConditionForm surfConditionForm = (SurfConditionForm) form;
+		System.out.println("halllloooooooo" + id);
 		DBModel dbModel = null;
 		ArrayList<SurfConModel> surfConModel = null;
 		try {
 			dbModel = new DBModel();
-			surfConModel = dbModel.getSurfConditions(Integer.valueOf(surfConditionForm.getBeach_id()));
+			surfConModel = dbModel.getSurfConditions(Integer.valueOf(id));
 			dbModel.closeDB();
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -35,6 +36,7 @@ public class ShowSurfConAction extends Action {
 		}
 		
 		request.setAttribute("surf_conditions", surfConModel);
+		System.out.println("HALLO!!!");
 
 		return mapping.findForward("success");
 	}
