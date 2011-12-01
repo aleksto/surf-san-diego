@@ -22,20 +22,30 @@ public class ShowNewsAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {		
 		DBModel dbModel = null;
 		
-		String id = request.getParameter("id");
+		System.out.println("How news is being called");
+		
+		String cityId = request.getParameter("id");
 		String username = request.getParameter("username");
-		ArrayList<NewsModel> newsModels = null;
-		ArrayList<SurfLocationModel> surfLocationModels = null;
+		ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 		try {
 			dbModel = new DBModel();
 			for (SurfLocationModel surfLocationModel : dbModel.getSurfLocationModels()) {
-				if(username.equalsIgnoreCase((surfLocationModel.getUsername()))){
-					newsModels = dbModel.getNews( Integer.valueOf(surfLocationModel.getCity_id()));
-				}
-				else{
-					newsModels = dbModel.getNews( Integer.valueOf(id));
+				System.out.println("Running through SurfLocations");
+				for (NewsModel newsModel : dbModel.getNews()) {
+					System.out.println("Running through Newsmodels");
+					if(surfLocationModel.getUsername().equalsIgnoreCase(username) && newsModel.getCity_id()==Integer.valueOf(cityId)){
+						newsModels.add(newsModel);
+					}
+				}		
+			}
+			
+			if(newsModels.size() == 0){
+				for (NewsModel newsModel : dbModel.getNews()) {
+					newsModels.add(newsModel);
 				}
 			}
+			
+
 			
 			dbModel.closeDB();
 		} catch (NamingException e) {
@@ -43,6 +53,11 @@ public class ShowNewsAction extends Action {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		for (NewsModel newsModel : newsModels) {
+			System.out.println("PREPARING SHOW NEWS. TITLE: " + newsModel.getHeadline());
+		}
+		
+		System.out.println("About to return");
 		
 		// Store the RowSet in the request scope
 		request.setAttribute("news", newsModels);
