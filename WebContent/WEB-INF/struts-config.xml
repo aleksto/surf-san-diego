@@ -8,6 +8,7 @@
 		<form-bean type="forms.BeachEvaluationForm" name="beachEvaluationForm" />
 		<form-bean type="forms.AddUserForm" name="addUserForm" />
 		<form-bean type="forms.AddNewsForm" name ="addNewsForm"/>	
+		<form-bean type="forms.AddCityForm" name ="addCityForm"/>
 	</form-beans>
 
 	<!-- Global Exception Definitions -->
@@ -52,29 +53,34 @@
 		<forward name="sites/home/poster/addNews" path="/addNews.do" />
 		<forward name="sites/home/admin/addNews" path="/addNews.do" />
 		
-		
+		<forward name="sites/home/user/addCity" path="/addCity.do" />
+
 		
 	</global-forwards>
 
 
 	<!-- Action Mapping Definitions -->
+
+	<action-mappings>
+
 	<action-mappings>	
 		<!-- register -->
 		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
 			<forward name="success" path="/register/user/showUserInfo.jsp" />
 		</action> 	
-		
+
 		<!-- Show news -->
 		<action path="/sites/home/user/showFilterNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/user/home.jsp" />
 		</action>
 				
+
 		<!-- home.jsp (News) -->
 		<action path="/sites/home/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/home.jsp" />
 		</action>
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/user/home.jsp" />
+			<forward name="success" path="/sites/home/user/getNews.jsp" />
 		</action>
 		<action path="/sites/home/poster/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/poster/home.jsp" />
@@ -121,7 +127,7 @@
 		<action path="/sites/home/admin/showCity" type="actions.ShowCityAction">
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
-		
+
 		<!-- Add user -->
 		<action path="/register/addUser" type="actions.InsertUser"
 			validate="true" scope="request" input="/register/registerAccountDetails.jsp" name="addUserForm">
@@ -132,6 +138,7 @@
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
 				<forward name="success" path="/sites/home/user/home.jsp" />
 		</action>
+
 		
 		<!-- Show surf conditions filter -->
 		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
@@ -152,9 +159,16 @@
 			<forward name="success" path="/sites/home/poster/home.jsp" redirect="true" />
 		</action>
 		
-	</action-mappings>
+		<!-- Add City -->
+		<action path="/sites/home/user/addCity" type="actions.InsertCityAction"
+			validate="true" scope="request" input="/sites/home/user/home.jsp" name="addCityForm">
+			<forward name="success" path="/sites/home/user/home.jsp" redirect="true" />
+		</action>
+
+</action-mappings>
 
 	<!-- Message Resources Definitions -->
 	<message-resources parameter="MessageResources" />
 
+</action-mappings>
 </struts-config>

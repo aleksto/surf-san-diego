@@ -9,51 +9,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%@ page import="java.sql.*" import="javax.naming.*" import="javax.sql.DataSource" import = "java.util.GregorianCalendar" %>
-	<%
-
-	 try {
-    	/*
-    	Class.forName("org.gjt.mm.mysql.Driver");
-        conn =
-           DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&" +
-                                       "user=root&password=pothead");
-       */
-      
-       Connection conn = null;
-	   	Context context = new InitialContext();      
-        DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/Surf-San-DiegoDBPool");
-        conn=ds.getConnection();
-        String id = request.getParameter("id");
-        Statement stmt = conn.createStatement();
-        ResultSet rset = stmt.executeQuery("SELECT * FROM news WHERE city_id =" + id); 
-       
-        %> 
-			<table>
-
-				<% while ( rset.next() ) { %>
-					<ul>
-					<li><%=rset.getString("headline") %></li> </ul>
-
-					<p><%=rset.getString("text")%></p> 
-					
-					<p><%=rset.getTimestamp("newsDate")%></p> 
-					
-			<% } %>
-			</table>
-		<% 
+	<%@ page import="java.util.ArrayList" %>
+       <% 
+       response.setContentType("text/xml");
+       ArrayList news =  (ArrayList) request.getAttribute("news");  
    
-       rset.close();
-        conn.commit();
-        conn.close();
- 
-	}catch (Exception e){
-    	e.printStackTrace();
-    }  
-	%>
+       %>
+	
 
-	 	<a href='showFilterNews.do'>Show News</a>
+			<c:forEach var="news" items="${ news }">
+            <ul>
+                <li>  ${news.getHeadline()} </li>
+                    <p>${news.getText()}</p>
+                    <p> ${news.getTimestamp()}</p>
+            </ul>           
+        	</c:forEach>
+	
+
+	 	<!--  <a href='showFilterNews.do'>Show News</a>
 				 
 	            <c:forEach var="news" items="${ news }">
 	            <ul>
@@ -62,6 +35,6 @@
 	                    <p> ${news.getTimestamp()}</p>
 	            </ul>        
 	        </c:forEach> 
-
+-->
 </body>
 </html>

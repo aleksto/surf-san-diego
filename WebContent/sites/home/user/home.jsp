@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
@@ -25,7 +25,7 @@
 			    }
 			}
 			
-			xmlhttp.open("GET","getNews.jsp?id="+str,true);
+			xmlhttp.open("GET","showNews.do?id="+str+"&username="+request.getUserPrincipal().getName(),true);
 			xmlhttp.send();
 		}
 			
@@ -78,6 +78,9 @@
 				<li><a href="home.jsp">Home</a></li>
 				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
 				<li><a href="../../surf_conditions/surf_con.jsp">Weather</a></li>
+				<li><a href="#">Events</a></li>
+				<li><a href="#">Media</a></li>
+				<li><a href="#">Contact</a></li>
 			
 			</ul>
 		</div>
@@ -102,18 +105,21 @@
 				<p> Set your surf location:  </p>
 			
 				<a href='showCity.do'>Show City</a>
-				
-				<form method="post" > 
-					<select property = "city_id" onchange="showNews(this.value)" >
-					
-						<option value="none">Select city:</option>
-						<c:forEach items="${city}" var="city">
-				         	<c:set var="id" value="${city}" />
-				             <option value="${city.getId()}">${city.getCity()}</option>
-				         </c:forEach>
-				     </select>
-				    
-				</form> 
+
+				<html:form method="post" action="/sites/home/user/addCity"> 
+				<table>
+					<html:hidden property="username" value="maria"></html:hidden>
+					<html:select styleId="city_id" property = "city_id" onchange="showNews(this.value)"  >
+	
+						<html:option value="none">Select city:</html:option>
+							<c:forEach items="${city}" var="city">
+				         		<c:set var="id" value="${city.getCity()}" />
+				            	 <html:option value="${city.getId()}">${city.getCity()}</html:option>
+				         	</c:forEach>
+				     	</html:select>
+				     </table>
+				    	<html:submit value="Submit"></html:submit>
+				</html:form> 
 		
 		</div>
 		<div style="clear:both"></div>
@@ -123,4 +129,4 @@
 	</div>
 </div>
 </body>
-</html>
+</html>ml>

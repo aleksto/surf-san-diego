@@ -110,7 +110,7 @@ CREATE TABLE news (
 );
 
 CREATE TABLE surf_location (
-		user_id INT REFERENCES user_infor(id),
+		username VARCHAR(15),
 		city_id INT REFERENCES city(id)
 );
 

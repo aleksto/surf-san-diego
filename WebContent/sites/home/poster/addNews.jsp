@@ -37,7 +37,6 @@
 	<div id="main-content">
 		<div id="content-area">
 		
-		
 		<h2>News</h2>
 			<html:errors></html:errors>
 		          <html:form method="post" action="/sites/home/poster/addNews">
@@ -64,9 +63,6 @@
 						</table>
 								<html:submit value="Submit"></html:submit>
 			               	</html:form>
-			
-		
-					
 			
 		</div>
 		<div id="sidebar">

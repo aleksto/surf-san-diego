@@ -39,6 +39,7 @@ public class DBModel{
         return userId;
 	}
 	
+	
 	public int getMostRecentId() throws SQLException{
 		int userId = 0;
 		PreparedStatement pstmt = null;
@@ -261,11 +262,11 @@ public class DBModel{
 	    return surfConModels;  
 	} 
 	@SuppressWarnings("deprecation")
-	public ArrayList<NewsModel> getNews() throws SQLException{
+	public ArrayList<NewsModel> getNews(int id) throws SQLException{
 			ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 			PreparedStatement pstmt = null;
 			ResultSet updateQuery = null;
-	        pstmt = conn.prepareStatement("SELECT id, headline, text, newsDate, city_id FROM news");      
+	        pstmt = conn.prepareStatement("SELECT * FROM news WHERE city_id =" + id);     
 	        updateQuery = pstmt.executeQuery();
 	        while(updateQuery.next()){
 	        	System.out.println("Adding: " + updateQuery.getInt(1)+ updateQuery.getString(2) + " and: " + updateQuery.getString(3) + "and: " + (updateQuery.getTimestamp(4).getYear()+1900) + "and: " + updateQuery.getInt(5) + "to ArrayList");
@@ -277,6 +278,22 @@ public class DBModel{
 		}  
 
 
+	public ArrayList<SurfLocationModel> getSurfLocationModels() throws SQLException{
+		ArrayList<SurfLocationModel> surfLocationModels = new ArrayList<SurfLocationModel>();
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+		pstmt = conn.prepareStatement("SELECT username, city_id FROM surf_location");     
+        updateQuery = pstmt.executeQuery();
+       
+        while(updateQuery.next()){
+        	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getInt(2) +" to ArrayList");
+        	SurfLocationModel surfLocationModel = new SurfLocationModel(updateQuery.getString(1), updateQuery.getInt(2));
+        	surfLocationModels.add(surfLocationModel);
+        }
+	    pstmt.close();
+	    return surfLocationModels;
+	}
+	
 
 	
 	public ArrayList<CityModel> getCity() throws SQLException{
@@ -285,10 +302,16 @@ public class DBModel{
 		ResultSet updateQuery = null;
 		pstmt = conn.prepareStatement("SELECT id, city FROM city");     
         updateQuery = pstmt.executeQuery();
-       
+ 
         while(updateQuery.next()){
-        	System.out.println("Adding: " + updateQuery.getInt(1) + " and: " + updateQuery.getString(2) +" to ArrayList");
-        	CityModel cityModel = new CityModel(updateQuery.getInt(1), updateQuery.getString(2));
+        	ArrayList<String> usernames = new ArrayList<String>();
+            for (SurfLocationModel surfLocationModel : getSurfLocationModels()) {
+    			if(updateQuery.getInt(1) == surfLocationModel.getCity_id())
+    				usernames.add(surfLocationModel.getUsername());
+    		}
+        	
+        	System.out.println("Adding: " + updateQuery.getInt(1) + " and: " + updateQuery.getString(2) + "and" + "to ArrayList");
+        	CityModel cityModel = new CityModel(updateQuery.getInt(1), updateQuery.getString(2), usernames);
         	cityModels.add(cityModel);
         }
 	    pstmt.close();
@@ -311,10 +334,31 @@ public class DBModel{
         pstmt.close();
         conn.commit();
 	}
+
+	public void insertCity(String username, int city_id) throws SQLException{
+		PreparedStatement pstmt = null;
+        int updateQuery = 0;
+        pstmt = conn.prepareStatement("INSERT INTO surf_location (username,  city_id  ) VALUES ( ?,?)"); 
+        pstmt.setString(1, username);
+        pstmt.setInt(2, city_id);
+       
+        
+        updateQuery += pstmt.executeUpdate();
+        if (updateQuery != 0) 
+         	System.out.println("insertCity: Success");
+        else
+         	System.out.println("insertCity: Not success");
+        pstmt.close();
+        conn.commit();
+	}
+
+
 	public void closeDB() throws SQLException{
 	     conn.close();
 
 	}
+
+	
 	
 		
 }
