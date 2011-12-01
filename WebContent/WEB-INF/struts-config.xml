@@ -24,7 +24,6 @@
 		<!-- register user -->
 		<forward name="register/user/showUserInfo" path="/showUserInfo.do" />
 			
-		<forward name="sites/home/user/showFilterNews" path="/showFilterNews.do" />
 		
 		<!-- home.jsp (News) -->
 		<forward name="sites/home/showNews" path="/showNews.do" />
@@ -65,10 +64,6 @@
 			<forward name="success" path="/register/user/showUserInfo.jsp" />
 		</action> 	
 
-		<!-- Show news -->
-		<action path="/sites/home/user/showFilterNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/user/home.jsp" />
-		</action>
 
 		<!-- home.jsp (News) -->
 		<action path="/sites/home/showNews" type="actions.ShowNewsAction">
@@ -129,11 +124,7 @@
 			<forward name="success" path="/register/user/showUserInfo.do" redirect="true" />
 		</action>
 	
-		<!-- Show news filter 
-		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
-				<forward name="success" path="/sites/home/user/home.jsp" />
-		</action>
-		-->
+	
 		
 		<!-- Show surf conditions filter -->
 		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
