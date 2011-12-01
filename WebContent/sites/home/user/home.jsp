@@ -23,9 +23,10 @@
 			  	if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
 			    	document.getElementById("news").innerHTML=xmlhttp.responseText;
 			    }
-			}
+			};
 			
-			xmlhttp.open("GET","showNews.do?id="+str+"&username="+request.getUserPrincipal().getName(),true);
+			var username="<%=request.getUserPrincipal().getName()%>"; 
+			xmlhttp.open("GET","showNews.do?id="+str+"&username="+username,true);
 			xmlhttp.send();
 		}
 			
@@ -78,9 +79,6 @@
 				<li><a href="home.jsp">Home</a></li>
 				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
 				<li><a href="../../surf_conditions/surf_con.jsp">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
 			
 			</ul>
 		</div>
@@ -101,6 +99,7 @@
 		</div>
 		
 		<div id="sidebar">
+			<% String username = request.getUserPrincipal().getName(); %>
 			<h3>Surf location </h3>
 				<p> Set your surf location:  </p>
 			
@@ -108,7 +107,7 @@
 
 				<html:form method="post" action="/sites/home/user/addCity"> 
 				<table>
-					<html:hidden property="username" value="maria"></html:hidden>
+					<html:hidden property="username" value="<%= username %>"></html:hidden>
 					<html:select styleId="city_id" property = "city_id" onchange="showNews(this.value)"  >
 	
 						<html:option value="none">Select city:</html:option>
@@ -129,4 +128,4 @@
 	</div>
 </div>
 </body>
-</html>ml>
+</html>
