@@ -75,7 +75,7 @@
 			<forward name="success" path="/sites/home/home.jsp" />
 		</action>
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/user/home.jsp" />
+			<forward name="success" path="/sites/home/user/getNews.jsp" />
 		</action>
 		<action path="/sites/home/poster/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/poster/home.jsp" />

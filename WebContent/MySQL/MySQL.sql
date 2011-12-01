@@ -90,7 +90,7 @@ INSERT INTO city (city) VALUES ('San Diego');
 INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
 
-INSERT INTO news (headline, text) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
+INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
 INSERT INTO news (headline, text, city_id) VALUES ('Croc Attack','A crock attacked danndandan', 1);
 
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);

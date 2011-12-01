@@ -81,10 +81,7 @@
             </ul>           
         	</c:forEach>
 
-			 <form name="frm" method="post" action="showCity.do" >
-			 	
-			 	<p><button type="submit" value = "Submit">Add news</button> </p>
-			 </form>
+			
 			
 		</div>
 		<div id="sidebar">

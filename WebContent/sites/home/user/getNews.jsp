@@ -9,6 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%@ page import="java.util.ArrayList" %>
+       <% 
+       response.setContentType("text/xml");
+       ArrayList news =  (ArrayList) request.getAttribute("news");  
+   
+       %>
+	
 			<c:forEach var="news" items="${ news }">
             <ul>
                 <li>  ${news.getHeadline()} </li>

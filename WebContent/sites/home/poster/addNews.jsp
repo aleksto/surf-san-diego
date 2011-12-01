@@ -59,7 +59,7 @@
 							</tr>
 							<tr>
 								<td> Text: </td>
-								<td ><html:text styleId="text" property="text" value="" size="25"> </html:text></td>	
+								<td ><html:textarea styleId="text" property="text" value="" cols="40" rows="5"> </html:textarea></td>	
 						</table>
 								<html:submit value="Submit"></html:submit>
 			               	</html:form>
