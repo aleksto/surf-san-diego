@@ -1,12 +1,7 @@
 DROP TABLE IF EXISTS user_info;
 DROP TABLE IF EXISTS user_account;
 DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS skill;
 DROP TABLE IF EXISTS city;
-DROP TABLE IF EXISTS weather_forcast;
-DROP TABLE IF EXISTS event;
-DROP TABLE IF EXISTS user_event;
-DROP TABLE IF EXISTS user_traffic;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
@@ -22,7 +17,7 @@ CREATE TABLE user_info (
 	email VARCHAR(50),
 	location VARCHAR(50),
 	date_of_birth DATE,
-	skill_id INT REFERENCES skill (id)
+	skill_id VARCHAR(20)
 );
 
 CREATE TABLE user_account (
@@ -44,32 +39,6 @@ CREATE TABLE city (
        city VARCHAR(20)
 );
 
-CREATE TABLE skill (
-	id INT,
-	skill VARCHAR(20)
-);
-
-CREATE TABLE weather_forcast (
-       w_date DATE PRIMARY KEY,
-       description VARCHAR(200),
-       tide VARCHAR(20)
-);
-
-CREATE TABLE event (
-       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       name VARCHAR(30),
-       ev_date DATE,
-       ev_time TIME,
-       city VARCHAR(20),
-       address VARCHAR(50),
-       description VARCHAR(200)
-);
-
-CREATE TABLE user_event (
-       id_user INT,
-       id_event INT
-);
-
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        name VARCHAR(30),
@@ -82,7 +51,6 @@ CREATE TABLE beach_comment (
 		user_id INT REFERENCES user_account(id),
 		comment VARCHAR(200)
 );
-
 
 CREATE TABLE beach_rating (
 		beach_id INT REFERENCES beach(id),
@@ -113,10 +81,6 @@ CREATE TABLE surf_location (
 		username VARCHAR(15),
 		city_id INT REFERENCES city(id)
 );
-
-INSERT INTO skill (id, skill) VALUES (1, 'pro');
-INSERT INTO skill (id, skill) VALUES (2, 'medium');
-INSERT INTO skill (id, skill) VALUES (3, 'beginner');
 
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 'San Dieog', 2);
 INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 1);
