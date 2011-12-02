@@ -38,6 +38,8 @@
   		<url-pattern>/sites/home/user/*</url-pattern>
   		<!-- beaches -->
   		<url-pattern>/sites/beaches/user/*</url-pattern>
+  		<!-- surf_conditions -->
+  		<url-pattern>/sites/surf_conditions/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>user</role-name>
