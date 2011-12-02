@@ -80,7 +80,7 @@
 			session.setAttribute("lastname", lastName); 
 			String email = request.getParameter("email");
 			session.setAttribute("email", email); 
-			String location = request.getParameter("location");
+			String location = request.getParameter("searchField");
 			session.setAttribute("location", location); 
 			String day = request.getParameter("daydropdown");
 			session.setAttribute("day", day); 
