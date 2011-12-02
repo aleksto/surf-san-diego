@@ -70,7 +70,7 @@
 	                <li><b>${beaches.getName()}</b></li>
 	                    <p>${beaches.getDescription()}</p>
 	                    
-				            <html:form method="post" action="/sites/beaches/poster/addEvaluation">
+				            <html:form method="post" action="/sites/beaches/user/addEvaluation">
 			               		<table>
 									<tr>
 									<td><html:hidden property="beachId" value="${beaches.getId()}"></html:hidden></td>			
