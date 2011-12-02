@@ -55,7 +55,7 @@
 		</div>
 			
 		<div id="user">
-			<a href="./../sites/home/user/home.jsp" style ="text-decoration:none">Login</a>
+			<a href="./../sites/home/user/showNews.do" style ="text-decoration:none">Login</a>
 			<a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">

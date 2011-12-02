@@ -13,12 +13,12 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="#" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="home.jsp" style ="text-decoration:none">Login</a>
+			<a href="../showCity.do" style ="text-decoration:none">Login</a>
 			<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">

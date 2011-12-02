@@ -72,7 +72,7 @@ CREATE TABLE surf_conditions (
 CREATE TABLE news (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        headline VARCHAR(60) NOT NULL,
-       text VARCHAR(400) NOT NULL,
+       text VARCHAR(800) NOT NULL,
        newsDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
        city_id INT REFERENCES city(id)
 );

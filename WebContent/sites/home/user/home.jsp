@@ -38,7 +38,7 @@
 		else if (request.isUserInRole("user")) { 
 		}	
 		else 
-			response.sendRedirect("./../home.jsp");
+			response.sendRedirect("./../showNews.do");
 	}
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -93,7 +93,7 @@
 		<div id="pages">
 			<ul>
 				<li><a href="showCity.do">Home</a></li>
-				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
+				<li><a href="../../beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="../../surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
