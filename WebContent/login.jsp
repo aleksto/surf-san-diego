@@ -18,7 +18,7 @@
 		</div>
 			
 		<div id="user">
-			<a href="../showCity.do" style ="text-decoration:none">Login</a>
+			<a href="showCity.do" style ="text-decoration:none">Login</a>
 			<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">
