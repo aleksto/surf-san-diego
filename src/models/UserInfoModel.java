@@ -92,10 +92,4 @@ public class UserInfoModel {
 	public Date getDate() {
 		return date;
 	}
-	
-	
-	
-
-
-
 }

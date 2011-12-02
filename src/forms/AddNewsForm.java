@@ -3,18 +3,8 @@ package forms;
 import org.apache.struts.action.ActionForm;
 
 public class AddNewsForm extends ActionForm{
-	/**
-	 * 
-	 */
-	/*
-	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-		ActionErrors errors = new ActionErrors();
-		if ((id == null) || (id.length() < 1)){
-			errors.add("idMsgTag1", new ActionMessage("errors.required", "ID"));
-		}
-		return errors;
-	}
-	*/
+
+
 	
 	private static final long serialVersionUID = 1L;
 	private String headline = null;

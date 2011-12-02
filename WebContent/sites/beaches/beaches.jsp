@@ -29,7 +29,7 @@
 		</div>
 			
 		<div id="user">
-			<a href="user/showBeaches.do" style ="text-decoration:none">Login</a>
+			<a href="./../home/showNews.do" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 			
 		</div>
@@ -37,7 +37,7 @@
 			<ul>
 				<li><a href="./../home/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
+				<li><a href="./../surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>

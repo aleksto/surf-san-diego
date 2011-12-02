@@ -11,14 +11,6 @@ body {
 	color:black;
 }
 
-#popups{
-	position: absolute;
-}
-
-searchField.error{
-	background-color: #FC0;
-}
-
 div.suggestions{
 font-family:"Times New Roman",Georgia,Serif;
 	font-size:12px;

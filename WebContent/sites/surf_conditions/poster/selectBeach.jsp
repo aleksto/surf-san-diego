@@ -56,7 +56,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="../../home/showCity.do" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../home/showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
