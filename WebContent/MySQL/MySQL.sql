@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS surf_conditions;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS user_role;
-DROP TABLE IF EXISTS evaluation;
 DROP TABLE IF EXISTS surf_location;
 DROP TABLE IF EXISTS beach;
 DROP TABLE IF EXISTS beach_comment;
@@ -24,13 +23,13 @@ CREATE TABLE user_info (
 CREATE TABLE user_account (
 	   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        username VARCHAR(15) UNIQUE,
-       password VARCHAR(10),
+       password VARCHAR(10) NOT NULL
        user_id INT REFERENCES user_info(id)
 );
 
 CREATE TABLE user_role (
 	   user_account_id INT REFERENCES user_account(id),
-       role VARCHAR(25),
+       role VARCHAR(25) NOT NULL,
        username VARCHAR(15) UNIQUE
 );
 
@@ -42,15 +41,15 @@ CREATE TABLE city (
 
 CREATE TABLE beach (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       name VARCHAR(30),
-       description VARCHAR(1000),
+       name VARCHAR(30) NOT NULL,
+       description VARCHAR(1000) NOT NULL,
        city_id INT REFERENCES city(id)
 );
 
 CREATE TABLE beach_comment (
 		beach_id INT REFERENCES beach(id),
 		user_id INT REFERENCES user_account(id),
-		comment VARCHAR(200)	
+		comment VARCHAR(200) 	
 );
 
 CREATE TABLE beach_rating (
@@ -61,20 +60,20 @@ CREATE TABLE beach_rating (
 
 CREATE TABLE surf_conditions (      
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       dateSC DATE, 
-       timeSC TIME, 
-       wave_size VARCHAR(10),
-       wave_direction VARCHAR(4),
-       wind_speed VARCHAR(10),
-       wind_direction VARCHAR(4),
+       dateSC DATE NOT NULL, 
+       timeSC TIME NOT NULL, 
+       wave_size VARCHAR(10) NOT NULL,
+       wave_direction VARCHAR(4) NOT NULL,
+       wind_speed VARCHAR(10) NOT NULL,
+       wind_direction VARCHAR(4) NOT NULL,
        beach_id INT REFERENCES beach(id)
 );
 
 CREATE TABLE news (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       headline VARCHAR(30),
-       text VARCHAR(400),
-       newsDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       headline VARCHAR(30) NOT NULL,
+       text VARCHAR(400) NOT NULL,
+       newsDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
        city_id INT REFERENCES city(id)
 );
 
