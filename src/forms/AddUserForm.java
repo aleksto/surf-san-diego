@@ -1,6 +1,12 @@
 package forms;
 
+import java.sql.SQLException;
+
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
+
+import models.DBModel;
+import models.UserAccountModel;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -11,12 +17,38 @@ import org.apache.struts.action.ActionMessage;
 
 public class AddUserForm extends ActionForm {
 	
-	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {	
 		ActionErrors errors = new ActionErrors();
+		boolean usernameExists =false;;
+
+		try {
+			DBModel dbModel = new DBModel();
+			for (UserAccountModel user : dbModel.getUserAccounts()) {
+				if(username.equalsIgnoreCase(user.getUsername())){
+					usernameExists=true;
+				}
+			}
+			dbModel.closeDB();
+			
+			
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		if ((firstName == null) || (firstName.length() < 1)){
 			errors.add("idMsgTag1", new ActionMessage("errors.required", "First name"));
 		}
+		
+		if(usernameExists){
+			errors.add("idMsgTag2", new ActionMessage("error.db", "Username exists"));
+		}
+		
+		
 		return errors;
+		
+		
 	}
 
 	private String firstName;

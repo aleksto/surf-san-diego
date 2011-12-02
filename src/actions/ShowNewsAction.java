@@ -22,10 +22,12 @@ public class ShowNewsAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {		
 		DBModel dbModel = null;
 		
-		System.out.println("How news is being called");
-		
 		String cityId = request.getParameter("id");
 		String username = request.getParameter("username");
+		
+		
+		System.out.println("___ID___ = " + cityId);
+
 		ArrayList<NewsModel> newsModels = new ArrayList<NewsModel>();
 		try {
 			dbModel = new DBModel();
@@ -33,19 +35,21 @@ public class ShowNewsAction extends Action {
 				System.out.println("Running through SurfLocations");
 				for (NewsModel newsModel : dbModel.getNews()) {
 					System.out.println("Running through Newsmodels");
-					if(surfLocationModel.getUsername().equalsIgnoreCase(username) && newsModel.getCity_id()==Integer.valueOf(cityId)){
+					if(surfLocationModel.getUsername().equalsIgnoreCase(username) && newsModel.getCity_id()==Integer.valueOf(cityId) && Integer.valueOf(cityId)!=0){
 						newsModels.add(newsModel);
 					}
-				}		
+				}
+				
 			}
 			
 			if(newsModels.size() == 0){
-				for (NewsModel newsModel : dbModel.getNews()) {
-					newsModels.add(newsModel);
+				if(username==null || Integer.valueOf(cityId)==0 || cityId==null){
+					for (NewsModel newsModel : dbModel.getNews()) {
+						newsModels.add(newsModel);
+					}
 				}
+				
 			}
-			
-
 			
 			dbModel.closeDB();
 		} catch (NamingException e) {
