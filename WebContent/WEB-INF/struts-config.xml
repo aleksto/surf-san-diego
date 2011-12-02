@@ -64,7 +64,7 @@
 	<action-mappings>	
 		<!-- register -->
 		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
-			<forward name="success" path="/register/user/showUserInfo.jsp" />
+			<forward name="success" path="/register/showUserInfo.jsp" />
 		</action> 	
 
 

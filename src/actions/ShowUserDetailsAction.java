@@ -21,7 +21,7 @@ public class ShowUserDetailsAction extends Action {
 		UserInfoModel userInfoModel = null;
 		try {
 			dbModel = new DBModel();
-			userInfoModel = dbModel.getUserInfo(userId);
+			userInfoModel = dbModel.getUserInfo(dbModel.getMostRecentId());
 			System.out.println("UserInfoModel.getId = " + userInfoModel.getId());
 			dbModel.closeDB();
 		} catch (NamingException e) {

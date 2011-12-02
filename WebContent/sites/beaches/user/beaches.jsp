@@ -35,6 +35,8 @@
 			out.println("Welcome " + request.getUserPrincipal().getName());
 				if (request.isUserInRole("user")) 
 			 	out.println("(user)");
+				else if (request.isUserInRole("poster")) 
+				 	out.println("(poster)");
 			else{
 				//Add warning
 				response.sendRedirect("./../showBeaches.do");
