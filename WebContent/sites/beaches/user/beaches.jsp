@@ -23,7 +23,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../home/user/home.jsp" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -49,7 +49,7 @@
 			<ul>
 				<li><a href="./../../home/user/showNews.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
-				<li><a href="./../../surf_conditions/showBeaches.do">Weather</a></li>
+				<li><a href="../../../sites/surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>
@@ -86,17 +86,7 @@
 			               	</form>
 			        </ul>
 			</c:forEach>
-			 <tr>
-                <td>
-                   <form action="response.jsp">
-                        <strong>Select city:</strong>
-                        <select name="city_id">
-                            <option></option>
-                        </select>
-                        <input type="submit" value="submit" name="submit" />
-                    </form>
-                 </td>  
-            </tr>
+			
 	                 	
 	     
            

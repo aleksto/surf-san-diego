@@ -30,7 +30,7 @@
 		    document.getElementById("surf_conditions").innerHTML=xmlhttp.responseText;
 		    }
 		  }
-		xmlhttp.open("GET","surf_con.jsp?id="+str,true);
+		xmlhttp.open("GET","showSurfCon.do?id="+str,true);
 		xmlhttp.send();
 		}
 		
@@ -38,11 +38,11 @@
 		<%
 		if(request != null){
 			if (request.isUserInRole("admin")) 
-				response.sendRedirect("./../admin/showBeaches.do");
+				response.sendRedirect("admin/showBeaches.do");
 			else if (request.isUserInRole("poster")) 
-				response.sendRedirect("./../poster/showBeaches.do");
+				response.sendRedirect("poster/showBeaches.do");
 			else if (request.isUserInRole("user")) 
-				response.sendRedirect("./../showBeaches.do");
+				response.sendRedirect("user/showBeaches.do");
 	}
 	%>
 		
@@ -57,7 +57,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="../../showNews.do" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -85,8 +85,8 @@
 			</div>
 			<h2>Surfing conditions</h2>	
 				
-			<form action="">	
-				<select name="surf_conditions" onchange="showSurfCon(this.value)">
+			<form>	
+				<select property="beach_id" name="surf_conditions" onchange="showSurfCon(this.value)">
 					<option value="none">Select beach:</option>
 					<c:forEach var="beaches" items="${ beaches }">
 						<c:set var="id" value="${ beaches }" />

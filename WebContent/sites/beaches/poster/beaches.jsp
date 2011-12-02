@@ -27,7 +27,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="./../../home/poster/showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			

@@ -95,12 +95,11 @@
 			
 			<div id="pages">
 				<ul>
-					<li><a href="../sites/home/home.jsp">Home</a></li>
-					<li><a href="../sites/beaches/beaches.jsp">Beaches</a></li>
-					<li><a href="#">Weather</a></li>
-					<li><a href="#">Events</a></li>
-					<li><a href="#">Media</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="../sites/home/showNews.do">Home</a></li>
+					<li><a href="../sites/beaches/showBeaches.do">Beaches</a></li>
+					<li><a href="../sites/surf_conditions/showBeaches.do">Weather</a></li>
+					
+				
 				</ul>
 			</div>
 			<div style="clear:both"></div>

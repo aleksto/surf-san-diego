@@ -33,9 +33,8 @@
 	</script>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/home.jsp");
-		else if (request.isUserInRole("poster")) 
+		
+		if (request.isUserInRole("poster")) 
 			response.sendRedirect("./../poster/home.jsp");
 		else if (request.isUserInRole("user")) { }	
 		else 
@@ -52,7 +51,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -76,9 +75,9 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
+				<li><a href="showNews.do">Home</a></li>
 				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
-				<li><a href="../../surf_conditions/surf_con.jsp">Weather</a></li>
+				<li><a href="../../surf_conditions/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>
@@ -91,7 +90,6 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
-
 			<h2>News</h2>
 
 				<div id="news"></div>	
