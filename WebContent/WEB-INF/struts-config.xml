@@ -157,6 +157,10 @@
 			validate="true" scope="request" input="/sites/beaches/poster/beaches.jsp" name="beachEvaluationForm">
 			<forward name="success" path="/sites/beaches/poster/showBeaches.do" redirect="true" />
 		</action>
+		<action path="/sites/beaches/user/addEvaluation" type="actions.InsertBeachEvaluationFormAction"
+			validate="true" scope="request" input="/sites/beaches/user/beaches.jsp" name="beachEvaluationForm">
+			<forward name="success" path="/sites/beaches/user/showBeaches.do" redirect="true" />
+		</action>
 			
 		<!-- Add news -->
 		<action path="/sites/home/poster/addNews" type="actions.InsertNews"
