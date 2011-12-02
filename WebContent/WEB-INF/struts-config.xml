@@ -22,7 +22,7 @@
 	<!-- Global Forward Definitions -->
 	<global-forwards>
 		<!-- register user -->
-		<forward name="register/user/showUserInfo" path="/showUserInfo.do" />
+		<forward name="register/showUserInfo" path="/showUserInfo.do" />
 			
 		
 		<!-- home.jsp (News) -->
@@ -63,7 +63,7 @@
 	<!-- Action Mapping Definitions -->
 	<action-mappings>	
 		<!-- register -->
-		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
+		<action path="/register/showUserInfo" type="actions.ShowUserDetailsAction">
 			<forward name="success" path="/register/showUserInfo.jsp" />
 		</action> 	
 
@@ -133,12 +133,6 @@
 		<action path="/sites/home/admin/showCity" type="actions.ShowCityAction">
 			<forward name="success" path="/sites/home/admin/addNews.jsp" />
 		</action>
-
-		<!-- Add user -->
-		<action path="/register/addUser" type="actions.InsertUser"
-			validate="true" scope="request" input="/register/registerAccountDetails.jsp" name="addUserForm">
-			<forward name="success" path="/register/user/showUserInfo.do" redirect="true" />
-		</action>
 		
 		<!-- Show surf conditions filter -->
 		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
@@ -160,6 +154,12 @@
 		<action path="/sites/beaches/user/addEvaluation" type="actions.InsertBeachEvaluationFormAction"
 			validate="true" scope="request" input="/sites/beaches/user/beaches.jsp" name="beachEvaluationForm">
 			<forward name="success" path="/sites/beaches/user/showBeaches.do" redirect="true" />
+		</action>
+		
+		<!-- Add user -->
+		<action path="/register/addUser" type="actions.InsertUser"
+			validate="true" scope="request" input="/register/registerAccountDetails.jsp" name="addUserForm">
+			<forward name="success" path="/register/showUserInfo.do" redirect="true" />
 		</action>
 			
 		<!-- Add news -->

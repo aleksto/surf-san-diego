@@ -162,7 +162,7 @@ public class DBModel{
 		UserInfoModel userInfo = null;
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
-        pstmt = conn.prepareStatement("SELECT firstname, lastname, email, location, date_of_birth, skill_id  FROM user_info WHERE id=" + userId);  
+        pstmt = conn.prepareStatement("SELECT firstname, lastname, email, location, date_of_birth, skill  FROM user_info WHERE id=" + userId);  
         
         updateQuery = pstmt.executeQuery();
        
