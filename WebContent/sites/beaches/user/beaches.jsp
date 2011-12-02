@@ -93,24 +93,24 @@
 								</p>
 			               	</html:form>
 			               	</ul>
+			               
 						
-							<p>
-							<c:set var="rateTotal" value="${0}" />
-								
-							<c:forEach var="rating" items="${ beaches.getRatings() }">
-								<c:set var="rateTotal" value="${rateTotal + rating.getRating() }" />
-							</c:forEach>
-							Total rate: ${rateTotal}
-							</p>
+							
 						
 						<p>
-							
+								
 				               	<c:forEach var="comment" items="${ beaches.getComments() }">
-				               		
-				               		Username: ${ comment.getUsername() }
+				               		<c:set var="rating" value="${beaches.getRatings()}" />
+				         -------------------------------------------------------------------------------------<br>
+				               		Username: ${ comment.getUsername() }<br>
 				               	
-				               		Comment: ${ comment.getComment() }
+				               		Comment: ${ comment.getComment() }<br>
+				               		
+				               		
 				               				 				               
+				               	</c:forEach>
+				         -------------------------------------------------------------------------------------<br>
+				               	
 				               	</c:forEach>
 				               
 
