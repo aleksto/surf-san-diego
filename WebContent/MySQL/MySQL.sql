@@ -12,12 +12,12 @@ DROP TABLE IF EXISTS beach;
 
 CREATE TABLE user_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	firstname VARCHAR(50),
-	lastname VARCHAR(50),
-	email VARCHAR(50),
-	location VARCHAR(50),
-	date_of_birth DATE,
-	skill_id VARCHAR(20)
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	location VARCHAR(50) NOT NULL,
+	date_of_birth DATE NOT NULL,
+	skill VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE user_account (
@@ -36,7 +36,7 @@ CREATE TABLE user_role (
 
 CREATE TABLE city (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       city VARCHAR(20)
+       city VARCHAR(20) UNIQUE
 );
 
 CREATE TABLE beach (
@@ -82,13 +82,14 @@ CREATE TABLE surf_location (
 		city_id INT REFERENCES city(id)
 );
 
-INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 'San Dieog', 2);
-INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 1);
-INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill_id) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24',' San Fran', 3);
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill) VALUES ('Maria', 'Moller', 'mariamollr@gmail.com', '1988-2-28', 'San Dieog', 'Pro');
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill) VALUES ('Ingrid', 'Taroy', 'i.taroy@gmail.com', '1987-11-30','LA', 'middle');
+INSERT INTO user_info (firstname, lastname, email, date_of_birth, location, skill) VALUES ('Ali', 'Torstensen', 'at@gmail.com', '1988-5-24',' San Fran', 'beginner');
 
 INSERT INTO city (city) VALUES ('San Diego');
 INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
+
 
 INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
 INSERT INTO news (headline, text, city_id) VALUES ('Croc Attack','A crock attacked danndandan', 1);
