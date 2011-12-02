@@ -25,9 +25,9 @@
 			      document.frm.email.focus();
 			      return false;
 			}
-		    else if(document.getElementById("location").value==""){
+		    else if(document.getElementById("searchField").value==""){
 			      alert("Please enter your location");
-			      document.frm.location.focus();
+			      document.frm.searchField.focus();
 			      return false;
 			}
 		    else if(document.getElementById("daydropdown").value==""){
@@ -108,7 +108,7 @@
 			<div id="content-area">
 				<h2>Fill in</h2>
 					<form name="frm" method="post" action="registerAccountDetails.jsp" onSubmit="return validateForm()">
-						<p>	<table tabindex="1">
+						<p>	<table tabindex="1"></p>
 						<tr>			
 							<td>First Name:*</td> 
 							<td><input type="text" id="firstname" name="firstname" size="25" /></td>
@@ -120,7 +120,7 @@
 							<td>E-mail:* </td>	
 							<td><input type="text" id="email"name="email" size=25 /> </td></tr>
 						<tr>
-							<td>From State:*</td> 	
+							<td>State:*</td> 	
 							<td>
 								<input type="text" id="searchField" name="searchField" size=25 autocomplete="off" onkeyup="searchSuggest()" /> <br>
 								<div id="popups"></div>
@@ -128,9 +128,9 @@
 						</tr>
 						<tr>		
 							<td>Date of birth:*</td>
-							<td><select name="daydropdown" id="daydropdown"> </select> 
-								<select name="monthdropdown" id="monthdropdown"> </select> 
-								<select name="yeardropdown" id= "yeardropdown"></select>
+							<td><select name="daydropdown" id="daydropdown"></select> 
+								<select name="monthdropdown" id="monthdropdown"></select> 
+								<select name="yeardropdown" id= "yeardropdown"></select> (DD/MM/YYYY)
 							</td>
 						</tr>
 						<tr>

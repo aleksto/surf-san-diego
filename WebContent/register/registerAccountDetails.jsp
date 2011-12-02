@@ -25,24 +25,28 @@
 			function validateForm(){
 			 	if(document.getElementById("username").value==""){
 					alert("Please enter you username");
-					document.frm.username.focus();
+					document.getElementById("username").focus();
 					return false;
 				}
-			    
-				else if(document.frm.password.value==""){
+				else if(document.getElementById("password").value==""){
 			  		alert("Please enter your password");
-			 		document.frm.password.focus();
+			  		document.getElementById("password").focus();
 			  		return false;
 				}
-				else if(document.frm.password.value.length < 5){
+				else if(document.getElementById("password").value.length < 5){
 			  		alert("Your password should be atleast 5 characters");
-			 		document.frm.password.focus();
+			  		document.getElementById("password").focus();
 			  		return false;
 				}
 			 
 			    else if(document.getElementById("checkPassword").value==""){
 					alert("Please re-enter your password");
-					document.frm.password.focus();
+					document.getElementById("checkPassword").focus();
+					return false;
+				}
+			    else if(document.getElementById("password").value != document.getElementById("checkPassword").value){
+					alert("You did not re-enter password");
+					document.getElementById("checkPassword").focus();
 					return false;
 				}
 			 }
@@ -90,9 +94,11 @@
 			
 			%>	
 			</p>
+			<p><html:errors></html:errors></p>
 		
 			<html:form method="post" action="/register/addUser" onsubmit="return validateForm()">				
 				<p>	
+				
 				<table>
 				<html:hidden property="firstName" value="<%=firstName%>"></html:hidden>
 				<html:hidden property="lastname" value="<%=lastName%>"></html:hidden>			
@@ -105,20 +111,20 @@
 							
 					<tr>	
 						<td>Username:</td> 
-						<td><html:text property="username" size="20"></html:text></td>
+						<td><html:text styleId="username" property="username" size="20"></html:text></td>
 					</tr>
 					
 					<tr>
 						<td>Enter password:</td> 
 						<td>
-							<html:password property="password" styleId="password" size="20" onkeyup="validatePassword()"></html:password>
+							<html:password styleId="password" property="password" size="20" onkeyup="validatePassword()"></html:password>
 							<div id="errorMessage"></div>
 							
 						</td>
 					</tr>
 					<tr>
 						<td>Re-enter password: </td>
-						<td><html:password property="checkPassword" size="20"></html:password></td>
+						<td><html:password styleId="checkPassword" property="checkPassword" size="20"></html:password></td>
 					</tr>
 				</table>
 				

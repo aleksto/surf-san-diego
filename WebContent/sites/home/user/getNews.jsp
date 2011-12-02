@@ -18,8 +18,9 @@
        %>
 	
 			<c:forEach var="news" items="${ news }">
+           
             <ul>
-                <li>  ${news.getHeadline()} </li>
+                <li>  ${news.getHeadline()} (Location: ${news.getCity()}) </li>
                     <p>${news.getText()}</p>
                     <p> ${news.getTimestamp()}</p>
             </ul>        

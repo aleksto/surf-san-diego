@@ -9,7 +9,7 @@
 	    if (request.isUserInRole("poster")) 
 			response.sendRedirect("poster/showNews.do");
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/showCity.do");
+			response.sendRedirect("user/showCity.do?username="+request.getUserPrincipal().getName());
 	}
 	%>	
 
