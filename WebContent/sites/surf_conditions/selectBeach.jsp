@@ -37,9 +37,7 @@
 		</script>
 		<%
 		if(request != null){
-			if (request.isUserInRole("admin")) 
-				response.sendRedirect("admin/showBeaches.do");
-			else if (request.isUserInRole("poster")) 
+			if (request.isUserInRole("poster")) 
 				response.sendRedirect("poster/showBeaches.do");
 			else if (request.isUserInRole("user")) 
 				response.sendRedirect("user/showBeaches.do");

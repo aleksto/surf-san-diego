@@ -37,18 +37,17 @@
 		</script>
 		<%
 		if(request != null){
-			if (request.isUserInRole("admin")) 
-				response.sendRedirect("./../admin/showBeaches.do");
-			else if (request.isUserInRole("poster")) 
+			if (request.isUserInRole("poster")) 
 				response.sendRedirect("./../poster/showBeaches.do");
-			else if (request.isUserInRole("user")) 
+			else if (request.isUserInRole("user")) { }
+			else
 				response.sendRedirect("./../showBeaches.do");
 	}
 	%>
 		
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>
-	<link href="./../../css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -57,19 +56,33 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="../../showNews.do" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../home/showNews.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
 		<div id="user">
-			<a href="user/showBeaches.do" style ="text-decoration:none">Login</a>
-			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+		<%
+		try{
+			out.println("Welcome " + request.getUserPrincipal().getName());
+			if (request.isUserInRole("user")) 
+			 	out.println("(user)");
+			else{
+				//Add warning
+				response.sendRedirect("./../showBeaches.do");
+			}
+		}catch(NullPointerException e){
+			//Add warning
+			response.sendRedirect("./../home.jsp");
+		}		
+		%>
+		
+		<p><a href="./../../../invalidate.jsp">Logout</a></p>
 			
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="./../home/showNews.do">Home</a></li>
-				<li><a href="./../beaches/showBeaches.do">Beaches</a></li>
+				<li><a href="./../../home/user/showNews.do">Home</a></li>
+				<li><a href="./../../beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="showBeaches.do">Weather</a></li>
 			
 			</ul>
@@ -85,8 +98,8 @@
 			</div>
 			<h2>Surfing conditions</h2>	
 				
-			<form action="">	
-				<select  name="surf_conditions" onchange="showSurfCon(this.value)">
+			<form>	
+				<select property="beach_id" name="surf_conditions" onchange="showSurfCon(this.value)">
 					<option value="none">Select beach:</option>
 					<c:forEach var="beaches" items="${ beaches }">
 						<c:set var="id" value="${ beaches }" />
