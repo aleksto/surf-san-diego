@@ -13,12 +13,12 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id= "head">
-				<h1> <a href ="./../sites/home/user/showNews.do" style ="text-decoration:none"> The surfer</a>
+				<h1> <a href ="./../sites/home/user/showCity.do" style ="text-decoration:none"> The surfer</a>
 				</h1>
 			</div>
 				
 			<div id="user">
-				<a href="./../sites/home/user/showNews.do" style ="text-decoration:none">Login</a>
+				<a href="./../sites/home/user/showCity.do" style ="text-decoration:none">Login</a>
 				<!--  <a href="registerUserInformation.jsp" style ="text-decoration:none">Register new user</a> -->
 			</div>
 			
@@ -40,7 +40,7 @@
             </ul>        
 			
 			<p> 
-			<a href="./../sites/home/user/showNews.do" style ="text-decoration:none"> <br> Proceed to login</a> </p>
+			<a href="./../sites/home/user/showCity.do" style ="text-decoration:none"> <br> Proceed to login</a> </p>
 
 			</div>
 			<div id="sidebar">
