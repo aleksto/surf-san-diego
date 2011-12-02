@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS user_role;
 DROP TABLE IF EXISTS evaluation;
 DROP TABLE IF EXISTS surf_location;
 DROP TABLE IF EXISTS beach;
+DROP TABLE IF EXISTS beach_comment;
+DROP TABLE IF EXISTS beach_rating;
 
 CREATE TABLE user_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -45,10 +47,15 @@ CREATE TABLE beach (
        city_id INT REFERENCES city(id)
 );
 
-CREATE TABLE evaluation (
+CREATE TABLE beach_comment (
 		beach_id INT REFERENCES beach(id),
 		user_id INT REFERENCES user_account(id),
-		comment VARCHAR(200),
+		comment VARCHAR(200)	
+);
+
+CREATE TABLE beach_rating (
+		beach_id INT REFERENCES beach(id),
+		user_id INT REFERENCES user_account(id),
 		rating INT		
 );
 
@@ -133,8 +140,8 @@ INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_spe
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-12-02', '22:00:00', '1-2 feet', 'WNW', '4-5', 'W', 2);
  
-INSERT INTO evaluation (beach_id, user_id, comment, rating) VALUES (1, 1, 'ok1', 3);
-INSERT INTO evaluation (beach_id, user_id, comment, rating) VALUES (2, 2, 'ok2', 2);
+INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'ok1');
+INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (2, 2, 2);
 
 
 INSERT INTO surf_location (username, city_id) VALUES ('Ingrid', 2);
