@@ -95,21 +95,34 @@
 								</p>
 			               	</html:form>
 			               	</ul>
-			               
-						
-							
 						
 						<p>
+								<c:set var="rate" value="0"/>
+							
+								
+								
+								<c:forEach var="rating" items="${beaches.getRatings()}">
+									
+									<c:set var="rate" value="${ rate + rating.getRating() }"/>
+																								
+								</c:forEach>
+								
+								Total number of votes: ${ rate }<br>
+								
+								
+								<br>
 								
 				               	<c:forEach var="comment" items="${ beaches.getComments() }">
-				               		<c:set var="rating" value="${beaches.getRatings()}" />
+				               		
 				         -------------------------------------------------------------------------------------<br>
 				               		Username: ${ comment.getUsername() }<br>
 				               	
 				               		Comment: ${ comment.getComment() }<br>
 				               		
+				              
 				               		
-				               				 				               
+				               		
+				               						              				               				 				               
 				               	</c:forEach>
 				         -------------------------------------------------------------------------------------<br>
 				               	
