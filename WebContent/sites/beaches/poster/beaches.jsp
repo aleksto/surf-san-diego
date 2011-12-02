@@ -88,54 +88,37 @@
 									</td>
 									</tr>
 								</table>
-								<!--<html:submit value="Submit"></html:submit>-->								
+								<!--<html:submit value="Submit"></html:submit>-->
+								<p>								
 								<html:submit property="action" value="insert">
 								</html:submit>
+								</p>
 			               	</html:form>
-			     
-			              	<%
-			               	int counter=0;
-			               	boolean showMoreButton=false;
-			               	boolean showAll=false;
-							%>
+			               	</ul>
+						
 							<p>
+							<c:set var="rateTotal" value="${0}" />
+								
+							<c:forEach var="rating" items="${ beaches.getRatings() }">
+								<c:set var="rateTotal" value="${rateTotal + rating.getRating() }" />
+							</c:forEach>
+							Total rate: ${rateTotal}
+							</p>
+						
+						<p>
+							<table border="2" width="450">
 				               	<c:forEach var="comment" items="${ beaches.getComments() }">
-				               		
-				               		<%if(counter<3 || showAll){ %>
-				               		_____________________________________________________________ <br>
-				               		${ comment.getUsername() } <br>
-				               		 Rating: 
-				               		 ${rating.getRating()}
-				               		 <c:forEach var="rating" items="${ beaches.getRatings() }">
-				               		 	<c:if test="${ rating.getUserId() == comment.getUserId() }">
-				               		 		${rating.getRating()}
-				               		 	</c:if>
-				               		 </c:forEach>  <br>
-				               		 ${ comment.getComment() } 
-				               		
-				               		<% } 
-				               		else if(counter>3)
-				               			{ showMoreButton=true; }
-				               			counter++;
-				               		%>
+				               		<tr>
+				               		<th>${ comment.getUsername() }</th>
+				               		</tr>
+				               		<tr>
+				               		<td> ${ comment.getComment() }</td>
+				               		</tr> 		 				               
 				               	</c:forEach>
-				            	_____________________________________________________________</p>      	
-				               	<p>
-				               	<% 
-				               		if(showMoreButton){%>
-				               			<form>
-				               				<input type="button" value="Show all" onClick="<%showAll=true;%>" />
-				               			</form>		               			
-				               	<% 	} out.println("AJAX HERE!");
-				               	%>
-				               	</p>
-			               	</p>
-			              
-			              
-			        </ul>
-			</c:forEach>
-			
-			
+				               	</table>
+
+							</c:forEach>
+							</p>		
 
 		</div>
 		<div id="sidebar">
