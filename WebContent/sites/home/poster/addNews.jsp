@@ -17,6 +17,7 @@
 			response.sendRedirect("./../showNews.do");
 	}
 	%>
+	
 
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -29,7 +30,28 @@
 	<div id="header">
 		<div id="head">
 			<h1> <a href ="home.jsp" style ="text-decoration:none"> The surfer</a>
+			
+			<script>
+					function validateForm(){
+					 	if(document.getElementById("city_id").value=="none"){
+							alert("Please enter a city");
+							document.getElementById("city_id").focus();
+							return false;
+						}
+						else if(document.getElementById("headline").value==""){
+					  		alert("Please enter a headline");
+					  		document.getElementById("headline").focus();
+					  		return false;
+						}
+						else if(document.getElementById("text").value.length < 5){
+					  		alert("Please enter a article");
+					  		document.getElementById("text").focus();
+					  		return false;
+						}
+					}
+			</script>
 			</h1>
+			
 		</div>
 			
 		<div id="user">
@@ -66,12 +88,12 @@
 		
 		<h2>News</h2>
 			<html:errors></html:errors>
-		          <html:form method="post" action="/sites/home/poster/addNews">
+		          <html:form method="post" action="/sites/home/poster/addNews" onsubmit="return validateForm()">
 		           		<table>
 		           		
 		           			<td>City:</td>
 		           			
-		           				<html:select styleId="city_id" property="city_id">
+		           				<html:select styleId="city_id" property="city_id" >
 										<html:option value="none">Select city:</html:option>
 											<c:forEach items="${city}" var="city">
 				                				<c:set var="id" value="${city}" />
@@ -86,7 +108,7 @@
 							</tr>
 							<tr>
 								<td> Text: </td>
-								<td ><html:textarea styleId="text" property="text" value="" cols="40" rows="5"> </html:textarea></td>	
+								<td ><html:textarea styleId="text" property="text" value="" cols="40" rows="10"> </html:textarea></td>	
 						</table>
 								<html:submit value="Submit"></html:submit>
 			               	</html:form>

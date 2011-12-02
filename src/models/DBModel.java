@@ -370,13 +370,29 @@ public class DBModel{
 	 
 
 
-	public void insertCity(String username, int city_id) throws SQLException{
+	public void updateCity(String username, int city_id) throws SQLException{
 		PreparedStatement pstmt = null;
         int updateQuery = 0;
         pstmt = conn.prepareStatement("UPDATE surf_location SET city_id=? WHERE username = ?"); 
         pstmt.setInt(1, city_id);
         pstmt.setString(2, username);
         
+        updateQuery += pstmt.executeUpdate();
+        if (updateQuery != 0) 
+         	System.out.println("updateCity: Success");
+        else
+         	System.out.println("updateCity: Not success");
+        pstmt.close();
+        conn.commit();
+	}
+	
+	public void insertCity(String username, int city_id) throws SQLException{
+		PreparedStatement pstmt = null;
+        int updateQuery = 0;
+        pstmt = conn.prepareStatement("INSERT INTO surf_location (username, city_id ) VALUES (?, ?)"); 
+        pstmt.setString(1, username);
+        pstmt.setInt(2, city_id);
+
         updateQuery += pstmt.executeUpdate();
         if (updateQuery != 0) 
          	System.out.println("insertCity: Success");

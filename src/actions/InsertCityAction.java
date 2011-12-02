@@ -28,7 +28,7 @@ public class InsertCityAction extends Action {
 			dbModel = new DBModel();
 			
 			System.out.println(addCityForm.getUsername());
-			dbModel.insertCity(addCityForm.getUsername(), Integer.valueOf(addCityForm.getCity_id()));
+			dbModel.updateCity(addCityForm.getUsername(), Integer.valueOf(addCityForm.getCity_id()));
 			
 			//Integer.valueOf(addCityForm.getUser_id()),
 			dbModel.closeDB();

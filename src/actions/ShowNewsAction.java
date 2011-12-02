@@ -36,6 +36,7 @@ public class ShowNewsAction extends Action {
 				for (NewsModel newsModel : dbModel.getNews()) {
 					System.out.println("Running through Newsmodels");
 					if(surfLocationModel.getUsername().equalsIgnoreCase(username) && newsModel.getCity_id()==Integer.valueOf(cityId) && Integer.valueOf(cityId)!=0){
+						System.out.println("LEGGER INN NEWS DISTINCT");
 						newsModels.add(newsModel);
 					}
 				}
@@ -46,6 +47,7 @@ public class ShowNewsAction extends Action {
 				if(username==null || Integer.valueOf(cityId)==0 || cityId==null){
 					for (NewsModel newsModel : dbModel.getNews()) {
 						newsModels.add(newsModel);
+						System.out.println("LEGGER INN NEWS ALL");
 					}
 				}
 				

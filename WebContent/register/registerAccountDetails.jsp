@@ -20,7 +20,6 @@
 		<div id= "head">
 			<h1> <a href ="../sites/home/showNews.do" style ="text-decoration:none"> The surfer</a>
 			
-			
 			<script>
 			function validateForm(){
 			 	if(document.getElementById("username").value==""){

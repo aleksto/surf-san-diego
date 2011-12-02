@@ -32,6 +32,7 @@ public class InsertUser extends Action {
 			dbModel.InsertUserInfo(addUserForm.getFirstName(), addUserForm.getLastname(), addUserForm.getEmail(), addUserForm.getLocation(), date, Integer.valueOf(addUserForm.getSkill()));
 			dbModel.InsertUserAccount(addUserForm.getUsername(), addUserForm.getPassword());
 			dbModel.InsertUserRole("user", addUserForm.getUsername());
+			dbModel.insertCity(addUserForm.getUsername(), 0);
 			dbModel.closeDB();
 		} catch (NamingException e) {
 			e.printStackTrace();
