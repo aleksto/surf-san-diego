@@ -61,9 +61,7 @@
 		<!-- register -->
 		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
 			<forward name="success" path="/register/user/showUserInfo.jsp" />
-		</action> 
-		
-			
+		</action> 	
 
 
 		<!-- home.jsp (News) -->

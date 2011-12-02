@@ -84,7 +84,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="head">
-				<h1> <a href ="../sites/home/home.jsp" style ="text-decoration:none"> The surfer</a>
+				<h1> <a href ="../sites/home/showNews.do" style ="text-decoration:none"> The surfer</a>
 				</h1>
 			</div>
 				

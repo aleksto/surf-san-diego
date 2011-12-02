@@ -163,6 +163,7 @@ public class DBModel{
 		PreparedStatement pstmt = null;
 		ResultSet updateQuery = null;
         pstmt = conn.prepareStatement("SELECT firstname, lastname, email, location, date_of_birth, skill_id  FROM user_info WHERE id=" + userId);  
+        
         updateQuery = pstmt.executeQuery();
        
         while(updateQuery.next()){

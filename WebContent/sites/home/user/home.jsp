@@ -35,7 +35,7 @@
 	if(request != null){
 		
 		if (request.isUserInRole("poster")) 
-			response.sendRedirect("./../poster/home.jsp");
+			response.sendRedirect("./../poster/showNews.do");
 		else if (request.isUserInRole("user")) { }	
 		else 
 			response.sendRedirect("./../home.jsp");
@@ -48,7 +48,7 @@
 
 <%@ page import="java.util.ArrayList" %>
 <% 
-       response.setContentType("text/xml");
+       response.setContentType("text/html");
        ArrayList news = (ArrayList) request.getAttribute("news");  
    
 %>
@@ -57,7 +57,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="showNews.do" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="showCity.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -67,9 +67,12 @@
 			out.println("Welcome " + request.getUserPrincipal().getName());
 			if (request.isUserInRole("user")) 
 			 	out.println("(user)");
+			
+			else if (request.isUserInRole("poster")) 
+			 	out.println("(poster)");
 			else{
 				//Add warning
-				response.sendRedirect("./../home.jsp");
+				response.sendRedirect("../home.jsp");
 			}
 		}catch(NullPointerException e){
 			//Add warning
@@ -81,7 +84,7 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="showNews.do">Home</a></li>
+				<li><a href="showCity.do">Home</a></li>
 				<li><a href="../../beaches/beaches.jsp">Beaches</a></li>
 				<li><a href="../../surf_conditions/showBeaches.do">Weather</a></li>
 			

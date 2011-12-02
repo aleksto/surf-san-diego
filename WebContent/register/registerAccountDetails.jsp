@@ -18,7 +18,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="../index.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../sites/home/showNews.do" style ="text-decoration:none"> The surfer</a>
 			
 			
 			<script>
@@ -39,13 +39,7 @@
 			 		document.frm.password.focus();
 			  		return false;
 				}
-			    /*
-				else if(document.getElementById("password") !== document.getElementById("checkPassword")){
-					alert("Your passwords did not match");
-			 		document.frm.password.focus();
-			  		return false;
-				}
-			    */
+			 
 			    else if(document.getElementById("checkPassword").value==""){
 					alert("Please re-enter your password");
 					document.frm.password.focus();
@@ -63,12 +57,10 @@
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="../sites/home/showNews.do">Home</a></li>
+				<li><a href="../sites/beaches/showBeaches.do"">Beaches</a></li>
+				<li><a href="../sites/surf_conditions/showBeaches.do"">Weather</a></li>
+				
 			
 			</ul>
 		</div>
@@ -95,7 +87,7 @@
 			session.setAttribute("year", year);
 			String skill = request.getParameter("skill_id");
 			session.setAttribute("skill", skill); 
-			out.println(day + month + year);
+			
 			%>	
 			</p>
 		

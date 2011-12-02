@@ -65,8 +65,6 @@
   		<!-- surf_conditions -->
   		<url-pattern>/sites/surf_conditions/poster/*</url-pattern>
   		<url-pattern>/sites/surf_conditions/user/*</url-pattern>
-  		<!-- Registration - Show User Info -->
-  		<url-pattern>/register/user/*</url-pattern>
   	</web-resource-collection>
   	<auth-constraint>
   		<role-name>poster</role-name>
