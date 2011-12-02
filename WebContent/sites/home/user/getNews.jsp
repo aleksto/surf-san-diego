@@ -12,7 +12,7 @@
 
 	<%@ page import="java.util.ArrayList" %>
        <% 
-       response.setContentType("text/xml");
+       response.setContentType("text/html");
        ArrayList news =  (ArrayList) request.getAttribute("news");  
    
        %>

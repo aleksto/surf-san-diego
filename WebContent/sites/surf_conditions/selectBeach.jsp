@@ -41,8 +41,8 @@
 				response.sendRedirect("poster/showBeaches.do");
 			else if (request.isUserInRole("user")) 
 				response.sendRedirect("user/showBeaches.do");
-	}
-	%>
+		}
+		%>
 		
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>The surfer</title>

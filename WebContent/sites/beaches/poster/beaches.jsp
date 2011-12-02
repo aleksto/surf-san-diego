@@ -7,9 +7,7 @@
 <head>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/showBeaches.do");
-		else if (request.isUserInRole("poster")) { }	
+		if (request.isUserInRole("poster")) { }	
 		else if (request.isUserInRole("user")) 
 			response.sendRedirect("./../user/showBeaches.do");
 		else 
@@ -105,20 +103,22 @@
 							Total rate: ${rateTotal}
 							</p>
 						
-						<p>
-							<table border="2" width="450">
+						
+							
+				         	<p>
 				               	<c:forEach var="comment" items="${ beaches.getComments() }">
-				               		<tr>
-				               		<th>${ comment.getUsername() }</th>
-				               		</tr>
-				               		<tr>
-				               		<td> ${ comment.getComment() }</td>
-				               		</tr> 		 				               
+				               	
+				               	-------------------------------------------------------------------------------------<br>
+				               		Username: ${ comment.getUsername() }<br>
+				               		
+				               		Comment: ${ comment.getComment() }<br>
+				               				 				               
 				               	</c:forEach>
-				               	</table>
+				               	-------------------------------------------------------------------------------------
 
 							</c:forEach>
-							</p>		
+							</p>
+								
 
 		</div>
 		<div id="sidebar">

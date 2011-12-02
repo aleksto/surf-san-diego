@@ -47,9 +47,13 @@
 		<forward name="sites/surf_conditions/user/showBeaches" path="/showBeaches.do" />
 		<forward name="sites/surf_conditions/poster/showBeaches" path="/showBeaches.do" />
 		
+		<!-- surf_con.jsp (Surf_conditions) -->
+		<forward name="sites/surf_conditions/showSurfCon" path="/showSurfCon.do" />
+		<forward name="sites/surf_conditions/user/showSurfCon" path="/showSurfCon.do" />
+		<forward name="sites/surf_conditions/poster/showSurfCon" path="/showSurfCon.do" />
+	
 		<forward name="sites/home/poster/addNews" path="/addNews.do" />
 		<forward name="sites/home/admin/addNews" path="/addNews.do" />
-		
 		<forward name="sites/home/user/addCity" path="/addCity.do" />
 
 		
@@ -135,7 +139,17 @@
 			validate="true" scope="request" input="/register/registerAccountDetails.jsp" name="addUserForm">
 			<forward name="success" path="/register/user/showUserInfo.do" redirect="true" />
 		</action>
-
+		
+		<!-- Show surf conditions filter -->
+		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
+			scope="request" input="showBeaches.do">
+				<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		</action>
+		
+		<action path="/sites/surf_conditions/user/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
+			scope="request" input="showBeaches.do">
+				<forward name="success" path="/sites/surf_conditions/user/surf_con.jsp" />
+		</action>
 		
 		
 		<!-- Add Comment & Rating -->
