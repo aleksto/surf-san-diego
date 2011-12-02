@@ -16,7 +16,7 @@ import org.apache.struts.action.ActionMapping;
 
 public class ShowUserDetailsAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  {		
-		int userId = 1;
+		
 		DBModel dbModel = null;
 		UserInfoModel userInfoModel = null;
 		try {
