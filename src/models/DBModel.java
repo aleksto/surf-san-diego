@@ -222,9 +222,8 @@ public class DBModel{
         while(updateQuery.next()){
             ArrayList<BeachCommentModel> comments = getComments(updateQuery.getInt(1));
             ArrayList<BeachRatingModel> ratings = getRatings(updateQuery.getInt(1));
-            ArrayList<SurfConModel> surfCons = getSurfConditions(updateQuery.getInt(1));
         	System.out.println("ADDING: " + updateQuery.getInt(1) + " AND: " + updateQuery.getString(2) + " AND: " + updateQuery.getString(3) + "+++ to BeachList");
-        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), comments, ratings, surfCons);
+        	BeachModel beachModel = new BeachModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), comments, ratings);
         	beachModels.add(beachModel);
         }
 	    pstmt.close();
@@ -392,8 +391,6 @@ public class DBModel{
 	     conn.close();
 
 	}
-
 	
 	
-		
 }
