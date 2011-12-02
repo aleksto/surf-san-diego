@@ -6,9 +6,8 @@
 <head>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("./../admin/showNews.do");
-		else if (request.isUserInRole("poster")) { }	
+		
+		if (request.isUserInRole("poster")) { }	
 		else if (request.isUserInRole("user")) 
 			response.sendRedirect("./../user/showNews.do");
 		else 
