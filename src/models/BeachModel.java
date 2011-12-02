@@ -9,14 +9,12 @@ public class BeachModel {
 	private String description;
 	private ArrayList<BeachCommentModel> comments;
 	private ArrayList<BeachRatingModel> ratings;
-	private ArrayList<SurfConModel> surfCons;
 	
 	public BeachModel(int id, String name, String description, ArrayList<BeachCommentModel> comments, 
-			ArrayList<BeachRatingModel> ratings, ArrayList<SurfConModel> surfCons){
+			ArrayList<BeachRatingModel> ratings){
 		this.id = id;
 		this.comments = comments;
 		this.ratings = ratings;
-		this.surfCons = surfCons;
 		this.name = name;
 		this.description = description;
 	}
@@ -60,12 +58,5 @@ public class BeachModel {
 	public ArrayList<BeachRatingModel> getRatings() {
 		return ratings;
 	}
-	
-	public void setSurfCons(ArrayList<SurfConModel> surfCons) {
-		this.surfCons = surfCons;
-	}
 
-	public ArrayList<SurfConModel> getSurfCons() {
-		return surfCons;
-	}
 }
