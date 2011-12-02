@@ -23,7 +23,7 @@ CREATE TABLE user_info (
 
 CREATE TABLE user_account (
 	   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       username VARCHAR(15),
+       username VARCHAR(15) UNIQUE,
        password VARCHAR(10),
        user_id INT REFERENCES user_info(id)
 );
@@ -31,7 +31,7 @@ CREATE TABLE user_account (
 CREATE TABLE user_role (
 	   user_account_id INT REFERENCES user_account(id),
        role VARCHAR(25),
-       username VARCHAR(15)
+       username VARCHAR(15) UNIQUE
 );
 
 
@@ -79,7 +79,7 @@ CREATE TABLE news (
 );
 
 CREATE TABLE surf_location (
-		username VARCHAR(15),
+		username VARCHAR(15) UNIQUE,
 		city_id INT REFERENCES city(id)
 );
 

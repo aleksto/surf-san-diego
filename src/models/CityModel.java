@@ -39,4 +39,6 @@ public class CityModel {
 	public ArrayList<String> getUsernames() {
 		return usernames;
 	}
+
+
 }

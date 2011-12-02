@@ -9,13 +9,16 @@ public class NewsModel {
 	private String text;
 	private Timestamp timestamp;
 	private int city_id;
+	private String city;
 
-	public NewsModel(int id, String headline, String text, Timestamp timestamp, int city_id){
+	public NewsModel(int id, String headline, String text, Timestamp timestamp, int city_id, String city){
 		this.id = id;
 		this.setHeadline(headline);
 		this.text = text;
 		this.setTimestamp(timestamp);
 		this.city_id = city_id;
+		this.city = city;
+
 	}
 	
 	public String getDate(){
@@ -61,5 +64,13 @@ public class NewsModel {
 	
 	public int getCity_id() {
 		return city_id;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCity() {
+		return city;
 	}
 }

@@ -58,7 +58,7 @@ public class DBModel{
 	public void InsertUserInfo(String firstName, String lastName, String email, String location, Date dateOfBirth, int skill_id) throws SQLException{
 		PreparedStatement pstmt = null;
         int updateQuery = 0;
-        pstmt = conn.prepareStatement("INSERT INTO user_info (firstname, lastname, email, location, date_of_birth, skill_id) VALUES (?, ?, ?, ?, ?, ?)");
+        pstmt = conn.prepareStatement("INSERT INTO user_info (firstname, lastname, email, location, date_of_birth, skill) VALUES (?, ?, ?, ?, ?, ?)");
         pstmt.setString(1, firstName);       
         pstmt.setString(2, lastName);
         pstmt.setString(3, email);
@@ -196,6 +196,21 @@ public class DBModel{
         pstmt.close();
         return userAccount;
 	}
+	
+	public ArrayList<UserAccountModel> getUserAccounts() throws SQLException{
+		ArrayList<UserAccountModel> userAccounts = new ArrayList<UserAccountModel>();
+		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+        pstmt = conn.prepareStatement("SELECT * FROM user_account");  
+        updateQuery = pstmt.executeQuery();
+        
+        while(updateQuery.next()){
+        	UserAccountModel userAccount = new UserAccountModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), updateQuery.getInt(4));
+        	userAccounts.add(userAccount);
+        }
+        pstmt.close();
+        return userAccounts;
+	}
 
 	
 	public ArrayList<BeachModel> getBeaches() throws SQLException{
@@ -271,7 +286,8 @@ public class DBModel{
 	        updateQuery = pstmt.executeQuery();
 	        while(updateQuery.next()){
 	        	System.out.println("Adding: " + updateQuery.getInt(1)+ updateQuery.getString(2) + " and: " + updateQuery.getString(3) + "and: " + (updateQuery.getTimestamp(4).getYear()+1900) + "and: " + updateQuery.getInt(5) + "to ArrayList");
-	        	NewsModel newsModel = new NewsModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), updateQuery.getTimestamp(4), updateQuery.getInt(5));
+	        	String city = getCityName(updateQuery.getInt(5));
+	        	NewsModel newsModel = new NewsModel(updateQuery.getInt(1), updateQuery.getString(2), updateQuery.getString(3), updateQuery.getTimestamp(4), updateQuery.getInt(5), city);
 	        	newsModels.add(newsModel);
 	        }
 		    pstmt.close();
@@ -288,13 +304,30 @@ public class DBModel{
        
         while(updateQuery.next()){
         	System.out.println("Adding: " + updateQuery.getString(1) + " and: " + updateQuery.getInt(2) +" to ArrayList");
-        	SurfLocationModel surfLocationModel = new SurfLocationModel(updateQuery.getString(1), updateQuery.getInt(2));
+        	String city = getCityName(updateQuery.getInt(2));
+        	SurfLocationModel surfLocationModel = new SurfLocationModel(updateQuery.getString(1), updateQuery.getInt(2), city);
         	surfLocationModels.add(surfLocationModel);
         }
 	    pstmt.close();
 	    return surfLocationModels;
 	}
 	
+	public String getCityName(int city_id) throws SQLException{
+		String city = "";
+   		PreparedStatement pstmt = null;
+		ResultSet updateQuery = null;
+		pstmt = conn.prepareStatement("SELECT id, city FROM city");     
+        updateQuery = pstmt.executeQuery();
+        
+        while(updateQuery.next()){
+            if(updateQuery.getInt(1)==city_id){
+            	city = updateQuery.getString(2);
+            }
+        }
+	    pstmt.close();
+		
+    	return city;
+	}
 
 	
 	public ArrayList<CityModel> getCity() throws SQLException{

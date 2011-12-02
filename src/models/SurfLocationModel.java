@@ -3,10 +3,12 @@ package models;
 public class SurfLocationModel {
 	private String username;
 	private int city_id;
+	private String city;
 
-	public SurfLocationModel(String username, int city_id) {
+	public SurfLocationModel(String username, int city_id, String city) {
 		this.username = username;
 		this.city_id = city_id;
+		this.city = city;
 	}
 
 	public void setUsername(String username) {
@@ -23,6 +25,14 @@ public class SurfLocationModel {
 
 	public int getCity_id() {
 		return city_id;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCity() {
+		return city;
 	}
 	
 	
