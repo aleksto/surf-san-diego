@@ -23,7 +23,7 @@ CREATE TABLE user_info (
 CREATE TABLE user_account (
 	   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
        username VARCHAR(15) UNIQUE,
-       password VARCHAR(10) NOT NULL
+       password VARCHAR(10) NOT NULL,
        user_id INT REFERENCES user_info(id)
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE surf_conditions (
 
 CREATE TABLE news (
        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-       headline VARCHAR(30) NOT NULL,
+       headline VARCHAR(60) NOT NULL,
        text VARCHAR(400) NOT NULL,
        newsDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
        city_id INT REFERENCES city(id)
@@ -90,9 +90,22 @@ INSERT INTO city (city) VALUES ('San Diego');
 INSERT INTO city (city) VALUES ('Santa Barbara');
 INSERT INTO city (city) VALUES ('Los Angeles');
 
+INSERT INTO news (headline, text, city_id) VALUES ('Go Fish. But…where?','Chris Manning normally went surfboard 
+fishing in the early morning with the other regulars — Roy and Vicky, Steve, Russell, and the other Roy. 
+But with the ocean as flat as a lake and the water at 70 degrees, he headed out one warm September evening 
+last year. Walking from his house in North Pacific Beach, Manning carried a soft-top surfboard, a backpack 
+containing his rod and reel and, in his unlimited optimism, a large fishing net. This evening that net 
+would come in handy.', 1);  
 
-INSERT INTO news (headline, text, city_id) VALUES ('Shark Attack','A shark attacked danndandan', 2);  
-INSERT INTO news (headline, text, city_id) VALUES ('Croc Attack','A crock attacked danndandan', 1);
+INSERT INTO news (headline, text, city_id) VALUES ('Santa Barbara County Feels the Effects as Santa Ana Winds ',
+'The strong santa ana winds that knocked down power lines and trees all over California on Thursday are beginning 
+to move across the country. In Santa Barbara County, the winds peaked on Thursday, but windy weather is expected 
+to continue Friday and into Saturday.', 2);
+
+INSERT INTO news (headline, text, city_id) VALUES ('Holiday news','Kick the holiday season off with 
+Montana Avenues annual Holiday Walk. There will be special promos and sales, and of course, Santa, 
+too. Enjoy festive blocks of complimentary holiday delights, family shopping, gourmet restaurants, 
+singing, music and a few surprises. For more information, visit montanaave.com.', 3); 
 
 INSERT INTO user_account (username, password, user_id) VALUES ('maria', 'mm', 1);
 INSERT INTO user_account (username, password, user_id) VALUES ('ingrid', 'it', 2);
@@ -120,6 +133,12 @@ INSERT INTO beach (name, description, city_id) VALUES (
  18 and 20 (Pico Blvd. and Bay St.), and between 28 and 29(Ashland Ave. and Pier St.).
  Always check with lifeguards before surfing.', 3);
  
+ INSERT INTO beach (name, description, city_id) VALUES (
+'Santa Barbara Beach', 
+' Santa Barbara County offers miles and miles of beautiful beaches. But enjoying 
+the outdoors in Santa Barbara means more than sand and surf. Santa Barbara is also 
+home to some 50 public parks and picnic areas.', 3);
+ 
  
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-12-02', '10:00:00', '2-3 feet', 'WNW', '5-6', 'NW', 1);
@@ -139,8 +158,18 @@ INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_spe
 INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
  VALUES ('2011-12-02', '22:00:00', '1-2 feet', 'WNW', '4-5', 'W', 2);
  
-INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'ok1');
-INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (2, 2, 2);
-
+ INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-12-02', '10:00:00', '3-4 feet', 'WNW', '5-6', 'NW', 3);
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-12-02', '14:00:00', '3-4 feet', 'WNW', '5-6', 'W', 3);
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-12-02', '18:00:00', '2-3 feet', 'WNW', '5-6', 'W', 3);
+INSERT INTO surf_conditions (dateSC, timeSC, wave_size, wave_direction, wind_speed, wind_direction, beach_id)
+ VALUES ('2011-12-02', '22:00:00', '1-2 feet', 'WNW', '4-5', 'W', 3);
+ 
+INSERT INTO beach_comment (beach_id, user_id, comment) VALUES (1, 1, 'test');
+INSERT INTO beach_rating (beach_id, user_id, rating) VALUES (1, 1, 2);
 
 INSERT INTO surf_location (username, city_id) VALUES ('Ingrid', 2);
+INSERT INTO surf_location (username, city_id) VALUES ('maria', 1);
+INSERT INTO surf_location (username, city_id) VALUES ('aleksto', 3);
