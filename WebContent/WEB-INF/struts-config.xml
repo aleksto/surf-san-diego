@@ -61,7 +61,9 @@
 		<!-- register -->
 		<action path="/register/user/showUserInfo" type="actions.ShowUserDetailsAction">
 			<forward name="success" path="/register/user/showUserInfo.jsp" />
-		</action> 	
+		</action> 
+		
+			
 
 
 		<!-- home.jsp (News) -->
@@ -71,10 +73,11 @@
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/user/home.jsp" />
 		</action>
-		
-		<action path="/sites/home/admin/showNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/admin/home.jsp" />
+		<action path="/sites/home/poster/showNews" type="actions.ShowNewsAction">
+			<forward name="success" path="/sites/home/poster/home.jsp" />
 		</action>
+		
+		
 		
 		<!-- beaches.jsp (News) -->
 		<action path="/sites/beaches/showBeaches" type="actions.ShowBeachesAction">
@@ -86,9 +89,7 @@
 		<action path="/sites/beaches/poster/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/beaches/poster/beaches.jsp" />
 		</action>
-		<action path="/sites/beaches/admin/showBeaches" type="actions.ShowBeachesAction">
-			<forward name="success" path="/sites/beaches/admin/beaches.jsp" />
-		</action>
+	
 		
 		<!-- Surf conditions -->		
 		<action path="/sites/surf_conditions/showBeaches" type="actions.ShowBeachesAction">
@@ -100,9 +101,7 @@
 		<action path="/sites/surf_conditions/poster/showBeaches" type="actions.ShowBeachesAction">
 			<forward name="success" path="/sites/surf_conditions/poster/selectBeach.jsp" />
 		</action>
-		<action path="/sites/surf_conditions/admin/showBeaches" type="actions.ShowBeachesAction">
-			<forward name="success" path="/sites/surf_conditions/admin/selectBeach.jsp" />
-		</action>
+		
 		
 				<!-- Show surf conditions filter -->
 		<action path="/sites/surf_conditions/showSurfCon" type="actions.ShowSurfConAction" validate="true" 

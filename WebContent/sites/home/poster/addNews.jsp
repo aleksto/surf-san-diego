@@ -6,6 +6,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+		<%
+	if(request != null){
+		if (request.isUserInRole("admin")) 
+			response.sendRedirect("./../admin/showNews.do");
+		else if (request.isUserInRole("poster")) { }	
+		else if (request.isUserInRole("user")) 
+			response.sendRedirect("./../user/showNews.do");
+		else 
+			response.sendRedirect("./../showNews.do");
+	}
+	%>
+
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Add news</title>
@@ -21,14 +33,29 @@
 		</div>
 			
 		<div id="user">
-			<a href="../user/home.jsp" style ="text-decoration:none">Login</a>
-			<a href="../../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
+		
+			<% 
+		try{
+			out.println("Welcome " + request.getUserPrincipal().getName());
+			if (request.isUserInRole("poster")) 
+			 	out.println("(poster)");
+			else{
+				//Add warning
+				response.sendRedirect("./../showNews.do");
+			}
+		}catch(NullPointerException e){
+			//Add warning
+			response.sendRedirect("./../showNews.do");
+		}	
+		%>
+		
+			<p><a href="./../../../invalidate.jsp">Logout</a></p>
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-				<li><a href="beaches/addBeach.jsp">Beaches</a></li>
-				<li><a href="#">Weather</a></li>
+				<li><a href="showNews.do">Home</a></li>
+				<li><a href="../../beaches/poster/showBeaches.do">Beaches</a></li>
+				<li><a href="../../surf_conditions/poster/showBeaches.do">Weather</a></li>
 			
 			</ul>
 		</div>

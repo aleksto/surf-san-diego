@@ -23,7 +23,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id= "head">
-			<h1> <a href ="../../home/user/home.jsp" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../home/user/showCity.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -47,7 +47,7 @@
 		
 		<div id="pages">
 			<ul>
-				<li><a href="./../../home/user/showNews.do">Home</a></li>
+				<li><a href="./../../home/user/showCity.do">Home</a></li>
 				<li><a href="showBeaches.do">Beaches</a></li>
 				<li><a href="../../../sites/surf_conditions/showBeaches.do">Weather</a></li>
 			

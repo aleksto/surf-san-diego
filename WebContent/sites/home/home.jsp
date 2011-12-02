@@ -7,7 +7,7 @@
 	<%
 	if(request != null){
 	    if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/showCity.do");
+			response.sendRedirect("poster/showNews.do");
 		else if (request.isUserInRole("user")) 
 			response.sendRedirect("user/showCity.do");
 	}

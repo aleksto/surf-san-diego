@@ -56,7 +56,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="head">
-			<h1> <a href ="../showNews.do" style ="text-decoration:none"> The surfer</a>
+			<h1> <a href ="../../home/showCity.do" style ="text-decoration:none"> The surfer</a>
 			</h1>
 		</div>
 			
@@ -80,8 +80,8 @@
 		</div>
 		<div id="pages">
 			<ul>
-				<li><a href="./../home/showNews.do">Home</a></li>
-				<li><a href="./../beaches/showBeaches.do">Beaches</a></li>
+				<li><a href="../../home/showNews.do">Home</a></li>
+				<li><a href="../../beaches/showBeaches.do">Beaches</a></li>
 				<li><a href="showBeaches.do">Weather</a></li>
 			
 			</ul>
