@@ -46,7 +46,13 @@
 	<link href="./../../../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<%@ page import="java.util.ArrayList" %>
+<% 
+       response.setContentType("text/xml");
+       ArrayList news = (ArrayList) request.getAttribute("news");  
+   
+%>
+<body onLoad="showNews(2)">
 
 <div id="wrapper">
 	<div id="header">
@@ -101,8 +107,6 @@
 			<h3>Surf location </h3>
 				<p> Set your surf location:  </p>
 			
-				<a href='showCity.do'>Show City</a>
-
 				<html:form method="post" action="/sites/home/user/addCity"> 
 				<table>
 					<html:hidden property="username" value="<%= username %>"></html:hidden>

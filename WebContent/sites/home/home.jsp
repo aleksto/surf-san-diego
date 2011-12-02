@@ -6,12 +6,10 @@
 <head>
 	<%
 	if(request != null){
-		if (request.isUserInRole("admin")) 
-			response.sendRedirect("admin/showNews.do");
-		else if (request.isUserInRole("poster")) 
-			response.sendRedirect("poster/showNews.do");
+	    if (request.isUserInRole("poster")) 
+			response.sendRedirect("poster/showCity.do");
 		else if (request.isUserInRole("user")) 
-			response.sendRedirect("user/showNews.do");
+			response.sendRedirect("user/showCity.do");
 	}
 	%>	
 
@@ -31,7 +29,7 @@
 		</div>
 			
 		<div id="user">
-			<a href="user/showNews.do" style ="text-decoration:none">Login</a>
+			<a href="user/showCity.do" style ="text-decoration:none">Login</a>
 			<a href="../../register/registerUserInformation.jsp" style ="text-decoration:none">Register new user</a>
 		</div>
 		<div id="pages">

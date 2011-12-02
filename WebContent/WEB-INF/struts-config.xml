@@ -69,11 +69,9 @@
 			<forward name="success" path="/sites/home/home.jsp" />
 		</action>
 		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/user/getNews.jsp" />
+			<forward name="success" path="/sites/home/user/home.jsp" />
 		</action>
-		<action path="/sites/home/poster/showNews" type="actions.ShowNewsAction">
-			<forward name="success" path="/sites/home/poster/home.jsp" />
-		</action>
+		
 		<action path="/sites/home/admin/showNews" type="actions.ShowNewsAction">
 			<forward name="success" path="/sites/home/admin/home.jsp" />
 		</action>
@@ -115,6 +113,13 @@
 		<action path="/sites/surf_conditions/poster/showSurfCon" type="actions.ShowSurfConAction" validate="true" 
 			scope="request" input="/sites/surf_conditions/poster/showBeaches.do">
 				<forward name="success" path="/sites/surf_conditions/surf_con.jsp" />
+		</action>
+		
+		
+				<!-- Show surf conditions filter -->
+		<action path="/sites/home/user/showNews" type="actions.ShowNewsAction" validate="true" 
+			scope="request" input="showCity.do">
+				<forward name="success" path="/sites/home/user/getNews.jsp" />
 		</action>
 
 		<!-- addNews.jsp (City) -->

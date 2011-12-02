@@ -9,14 +9,6 @@
 </head>
 
 <body>
-<%
-	if(session.getAttribute("theName")!=null && session.getAttribute("thePassword")!=null){
-		String name = session.getAttribute("theName").toString();
-		out.println("Name: " + name);
-		String password = session.getAttribute("thePassword").toString();
-		out.println("<br /> Password: " + password);
-	}
-%>
 
 <div id="wrapper">
 	<div id="header">
