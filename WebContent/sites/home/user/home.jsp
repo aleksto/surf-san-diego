@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
@@ -33,10 +33,10 @@
 	</script>
 	<%
 	if(request != null){
-		
 		if (request.isUserInRole("poster")) 
 			response.sendRedirect("./../poster/showNews.do");
-		else if (request.isUserInRole("user")) { }	
+		else if (request.isUserInRole("user")) { 
+		}	
 		else 
 			response.sendRedirect("./../home.jsp");
 	}
@@ -49,10 +49,18 @@
 <%@ page import="java.util.ArrayList" %>
 <% 
        response.setContentType("text/html");
+       ArrayList city = (ArrayList) request.getAttribute("city"); 
+		if(city.size()>1){
+			response.sendRedirect("showCity.do?username="+request.getUserPrincipal().getName());
+		}
+
+       response.setContentType("text/html");
        ArrayList news = (ArrayList) request.getAttribute("news");  
-   
 %>
-<body onLoad="showNews(2)">
+
+<c:forEach items="${city}" var="city">
+	<body onLoad="showNews(${city.getId()})">
+</c:forEach>
 
 <div id="wrapper">
 	<div id="header">
@@ -99,6 +107,7 @@
 				<p>&raquo; Lets go surfing now...
 				</p></div>
 			</div>
+			
 			<h2>News</h2>
 
 				<div id="news"></div>	
@@ -111,18 +120,20 @@
 				<p> Set your surf location:  </p>
 			
 				<html:form method="post" action="/sites/home/user/addCity"> 
-				<table>
-					<html:hidden property="username" value="<%= username %>"></html:hidden>
-					<html:select styleId="city_id" property = "city_id" onchange="showNews(this.value)"  >
-	
-						<html:option value="none">Select city:</html:option>
-							<c:forEach items="${city}" var="city">
-				         		<c:set var="id" value="${city.getCity()}" />
-				            	 <html:option value="${city.getId()}">${city.getCity()}</html:option>
-				         	</c:forEach>
-				     	</html:select>
-				     </table>
-				    	<html:submit value="Submit"></html:submit>
+					<p>
+					<table>
+						<html:hidden property="username" value="<%= username %>"></html:hidden>
+						<html:select styleId="city_id" property = "city_id" onchange="showNews(this.value)"  >
+							
+							<html:option value="0">Select city:</html:option>
+								<c:forEach items="${cities}" var="cities">
+					         		<c:set var="id" value="${cities.getCity()}" />
+					            	 <html:option value="${cities.getId()}">${cities.getCity()}</html:option>
+					         	</c:forEach>
+					    </html:select>
+					 </table>
+					 </p>
+					<p><html:submit value="Submit"></html:submit></p>
 				</html:form> 
 		
 		</div>

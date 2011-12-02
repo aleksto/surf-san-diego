@@ -22,7 +22,7 @@
 			<table border="2">
 			
 			<tr>
-	        <th colspan="4">${surf_conditions.getDate()} ${surf_conditions.getTime()}</th>
+	        <th colspan="4">${surf_conditions.getDate()} ${surf_conditions.getTime()} </th>
 	        </tr>
 			
 	        <tr>

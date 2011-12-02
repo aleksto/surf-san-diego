@@ -171,7 +171,7 @@
 		<!-- Add City -->
 		<action path="/sites/home/user/addCity" type="actions.InsertCityAction"
 			validate="true" scope="request" input="/sites/home/user/home.jsp" name="addCityForm">
-			<forward name="success" path="/sites/home/user/home.jsp" redirect="true" />
+			<forward name="success" path="/sites/home/user/showCity.do" redirect="true" />
 		</action>
 		
 	</action-mappings>
